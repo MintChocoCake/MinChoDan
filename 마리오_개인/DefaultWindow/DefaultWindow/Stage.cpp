@@ -44,28 +44,13 @@ void CStage::LateUpdate(void)
 	);
 
 	CCollisionMgr::Collision_Rect(
-		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BULLET_PLAYER),
-		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BLOCK)
-	);
-
-	CCollisionMgr::Collision_Rect(
-		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BULLET_PLAYER),
-		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)
-	);
-
-	CCollisionMgr::Collision_Rect(
-		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BULLET_MONSTER),
-		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_PLAYER)
-	);
-
-	CCollisionMgr::Collision_Rect(
-		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BULLET_MONSTER),
-		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BLOCK)
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_PLAYER),
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_ITEM)
 	);
 
 	CCollisionMgr::Collision_Rect(
 		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_PLAYER),
-		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_ITEM)
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)
 	);
 
 	CCollisionMgr::Collision_Rect(
@@ -74,8 +59,18 @@ void CStage::LateUpdate(void)
 	);
 
 	CCollisionMgr::Collision_Rect(
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BLOCK),
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BULLET_MONSTER)
+	);
+	
+	CCollisionMgr::Collision_Rect(
 		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER),
 		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BLOCK)
+	);
+
+	CCollisionMgr::Collision_Rect(
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER),
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BULLET_PLAYER)
 	);
 
 	CCollisionMgr::Collision_Line(

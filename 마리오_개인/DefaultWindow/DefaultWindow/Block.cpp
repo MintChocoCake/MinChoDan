@@ -23,16 +23,14 @@ void CBlock::Set_BlockID(BLOCK_ID _eID)
 	m_dwHP = tData.dwHP;
 	m_hBmpDC = &(CBmpMgr::Get_Instance()->Find_Bmp(tData.eBmp)->Get_BmpDC());
 
+	m_tInfo.fCX = tData.m_fCX;
+	m_tInfo.fCY = tData.m_fCY;
+
 	Update_Rect();
 }
 
 void CBlock::Initialize(void)
 {
-	m_tInfo.fCX = TILEC;
-	m_tInfo.fCY = TILEC;
-
-	m_dwHP = 3;
-
 	m_eType = OBJ_TYPE_BLOCK;
 }
 

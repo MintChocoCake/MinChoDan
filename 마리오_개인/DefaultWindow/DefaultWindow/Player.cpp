@@ -52,9 +52,27 @@ int CPlayer::Update(void)
 		//return OBJ_DEAD;
 	}
 
+	if (m_bGoTunnel)
+	{
+		if (m_tInfo.fY <= TunnelDest.y)
+			InTunnel();
+		else
+			m_bGoTunnel = false;
+	}
+	if (m_bOutTunnel)
+	{
+		if (m_tInfo.fY >= TunnelDest.y)
+			OutTunnel();
 
-	Key_Input();
-	Jump();
+		else
+			m_bOutTunnel = false;
+	}
+
+	if (!m_bGoTunnel && !m_bOutTunnel)
+	{
+		Key_Input();
+		Jump();
+	}
 
 	Update_Rect();
 	Update_Frame();
@@ -93,12 +111,16 @@ void CPlayer::OnCollision(CObj * _pTarget)
 
 	INFO* pInfo;
 	CHill* hill;
+
+	if (m_bGoTunnel || m_bOutTunnel)
+		return;
+
 	switch (_pTarget->Get_Type())
 	{
 	case OBJ_TYPE_BLOCK:
 		pInfo = &_pTarget->Get_Info();
 
-		if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY) {
+		if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY * 0.5f) {
 			if (pInfo->fX > m_tInfo.fX) {
 				m_tInfo.fX -= m_fSpeed;
 			}
@@ -114,6 +136,29 @@ void CPlayer::OnCollision(CObj * _pTarget)
 					StopJump();
 					m_tInfo.fY = _pTarget->Get_Info().fY - (_pTarget->Get_Info().fCY + m_tInfo.fCY) * 0.5f;
 				}
+			}
+		}
+
+		// Åä°ü
+		if(dynamic_cast<CBlock*>(_pTarget)->m_eBlockID == BLOCK_ID_TUNNEL_IN)
+		{
+			if (CKeyMgr::Get_Instance()->Key_Down('S'))
+			{
+				if (!m_bJumping)
+				{
+					m_bGoTunnel = true;
+					TunnelDest.x = _pTarget->Get_Info().fX + (TILEC * 0);
+					TunnelDest.y = _pTarget->Get_Info().fY + (TILEC * 8);
+				}
+			}
+		}
+		if (dynamic_cast<CBlock*>(_pTarget)->m_eBlockID == BLOCK_ID_TUNNEL_OUT)
+		{
+			if (!m_bJumping)
+			{
+				m_bOutTunnel = true;
+				TunnelDest.x = _pTarget->Get_Info().fX + (TILEC * 5);
+				TunnelDest.y = _pTarget->Get_Info().fY - (TILEC * 10);
 			}
 		}
 		break;
@@ -299,5 +344,25 @@ void CPlayer::ChangeDir(DIRECTION _eDir)
 	case DIRECTION_RIGHT:
 		m_hBmpDC = &(CBmpMgr::Get_Instance()->Find_Bmp(BMP_KEY_PLAYER_RIGHT)->Get_BmpDC());
 		break;
+	}
+}
+
+void CPlayer::InTunnel()
+{
+	m_tInfo.fY += m_fSpeed; 
+	CScrollMgr::Get_Instance()->Add_Y(m_fSpeed); 
+}
+
+void CPlayer::OutTunnel()
+{
+	if (m_tInfo.fX <= TunnelDest.x)
+	{
+		m_tInfo.fX += m_fSpeed;
+		CScrollMgr::Get_Instance()->Add_X(-(m_fSpeed));
+	}
+	else
+	{
+		m_tInfo.fY -= m_fSpeed;
+		CScrollMgr::Get_Instance()->Add_Y(-m_fSpeed);
 	}
 }

@@ -216,9 +216,6 @@
     <ClInclude Include="Gunner.h">
       <Filter>01. Obj\05. Monster\00. Gunner</Filter>
     </ClInclude>
-    <ClInclude Include="CMonster.h">
-      <Filter>06.Add</Filter>
-    </ClInclude>
     <ClInclude Include="CTunnel.h">
       <Filter>06.Add</Filter>
     </ClInclude>
@@ -313,9 +310,6 @@
     </ClCompile>
     <ClCompile Include="Gunner.cpp">
       <Filter>01. Obj\05. Monster\00. Gunner</Filter>
-    </ClCompile>
-    <ClCompile Include="CMonster.cpp">
-      <Filter>06.Add</Filter>
     </ClCompile>
     <ClCompile Include="CTunnel.cpp">
       <Filter>06.Add</Filter>

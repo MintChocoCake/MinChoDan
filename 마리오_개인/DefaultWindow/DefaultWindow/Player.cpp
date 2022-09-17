@@ -175,6 +175,7 @@ FRAME CPlayer::SetFrame(int _iState)
 	switch (_iState)
 	{
 	case CPlayer::PLAYER_STATE_IDLE:
+	default:
 		return { 0, 0, PLAYER_STATE_IDLE, 100000 };
 		break;
 	case CPlayer::PLAYER_STATE_WALK:

@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="00. MainGame">
+      <UniqueIdentifier>{5ba16d42-b987-480e-992b-6da3cdbf8549}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj">
+      <UniqueIdentifier>{96835cf7-c17d-4227-b191-5002f2b2c9c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\00. Player">
+      <UniqueIdentifier>{9580daf7-ca98-4338-9e31-dd9b57eb218a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Desin">
+      <UniqueIdentifier>{ce33d7fd-3e42-401b-a9e8-10e571242993}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. Mouse">
+      <UniqueIdentifier>{df63e3ed-b97d-4d5e-800f-a0340f355902}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Desin\00. Line">
+      <UniqueIdentifier>{3f8415ee-d795-44c2-a680-462724c6c287}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Desin\01. ScrollMgr">
+      <UniqueIdentifier>{7a45c686-b821-4b0e-91c2-d67303e603b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Desin\02. KeyMgr">
+      <UniqueIdentifier>{4640fc60-7a1a-4db2-9a60-23d8b6e5254e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Desin\03. ObjMgr">
+      <UniqueIdentifier>{5b50859a-48ab-4d12-ab80-742fa41f231e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Desin\04. CollisionMgr">
+      <UniqueIdentifier>{1b9d13d8-9461-488e-bf07-52d3f20598d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Desin\05. AbstractFactory">
+      <UniqueIdentifier>{32708022-3683-4121-9818-3b0eb240e611}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Desin\06. Bitmap">
+      <UniqueIdentifier>{c0717b01-e06e-43e9-96cf-57a4be567d1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Desin\06. Bitmap\01.BitmapMgr">
+      <UniqueIdentifier>{8935817c-0abc-489b-9282-127e56e6ce23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Desin\00. Line\00. LineMgr">
+      <UniqueIdentifier>{af049c1b-e4d3-4f03-b518-4120a1fd3154}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene">
+      <UniqueIdentifier>{4f165778-395a-480e-9b36-11207fac26cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene\00. Logo">
+      <UniqueIdentifier>{59840675-7c35-4248-bc08-ead29bfb2cb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene\01. Menu">
+      <UniqueIdentifier>{54b66691-32d6-4a90-ae57-4f94009075ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene\02. Edit">
+      <UniqueIdentifier>{191dbd79-4750-4ac6-90d0-73a4ef9a12f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene\03. Stage">
+      <UniqueIdentifier>{1a7fea3e-5c54-4340-9d34-16c844cd438f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Monster">
+      <UniqueIdentifier>{299557a4-5c10-4e73-8c0e-378003204652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\03. MyButton">
+      <UniqueIdentifier>{f97c3b9b-6bc8-4b0f-833d-64ab23ff74ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\04. Tile">
+      <UniqueIdentifier>{14485f66-572e-438f-9e84-9d8688205de5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Desin\08. TileMgr">
+      <UniqueIdentifier>{1da3156f-a9b8-41b7-a16e-fff8cabdb9a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Desin\07. SceneMgr">
+      <UniqueIdentifier>{d7f056e5-7ca8-4dbc-a02d-80334c4d43d6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultWindow.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>00. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>01. Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>01. Obj\00. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>02. Desin\00. Line</Filter>
+    </ClInclude>
+    <ClInclude Include="LineMgr.h">
+      <Filter>02. Desin\00. Line\00. LineMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollMgr.h">
+      <Filter>02. Desin\01. ScrollMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>02. Desin\02. KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMgr.h">
+      <Filter>02. Desin\03. ObjMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionMgr.h">
+      <Filter>02. Desin\04. CollisionMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory.h">
+      <Filter>02. Desin\05. AbstractFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>01. Obj\01. Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="BitmapMgr.h">
+      <Filter>02. Desin\06. Bitmap\01.BitmapMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="MyBitmap.h">
+      <Filter>02. Desin\06. Bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>03. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>03. Scene\03. Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMenu.h">
+      <Filter>03. Scene\01. Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MyButton.h">
+      <Filter>01. Obj\03. MyButton</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>02. Desin\07. SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo.h">
+      <Filter>03. Scene\00. Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>01. Obj\02. Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>01. Obj\04. Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMgr.h">
+      <Filter>02. Desin\08. TileMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="MyEdit.h">
+      <Filter>03. Scene\02. Edit</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultWindow.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>00. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>01. Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>01. Obj\00. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>02. Desin\00. Line</Filter>
+    </ClCompile>
+    <ClCompile Include="LineMgr.cpp">
+      <Filter>02. Desin\00. Line\00. LineMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollMgr.cpp">
+      <Filter>02. Desin\01. ScrollMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>02. Desin\02. KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMgr.cpp">
+      <Filter>02. Desin\03. ObjMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionMgr.cpp">
+      <Filter>02. Desin\04. CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>01. Obj\01. Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="BitmapMgr.cpp">
+      <Filter>02. Desin\06. Bitmap\01.BitmapMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBitmap.cpp">
+      <Filter>02. Desin\06. Bitmap</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>03. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>03. Scene\03. Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="MyMenu.cpp">
+      <Filter>03. Scene\01. Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MyButton.cpp">
+      <Filter>01. Obj\03. MyButton</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>02. Desin\07. SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo.cpp">
+      <Filter>03. Scene\00. Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>01. Obj\02. Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>01. Obj\04. Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMgr.cpp">
+      <Filter>02. Desin\08. TileMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MyEdit.cpp">
+      <Filter>03. Scene\02. Edit</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DefaultWindow.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="DefaultWindow.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

@@ -44,7 +44,8 @@ void CBullet::LateUpdate(void)
  	Update_Rect();
 	Update_Active();
 
-	if (!m_bActive)
+	float m_fScreenX = CScrollMgr::Get_Instance()->Get_X() + m_tInfo.fX;
+	if (m_fScreenX < 0)
 		Set_Dead();
 }
 

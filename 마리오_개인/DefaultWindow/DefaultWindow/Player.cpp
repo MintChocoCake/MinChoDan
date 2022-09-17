@@ -120,7 +120,7 @@ void CPlayer::OnCollision(CObj * _pTarget)
 	case OBJ_TYPE_BLOCK:
 		pInfo = &_pTarget->Get_Info();
 
-		if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY * 0.5f) {
+		if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY * 0.7f) {
 			if (pInfo->fX > m_tInfo.fX) {
 				m_tInfo.fX -= m_fSpeed;
 			}

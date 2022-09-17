@@ -109,6 +109,9 @@
     <Filter Include="06.Add">
       <UniqueIdentifier>{297002e0-793d-4788-a2d3-abfe34811792}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\05. Monster\01.TunnelMonster">
+      <UniqueIdentifier>{907247d8-3c4b-46df-aa23-f2c95c938cd6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -219,6 +222,9 @@
     <ClInclude Include="CTunnel.h">
       <Filter>06.Add</Filter>
     </ClInclude>
+    <ClInclude Include="CTunnelMonster.h">
+      <Filter>01. Obj\05. Monster\01.TunnelMonster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -313,6 +319,9 @@
     </ClCompile>
     <ClCompile Include="CTunnel.cpp">
       <Filter>06.Add</Filter>
+    </ClCompile>
+    <ClCompile Include="CTunnelMonster.cpp">
+      <Filter>01. Obj\05. Monster\01.TunnelMonster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

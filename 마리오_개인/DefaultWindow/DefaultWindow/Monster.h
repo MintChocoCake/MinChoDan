@@ -7,7 +7,7 @@ public:
 	CMonster();
 	virtual ~CMonster();
 
-private:
+protected:
 	enum MONSTER_STATE {
 		MONSTER_STATE_NONE = -1,
 		MONSTER_STATE_WALK,

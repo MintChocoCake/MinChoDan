@@ -30,6 +30,7 @@ void CBmpMgr::Initialize()
 
 	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_MUSHROOM);
 	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_GUNNER);
+	Insert_Bmp(_T("../MyImage//Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);
 
 	Insert_Bmp(_T("../MyImage/Cursor.bmp"), BMP_KEY_CURSOR);
 	Insert_Bmp(_T("../MyImage/LobbyBG.bmp"), BMP_KEY_LOBBYBG);

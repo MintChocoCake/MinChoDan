@@ -10,6 +10,7 @@
 #include "Invisible.h"
 #include "Monster.h"
 #include "CTunnel.h"
+#include "CTunnelMonster.h"
 
 CMapMgr* CMapMgr::m_pInstance = nullptr;
 
@@ -147,6 +148,7 @@ void CMapMgr::Key_Input()
 	}
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_F8)) {
 		Create_Block(BLOCK_ID_TUNNEL_MOB);
+		Create_Monster(MONSTER_ID_TUNNEL);
 	}
 
 	if (CKeyMgr::Get_Instance()->Key_Down('Z')) {
@@ -341,6 +343,9 @@ void CMapMgr::Create_Monster(MONSTER_ID _eID, MYPOINT _tPos)
 		break;
 	case MONSTER_ID_GUNNER:
 		pObj = CAbstractFactory::Create<CGunner>(_tPos.fX, _tPos.fY);
+		break;
+	case MONSTER_ID_TUNNEL:
+		pObj = CAbstractFactory::Create<CTunnelMonster>(_tPos.fX, _tPos.fY);
 		break;
 	}
 

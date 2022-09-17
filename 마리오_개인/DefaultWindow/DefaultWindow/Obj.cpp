@@ -5,7 +5,7 @@
 static DWORD dwINSTANCE_NUMBER = 0;
 
 CObj::CObj()
-	: m_fSpeed(0.f), m_bDead(false), m_bActive(false)
+	: m_fSpeed(0.f), m_bDead(false), m_bActive(false), m_iCurState(-1)
 {
 	ZeroMemory(&m_tInfo, sizeof(INFO));
 	ZeroMemory(&m_tRect, sizeof(RECT));
@@ -59,6 +59,11 @@ void CObj::Render(HDC hDC)
 	//Rectangle(hDC, m_tRect.left + lScrollX, m_tRect.top, m_tRect.right + lScrollX, m_tRect.bottom);
 }
 
+FRAME CObj::SetFrame(int _iState)
+{
+	return FRAME{ 0, 0, 0, 1000 };
+}
+
 void CObj::Update_Rect(void)
 {
 	m_tRect.left = long(m_tInfo.fX - (m_tInfo.fCX * 0.5f));
@@ -88,6 +93,18 @@ void CObj::Update_Active(void)
 	if (-100 <= lScrollX + m_tInfo.fX && lScrollX + m_tInfo.fX <= WINCX + 100)
 		m_bActive = true;
 	else m_bActive = false;
+}
+
+void CObj::Change_State(int _iState)
+{
+	if (m_iCurState == _iState)
+		return;
+
+	FRAME tFrame = SetFrame(_iState);
+
+	m_tFrame = tFrame;
+	m_iCurState = _iState;
+	m_tFrame.dwTimer = GetTickCount();
 }
 
 

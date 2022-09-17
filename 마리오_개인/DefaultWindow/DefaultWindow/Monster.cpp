@@ -7,7 +7,7 @@
 #include "Item.h"
 #include "ScrollMgr.h"
 
-CMonster::CMonster() : m_fAirTime(0.f), m_eMobID(MONSTER_ID_MUSHROOM), m_eCurState(MONSTER_STATE_NONE)
+CMonster::CMonster() : m_fAirTime(0.f), m_eMobID(MONSTER_ID_MUSHROOM)
 {
 
 }
@@ -28,7 +28,7 @@ void CMonster::Initialize(void)
 	m_dwHP = data.dwHP;
 	m_hBmpDC = &(CBmpMgr::Get_Instance()->Find_Bmp(data.eBmp)->Get_BmpDC());
 
-	ChangeState(MONSTER_STATE_WALK);
+	Change_State(MONSTER_STATE_WALK);
 }
 
 int CMonster::Update(void)
@@ -116,6 +116,11 @@ void CMonster::OnCollisionEnter(CObj * _pTarget)
 	}
 }
 
+FRAME CMonster::SetFrame(int _iState)
+{
+	return { 0, 1, MONSTER_STATE_WALK, 200 };
+}
+
 void CMonster::Act()
 {
 	m_tInfo.fX -= m_fSpeed;
@@ -124,20 +129,3 @@ void CMonster::Act()
 	m_fAirTime += 0.1f;
 }
 
-void CMonster::ChangeState(MONSTER_STATE _eState)
-{
-	if (m_eCurState == _eState)
-		return;
-
-	FRAME tFrame;
-	switch (_eState)
-	{
-	case MONSTER_STATE_WALK:
-		tFrame = { 0, 1, MONSTER_STATE_WALK, 200 };
-		break;
-	}
-
-	m_tFrame = tFrame;
-	m_eCurState = _eState;
-	m_tFrame.dwTimer = GetTickCount();
-}

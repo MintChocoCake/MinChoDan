@@ -15,7 +15,7 @@
 
 const float fJUMP_POWER = 15.f;
 
-CPlayer::CPlayer() : m_bJumping(false), m_fCurJumpDir(-1.f), m_bGun(false), m_eCurDir(DIRECTION_NONE), m_eCurState(PLAYER_STATE_NONE)
+CPlayer::CPlayer() : m_bJumping(false), m_fCurJumpDir(-1.f), m_bGun(false), m_eCurDir(DIRECTION_NONE)
 {
 	m_bActive = true;
 }
@@ -40,7 +40,7 @@ void CPlayer::Initialize(void)
 	m_eType = OBJ_TYPE_PLAYER;
 
 	m_pBullets = CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BULLET_PLAYER);
-	ChangeState(PLAYER_STATE_IDLE);
+	Change_State(PLAYER_STATE_IDLE);
 	ChangeDir(DIRECTION_RIGHT);
 }
 
@@ -170,6 +170,28 @@ void CPlayer::OnCollisionEnter(CObj * _pTarget)
 	}
 }
 
+FRAME CPlayer::SetFrame(int _iState)
+{
+	switch (_iState)
+	{
+	case CPlayer::PLAYER_STATE_IDLE:
+		return { 0, 0, PLAYER_STATE_IDLE, 100000 };
+		break;
+	case CPlayer::PLAYER_STATE_WALK:
+		return{ 0, 3, PLAYER_STATE_WALK, 100 };
+		break;
+	case CPlayer::PLAYER_STATE_LINE:
+		return{ 0, 2, PLAYER_STATE_LINE, 1000 };
+		break;
+	case CPlayer::PLAYER_STATE_JUMP:
+		return{ 0, 0, PLAYER_STATE_JUMP, 100000 };
+		break;
+	case CPlayer::PLAYER_STATE_UP:
+		return { 0, 0, PLAYER_STATE_UP, 100000 };
+		break;
+	}
+}
+
 void CPlayer::Key_Input(void)
 {
 	CObj* pObj;
@@ -177,8 +199,8 @@ void CPlayer::Key_Input(void)
 
 	if (CKeyMgr::Get_Instance()->Key_Pressing('A')) {
 		m_tInfo.fX -= m_fSpeed;
-		if(m_eCurState == PLAYER_STATE_IDLE)
-			ChangeState(PLAYER_STATE_WALK);
+		if(m_iCurState == PLAYER_STATE_IDLE)
+			Change_State(PLAYER_STATE_WALK);
 		ChangeDir(DIRECTION_LEFT);
 		bMoving = true;
 	}
@@ -186,8 +208,8 @@ void CPlayer::Key_Input(void)
 
 	if (CKeyMgr::Get_Instance()->Key_Pressing('D')) {
 		m_tInfo.fX += m_fSpeed;
-		if (m_eCurState == PLAYER_STATE_IDLE)
-			ChangeState(PLAYER_STATE_WALK);
+		if (m_iCurState == PLAYER_STATE_IDLE)
+			Change_State(PLAYER_STATE_WALK);
 		ChangeDir(DIRECTION_RIGHT);
 		bMoving = true;
 	}
@@ -196,7 +218,7 @@ void CPlayer::Key_Input(void)
 		if (!m_bJumping) {
 			m_bJumping = true;
 			m_fAirTime = 0.f;
-			ChangeState(PLAYER_STATE_JUMP);
+			Change_State(PLAYER_STATE_JUMP);
 			bMoving = true;
 		}
 	}
@@ -212,7 +234,7 @@ void CPlayer::Key_Input(void)
 	}
 
 	if (!bMoving && !m_bJumping)
-		ChangeState(PLAYER_STATE_IDLE);
+		Change_State(PLAYER_STATE_IDLE);
 }
 
 void CPlayer::Jump()
@@ -257,38 +279,8 @@ void CPlayer::StopJump()
 	m_bJumping = false;
 	m_fCurJumpDir = -1.f;
 	m_fAirTime = 0.0f;
-	if(m_eCurState == PLAYER_STATE_JUMP)
-		ChangeState(PLAYER_STATE_IDLE);
-}
-
-void CPlayer::ChangeState(PLAYER_STATE _eState)
-{
-	if (m_eCurState == _eState)
-		return;
-
-	FRAME tFrame;
-	switch (_eState)
-	{
-	case CPlayer::PLAYER_STATE_IDLE:
-		tFrame = { 0, 0, PLAYER_STATE_IDLE, 100000 };
-		break;
-	case CPlayer::PLAYER_STATE_WALK:
-		tFrame = { 0, 3, PLAYER_STATE_WALK, 100 };
-		break;
-	case CPlayer::PLAYER_STATE_LINE:
-		tFrame = { 0, 2, PLAYER_STATE_LINE, 1000 };
-		break;
-	case CPlayer::PLAYER_STATE_JUMP:
-		tFrame = { 0, 0, PLAYER_STATE_JUMP, 100000 };
-		break;
-	case CPlayer::PLAYER_STATE_UP:
-		tFrame = { 0, 0, PLAYER_STATE_UP, 100000 };
-		break;
-	}
-
-	m_tFrame = tFrame;
-	m_eCurState = _eState;
-	m_tFrame.dwTimer = GetTickCount();
+	if(m_iCurState == PLAYER_STATE_JUMP)
+		Change_State(PLAYER_STATE_IDLE);
 }
 
 void CPlayer::ChangeDir(DIRECTION _eDir)

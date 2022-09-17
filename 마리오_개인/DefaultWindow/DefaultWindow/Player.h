@@ -25,6 +25,7 @@ public:
 	virtual void Release(void) override;
 	virtual void OnCollision(CObj* _pTarget) override;
 	virtual void OnCollisionEnter(CObj* _pTarget) override;
+	virtual FRAME SetFrame(int _iState);
 
 private:
 	bool m_bJumping;
@@ -32,7 +33,6 @@ private:
 	float m_fCurJumpDir;
 	float m_fAirTime;
 	list<CObj*>* m_pBullets;
-	PLAYER_STATE m_eCurState;
 	DIRECTION m_eCurDir;
 
 private:
@@ -40,7 +40,6 @@ private:
 	void Jump();
 	void Scroll();
 	void StopJump();
-	void ChangeState(PLAYER_STATE _eState);
 	void ChangeDir(DIRECTION _eDir);
 };
 

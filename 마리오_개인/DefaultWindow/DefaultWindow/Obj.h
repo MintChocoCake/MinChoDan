@@ -31,11 +31,13 @@ public:
 	virtual void Release(void) PURE;
 	virtual void OnCollision(CObj* _pTarget) PURE;
 	virtual void OnCollisionEnter(CObj* _pTarget) PURE;
+	virtual FRAME SetFrame(int _iState);
 
 protected:
 	void		Update_Rect(void);
 	void		Update_Frame(void);
 	void		Update_Active(void);
+	void		Change_State(int _iState);
 
 protected:
 	INFO m_tInfo;
@@ -53,5 +55,6 @@ protected:
 	set<DWORD> m_ColSet;
 
 	bool m_bActive;
+	int m_iCurState;
 };
 

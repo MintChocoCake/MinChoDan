@@ -106,6 +106,9 @@
     <Filter Include="01. Obj\05. Monster\00. Gunner">
       <UniqueIdentifier>{57f7989f-5bb7-4532-a73f-543cc98f07c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="06.Add">
+      <UniqueIdentifier>{297002e0-793d-4788-a2d3-abfe34811792}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -213,6 +216,12 @@
     <ClInclude Include="Gunner.h">
       <Filter>01. Obj\05. Monster\00. Gunner</Filter>
     </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>06.Add</Filter>
+    </ClInclude>
+    <ClInclude Include="CTunnel.h">
+      <Filter>06.Add</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -304,6 +313,12 @@
     </ClCompile>
     <ClCompile Include="Gunner.cpp">
       <Filter>01. Obj\05. Monster\00. Gunner</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>06.Add</Filter>
+    </ClCompile>
+    <ClCompile Include="CTunnel.cpp">
+      <Filter>06.Add</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

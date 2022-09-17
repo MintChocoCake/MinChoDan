@@ -9,6 +9,7 @@
 #include "RotateFire.h"
 #include "Invisible.h"
 #include "Monster.h"
+#include "CTunnel.h"
 
 CMapMgr* CMapMgr::m_pInstance = nullptr;
 
@@ -137,6 +138,15 @@ void CMapMgr::Key_Input()
 
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_F5)) {
 		Create_Block(BLOCK_ID_ROTATE_FIRE);
+	}
+	if (CKeyMgr::Get_Instance()->Key_Down(VK_F6)) {
+		Create_Block(BLOCK_ID_TUNNEL_IN);
+	}
+	if (CKeyMgr::Get_Instance()->Key_Down(VK_F7)) {
+		Create_Block(BLOCK_ID_TUNNEL_OUT);
+	}
+	if (CKeyMgr::Get_Instance()->Key_Down(VK_F8)) {
+		Create_Block(BLOCK_ID_TUNNEL_MOB);
 	}
 
 	if (CKeyMgr::Get_Instance()->Key_Down('Z')) {
@@ -295,6 +305,15 @@ void CMapMgr::Create_Block(BLOCK_ID _eID, MYPOINT _tPos)
 		break;
 	case BLOCK_ID_ROTATE_FIRE:
 		pObj = CAbstractFactory::Create<CRotateFire>(_tPos.fX, _tPos.fY);
+		break;
+	case BLOCK_ID_TUNNEL_IN:
+		pObj = CAbstractFactory::Create<CTunnel>(_tPos.fX, _tPos.fY);
+		break;
+	case BLOCK_ID_TUNNEL_OUT:
+		pObj = CAbstractFactory::Create<CTunnel>(_tPos.fX, _tPos.fY);
+		break;
+	case BLOCK_ID_TUNNEL_MOB:
+		pObj = CAbstractFactory::Create<CTunnel>(_tPos.fX, _tPos.fY);
 		break;
 	default:
 		pObj = CAbstractFactory::Create<CBlock>(_tPos.fX, _tPos.fY);

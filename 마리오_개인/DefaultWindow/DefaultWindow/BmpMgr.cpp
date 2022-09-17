@@ -15,7 +15,13 @@ CBmpMgr::~CBmpMgr()
 void CBmpMgr::Initialize()
 {
 	Insert_Bmp(_T("../MyImage/PlayerLeft.bmp"), BMP_KEY_PLAYER_LEFT);
+	Insert_Bmp(_T("../MyImage/PlayerLeft_01.bmp"), BMP_KEY_PLAYER_LEFT_01);
+	Insert_Bmp(_T("../MyImage/PlayerLeft_02.bmp"), BMP_KEY_PLAYER_LEFT_02);	
+	Insert_Bmp(_T("../MyImage/PlayerLeft_03.bmp"), BMP_KEY_PLAYER_LEFT_03);
 	Insert_Bmp(_T("../MyImage/PlayerRight.bmp"), BMP_KEY_PLAYER_RIGHT);
+	Insert_Bmp(_T("../MyImage/PlayerRight_01.bmp"), BMP_KEY_PLAYER_RIGHT_01);
+	Insert_Bmp(_T("../MyImage/PlayerRight_02.bmp"), BMP_KEY_PLAYER_RIGHT_02);
+	Insert_Bmp(_T("../MyImage/PlayerRight_03.bmp"), BMP_KEY_PLAYER_RIGHT_03);
 	Insert_Bmp(_T("../MyImage/Ground.bmp"), BMP_KEY_GROUND);
 	Insert_Bmp(_T("../Image/Back.bmp"), BMP_KEY_BACK);
 	Insert_Bmp(_T("../Image/Logo/Logo.bmp"), BMP_KEY_LOGO);

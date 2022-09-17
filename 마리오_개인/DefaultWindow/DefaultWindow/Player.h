@@ -38,6 +38,8 @@ private:
 	list<CObj*>* m_pBullets;
 	DIRECTION m_eCurDir;
 
+	float m_AfterImgDelay = 4.f;
+
 private:
 	void Key_Input(void);
 	void Jump();
@@ -46,5 +48,6 @@ private:
 	void ChangeDir(DIRECTION _eDir);
 	void InTunnel();
 	void OutTunnel();
+	void ShowAfterImage();
 };
 

@@ -225,6 +225,9 @@
     <ClInclude Include="CTunnelMonster.h">
       <Filter>01. Obj\05. Monster\01.TunnelMonster</Filter>
     </ClInclude>
+    <ClInclude Include="AfterImage.h">
+      <Filter>01. Obj\00. Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -322,6 +325,9 @@
     </ClCompile>
     <ClCompile Include="CTunnelMonster.cpp">
       <Filter>01. Obj\05. Monster\01.TunnelMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="AfterImage.cpp">
+      <Filter>01. Obj\00. Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

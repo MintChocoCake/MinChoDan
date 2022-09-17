@@ -28,6 +28,9 @@ public:
 	virtual FRAME SetFrame(int _iState);
 
 private:
+	bool m_bGoTunnel;
+	bool m_bOutTunnel;
+	POINT TunnelDest;
 	bool m_bJumping;
 	bool m_bGun;
 	float m_fCurJumpDir;
@@ -41,5 +44,7 @@ private:
 	void Scroll();
 	void StopJump();
 	void ChangeDir(DIRECTION _eDir);
+	void InTunnel();
+	void OutTunnel();
 };
 

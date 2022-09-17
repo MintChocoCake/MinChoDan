@@ -4,7 +4,7 @@
 #define		WINCY		600
 #define		TILEC		35
 #define		TILEX		130
-#define		TILEY		20
+#define		TILEY		200
 #define		PURE		= 0
 #define		VK_MAX		0xff
 #define     OBJ_DEAD	-1
@@ -137,17 +137,28 @@ typedef struct tagBlock {
 	DWORD dwHP;
 	BMP_KEY eBmp;
 	ITEM_ID eDropItem;
+	float m_fCX;
+	float m_fCY;
+
+	tagBlock(int _dwHP, BMP_KEY _eKey, ITEM_ID _eDrop, float _fCX = TILEC, float _fCY = TILEC) {
+		dwHP = (DWORD)_dwHP;
+		eBmp = _eKey;
+		eDropItem = _eDrop;
+		m_fCX = _fCX;
+		m_fCY = _fCY;
+	}
+
 } BLOCK;
 
 static const tagBlock arrBlockTable[BLOCK_ID_END] = {
-	{ (DWORD)-1, BMP_KEY_BLOCK_TILE, ITEM_ID_NONE },
-	{ (DWORD)-1, BMP_KEY_BLOCK_BOX, ITEM_ID_NONE },
-	{ (DWORD)1, BMP_KEY_BLOCK_ITEM_BOX, ITEM_ID_GUN },
-	{ (DWORD)5, BMP_KEY_BLOCK_INVISIBLE, ITEM_ID_COIN },
-	{ (DWORD)-1, BMP_KEY_BLOCK_ROTATE_FIRE, ITEM_ID_NONE },
-	{ (DWORD)-1, BMP_KEY_BLOCK_ID_TUNNEL_IN, ITEM_ID_NONE },
-	{ (DWORD)-1, BMP_KEY_BLOCK_ID_TUNNEL_OUT, ITEM_ID_NONE },
-	{ (DWORD)-1, BMP_KEY_BLOCK_ID_TUNNEL_IN, ITEM_ID_NONE }
+	{ -1, BMP_KEY_BLOCK_TILE, ITEM_ID_NONE },
+	{ -1, BMP_KEY_BLOCK_BOX, ITEM_ID_NONE },
+	{ 1, BMP_KEY_BLOCK_ITEM_BOX, ITEM_ID_GUN },
+	{ 5, BMP_KEY_BLOCK_INVISIBLE, ITEM_ID_COIN },
+	{ -1, BMP_KEY_BLOCK_ROTATE_FIRE, ITEM_ID_NONE },
+	{ -1, BMP_KEY_BLOCK_ID_TUNNEL_IN, ITEM_ID_NONE, 70.f, 105.f },
+	{ -1, BMP_KEY_BLOCK_ID_TUNNEL_OUT, ITEM_ID_NONE, 105.f, 70.f},
+	{ -1, BMP_KEY_BLOCK_ID_TUNNEL_IN, ITEM_ID_NONE, 70.f, 105.f }
 };
 
 static const BMP_KEY arrItemBmpTable[ITEM_ID_END] = {

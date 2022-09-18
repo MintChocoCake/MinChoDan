@@ -331,7 +331,7 @@ void CPlayer::Key_Input(void)
 			bMoving = true;
 		}
 
-		else if (m_dwJumping == 1 && bMoving) {
+		else if (m_dwJumping == 1 && bMoving && m_eGunUpgrade >= PLAYER_BULLET_THIRD) {
 			m_dwJumping = 2;
 			m_fAirTime = 0.f;
 			fOffset = m_eCurDir == DIRECTION_LEFT ? 120.f : -120.f;
@@ -476,6 +476,9 @@ void CPlayer::Shot()
 
 void CPlayer::ShowAfterImage()
 {
+	if (m_eGunUpgrade < PLAYER_BULLET_SECOND)
+		return;
+
 	if (m_AfterImgDelay <= 0.f) 
 	{
 		if (CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_AFTERIMAGE)->size() > 2)

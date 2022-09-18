@@ -3,6 +3,7 @@
 #include "ObjMgr.h"
 #include "MapMgr.h"
 #include "BmpMgr.h"
+#include "ScrollMgr.h"
 
 CMapEdit::CMapEdit()
 {
@@ -17,7 +18,6 @@ CMapEdit::~CMapEdit()
 void CMapEdit::Initialize(void)
 {
 	CMapMgr::Get_Instance()->SetActive(true);
-	CMapMgr::Get_Instance()->Load_Map();
 }
 
 void CMapEdit::Update(void)
@@ -35,7 +35,7 @@ void CMapEdit::Render(HDC hDC)
 	HDC hBack = CBmpMgr::Get_Instance()->Find_Bmp(BMP_KEY_BACK)->Get_BmpDC();
 	HDC hGround = CBmpMgr::Get_Instance()->Find_Bmp(BMP_KEY_GROUND)->Get_BmpDC();
 
-	BitBlt(hBack, 0, 0, WINCX, WINCY, hGround, 0, 0, SRCCOPY);
+	BitBlt(hBack, (int)CScrollMgr::Get_Instance()->Get_X(), (int)CScrollMgr::Get_Instance()->Get_Y(), TILEC * TILEX, TILEC * TILEY, hGround, 0, 0, SRCCOPY);
 
 	CObjMgr::Get_Instance()->Render(hBack);
 	CMapMgr::Get_Instance()->Render(hBack);

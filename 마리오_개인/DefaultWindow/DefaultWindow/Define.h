@@ -3,8 +3,8 @@
 #define		WINCX		800
 #define		WINCY		600
 #define		TILEC		35
-#define		TILEX		130
-#define		TILEY		200
+#define		TILEX		116
+#define		TILEY		30
 #define		PURE		= 0
 #define		VK_MAX		0xff
 #define     OBJ_DEAD	-1
@@ -62,7 +62,7 @@ typedef struct tagFrame {
 extern HWND		g_hWnd;
 
 static const float fCOLLISION_RANGE = 35.f;
-static const float fOFFSET_X_MIN = 400.f;
+static const float fOFFSET_X_MIN = 300.f;
 static const float fOFFSET_X_MAX = WINCX - fOFFSET_X_MIN;
 static const float fOFFSET_Y_MIN = 100.f;
 static const float fOFFSET_Y_MAX = WINCY - fOFFSET_Y_MIN;
@@ -277,4 +277,10 @@ enum DIRECTION {
 	DIRECTION_RIGHT,
 	DIRECTION_BOTTOM,
 	DIRECTION_END
+};
+
+static const TCHAR* STAGE_MAP_FILE[3] = {
+	_T("../Data/Map1.dat"),
+	_T("../Data/Map2.dat"),
+	_T("../Data/Map3.dat")
 };

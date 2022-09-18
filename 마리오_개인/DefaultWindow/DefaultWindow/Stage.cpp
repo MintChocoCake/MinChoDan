@@ -10,7 +10,7 @@
 #include "CollisionMgr.h"
 #include "ScrollMgr.h"
 
-CStage::CStage() : m_dwScore(0)
+CStage::CStage() : m_dwScore(0), m_iStage(0)
 {
 }
 
@@ -22,7 +22,7 @@ CStage::~CStage()
 
 void CStage::Initialize(void)
 {
-	CMapMgr::Get_Instance()->Load_Map();
+	CMapMgr::Get_Instance()->Load_Map(STAGE_MAP_FILE[m_iStage]);
 
 	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_PLAYER)->push_back(
 		CAbstractFactory::Create<CPlayer>()

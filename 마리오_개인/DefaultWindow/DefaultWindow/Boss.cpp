@@ -36,28 +36,39 @@ void CBoss::Initialize(void)
 
 int CBoss::Update(void)
 {
-	if (m_Delay >= 0.f)
-		--m_Delay;
-	else
+	if (m_dwHP <= 0)
+		Change_State(BOSS_STATE_DIE);
+
+	if (m_iCurState != BOSS_STATE_DIE)
 	{
-		Change_State(1);
-		m_Delay = 1500.f;
+		if (m_Delay >= 0.f)
+			--m_Delay;
+		else
+		{
+			Change_State(1);
+
+			m_Delay = 1500.f;
+		}
+
+		if (m_iCurState == BOSS_STATE_ATTACK_01)
+			Set_Bmp(552.f, 777.f, BOSS_STATE_ATTACK_01, BMP_KEY_BOSS_CENTER_HEAD_ATTACK_01);
+		else
+			Set_Bmp(161.f, 332.f, BOSS_STATE_IDLE, BMP_KEY_BOSS_CENTER_HEAD);
 	}
-
-	if (m_iCurState == BOSS_STATE_ATTACK_01)
-		Set_Bmp(552.f, 777.f, BOSS_STATE_ATTACK_01, BMP_KEY_BOSS_CENTER_HEAD_ATTACK_01);
 	else
-		Set_Bmp(161.f, 332.f, BOSS_STATE_IDLE, BMP_KEY_BOSS_CENTER_HEAD);
-
+		Set_Bmp(161.f, 332.f, BOSS_STATE_DIE, BMP_KEY_BOSS_CENTER_HEAD_DIE);
 	Attack();
+
 	SetIdle();
+
 	Update_Rect();
 	return 0;
 }
 
 void CBoss::LateUpdate(void)
 {
-	Update_Frame();
+	if (m_iCurState != BOSS_STATE_DIE || m_tFrame.dwStart != m_tFrame.dwEnd)
+		Update_Frame();
 	Update_Active();
 }
 
@@ -66,10 +77,6 @@ void CBoss::Release(void)
 }
 
 void CBoss::OnCollision(CObj* _pTarget)
-{
-}
-
-void CBoss::OnCollisionEnter(CObj* _pTarget)
 {
 }
 
@@ -132,8 +139,9 @@ FRAME CBoss::SetFrame(int _iState)
 		Set_Pos(m_tInfo.fX, m_tInfo.fY + 132.f);
 		return{ 0, 25, BOSS_STATE_ATTACK_01, 100 };
 		break;
-	case CBoss::BOSS_STATE_SKILL:
-		return { 0, 0, BOSS_STATE_SKILL, 100000 };
+	case CBoss::BOSS_STATE_DIE:
+		Set_Pos(m_BasePos.x, m_BasePos.y);
+		return { 0, 11, BOSS_STATE_DIE, 100 };
 		Cast_On();
 		break;
 	}

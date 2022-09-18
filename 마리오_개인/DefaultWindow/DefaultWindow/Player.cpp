@@ -21,7 +21,7 @@
 
 const float fJUMP_POWER = 15.f;
 
-CPlayer::CPlayer() : m_dwJumping(0), m_fCurJumpDir(-1.f), m_eGunUpgrade(PLAYER_BULLET_NONE), m_eCurDir(DIRECTION_NONE), m_bGoTunnel(false), m_bOutTunnel(false)
+CPlayer::CPlayer() : m_dwJumping(0), m_fCurJumpDir(-1.f), m_eGunUpgrade(PLAYER_BULLET_THIRD), m_eCurDir(DIRECTION_NONE), m_bGoTunnel(false), m_bOutTunnel(false)
 {
 	m_bActive = true;
 }

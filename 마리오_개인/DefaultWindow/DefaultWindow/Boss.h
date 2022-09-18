@@ -9,7 +9,7 @@ protected:
 		BOSS_STATE_IDLE,
 		BOSS_STATE_ATTACK_01,
 		BOSS_STATE_ATTACK_02,
-		BOSS_STATE_SKILL,
+		BOSS_STATE_DIE,
 	};
 public:
 	CBoss();
@@ -20,9 +20,14 @@ public:
 	virtual void LateUpdate(void) override;
 	virtual void Release(void) override;
 	virtual void OnCollision(CObj* _pTarget) override;
-	virtual void OnCollisionEnter(CObj* _pTarget) override;
 	virtual FRAME SetFrame(int _iState);
-	virtual void SetIdle() { if (m_tFrame.dwStart == m_tFrame.dwEnd) { Change_State(BOSS_STATE_IDLE); } };
+	virtual void SetIdle() 
+	{
+		if (m_iCurState != BOSS_STATE_DIE && m_tFrame.dwStart == m_tFrame.dwEnd)
+		{ 
+			Change_State(BOSS_STATE_IDLE); 
+		} 
+	};
 public:
 	bool	Get_Cast() { return m_bCast; }
 	void	Cast_On() { m_bCast = true; }

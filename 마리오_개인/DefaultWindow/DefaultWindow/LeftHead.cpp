@@ -30,19 +30,28 @@ void CLeftHead::Initialize(void)
 
 int CLeftHead::Update(void)
 {
-	if (m_Delay >= 0.f)
-		--m_Delay;
+	if (m_dwHP <= 0)
+		Change_State(BOSS_STATE_DIE);
+
+	if (m_iCurState != BOSS_STATE_DIE)
+	{
+		if (m_Delay >= 0.f)
+			--m_Delay;
+		else 
+		{
+			Change_State(1);
+			m_Delay = 1200.f;
+		}
+
+		if (m_iCurState == BOSS_STATE_ATTACK_01)
+			Set_Bmp(546.f, 645.f, BOSS_STATE_ATTACK_01, BMP_KEY_BOSS_LEFT_HEAD_ATTACK_01);
+		else
+			Set_Bmp(261.f, 209.f, BOSS_STATE_IDLE, BMP_KEY_BOSS_LEFT_HEAD);
+	}
 	else
 	{
-		Change_State(1);
-		m_Delay = 1200.f;
+		Set_Bmp(253.f, 209.f, BOSS_STATE_DIE, BMP_KEY_BOSS_LEFT_HEAD_DIE);
 	}
-
-
-	if (m_iCurState == BOSS_STATE_ATTACK_01)
-		Set_Bmp(546.f, 645.f, BOSS_STATE_ATTACK_01, BMP_KEY_BOSS_LEFT_HEAD_ATTACK_01);
-	else
-		Set_Bmp(261.f, 209.f, BOSS_STATE_IDLE, BMP_KEY_BOSS_LEFT_HEAD);
 	
 	Attack();
 	SetIdle();
@@ -53,7 +62,9 @@ int CLeftHead::Update(void)
 void CLeftHead::LateUpdate(void)
 {
     Update_Active();
-    Update_Frame();
+
+	if (m_iCurState != BOSS_STATE_DIE || m_tFrame.dwStart != m_tFrame.dwEnd)
+		Update_Frame();
 
 }
 
@@ -87,8 +98,8 @@ FRAME CLeftHead::SetFrame(int _iState)
 		Set_Pos(m_BasePos.x - 119.5f, m_BasePos.y + 172.5f);
 		return{ 0, 22, BOSS_STATE_ATTACK_01, 100 };
 		break;
-	case CBoss::BOSS_STATE_SKILL:
-		return { 0, 0, BOSS_STATE_SKILL, 100000 };
+	case CBoss::BOSS_STATE_DIE:
+		return { 0, 12, BOSS_STATE_DIE, 100 };
 		break;
 	}
 }

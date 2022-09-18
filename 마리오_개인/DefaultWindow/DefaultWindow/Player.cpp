@@ -417,7 +417,7 @@ void CPlayer::ChangeDir(DIRECTION _eDir)
 void CPlayer::InTunnel()
 {
 	m_tInfo.fY += m_fSpeed; 
-	CScrollMgr::Get_Instance()->Add_Y(m_fSpeed); 
+	CScrollMgr::Get_Instance()->Add_Y(-m_fSpeed); 
 }
 
 void CPlayer::OutTunnel()
@@ -430,7 +430,7 @@ void CPlayer::OutTunnel()
 	else
 	{
 		m_tInfo.fY -= m_fSpeed;
-		CScrollMgr::Get_Instance()->Add_Y(-m_fSpeed);
+		CScrollMgr::Get_Instance()->Add_Y(m_fSpeed);
 	}
 }
 

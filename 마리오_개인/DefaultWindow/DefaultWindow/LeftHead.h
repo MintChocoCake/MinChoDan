@@ -12,11 +12,8 @@ public:
 	virtual void LateUpdate(void) override;
 	virtual void Release(void) override;
 	virtual FRAME SetFrame(int _iState);
-
 public:
 
 private:
 	void Attack();
-
-
 };

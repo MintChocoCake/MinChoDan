@@ -44,19 +44,28 @@ void CBmpMgr::Initialize()
 	Insert_Bmp(_T("../MyImage/Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);
 	
 	Insert_Bmp(_T("../MyImage/Boss/Head/CenterHead/stand.bmp"), BMP_KEY_BOSS_CENTER_HEAD);
+	Insert_Bmp(_T("../MyImage/Boss/Head/CenterHead/die.bmp"), BMP_KEY_BOSS_CENTER_HEAD_DIE);
 	Insert_Bmp(_T("../MyImage/Boss/Head/CenterHead/attack1.bmp"), BMP_KEY_BOSS_CENTER_HEAD_ATTACK_01);
 	Insert_Bmp(_T("../MyImage/Boss/Head/LeftHead/stand.bmp"), BMP_KEY_BOSS_LEFT_HEAD);
+	Insert_Bmp(_T("../MyImage/Boss/Head/LeftHead/die.bmp"), BMP_KEY_BOSS_LEFT_HEAD_DIE);
 	Insert_Bmp(_T("../MyImage/Boss/Head/LeftHead/attack1.bmp"), BMP_KEY_BOSS_LEFT_HEAD_ATTACK_01);
 	Insert_Bmp(_T("../MyImage/Boss/Head/RightHead/stand.bmp"), BMP_KEY_BOSS_RIGHT_HEAD);
+	Insert_Bmp(_T("../MyImage/Boss/Head/RightHead/die.bmp"), BMP_KEY_BOSS_RIGHT_HEAD_DIE);
 	Insert_Bmp(_T("../MyImage/Boss/Head/RightHead/attack3.bmp"), BMP_KEY_BOSS_RIGHT_HEAD_ATTACK_01);
 	Insert_Bmp(_T("../MyImage/Boss/Head/RightHead/attack3_Effect.bmp"), BMP_KEY_BOSS_RIGHT_HEAD_EFFECT_01);
 	Insert_Bmp(_T("../MyImage/Boss/Body/RightBody/stand.bmp"), BMP_KEY_BOSS_RIGHT_BODY);
+	Insert_Bmp(_T("../MyImage/Boss/Body/RightBody/die.bmp"), BMP_KEY_BOSS_RIGHT_BODY_DIE);
 	Insert_Bmp(_T("../MyImage/Boss/Body/LeftBody/stand.bmp"), BMP_KEY_BOSS_LEFT_BODY);
+	Insert_Bmp(_T("../MyImage/Boss/Body/LeftBody/die.bmp"), BMP_KEY_BOSS_LEFT_BODY_DIE);
 	Insert_Bmp(_T("../MyImage/Boss/Body/DownBody/stand.bmp"), BMP_KEY_BOSS_BOTTOM_BODY);
+	Insert_Bmp(_T("../MyImage/Boss/Body/DownBody/die.bmp"), BMP_KEY_BOSS_BOTTOM_BODY_DIE);
 	Insert_Bmp(_T("../MyImage/Boss/Body/DownBody/attack2.bmp"), BMP_KEY_BOSS_BOTTOM_BODY_ATTACK_01);
 	Insert_Bmp(_T("../MyImage/Boss/Body/DownBody/attack4.bmp"), BMP_KEY_BOSS_BOTTOM_BODY_ATTACK_02);
 	Insert_Bmp(_T("../MyImage/Boss/Wing/stand.bmp"), BMP_KEY_BOSS_WING);
+	Insert_Bmp(_T("../MyImage/Boss/Wing/die.bmp"), BMP_KEY_BOSS_WING_DIE);
 	Insert_Bmp(_T("../MyImage/Boss/Tail/stand.bmp"), BMP_KEY_BOSS_TAIL);
+	Insert_Bmp(_T("../MyImage/Boss/Tail/die.bmp"), BMP_KEY_BOSS_TAIL_DIE);
+
 	Insert_Bmp(_T("../MyImage/Tutle.bmp"), BMP_KEY_MONSTER_TUTLE); 
 	Insert_Bmp(_T("../MyImage/CoCoMo2.bmp"), BMP_KEY_MONSTER_MOCOCO); 
 	Insert_Bmp(_T("../MyImage/Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);

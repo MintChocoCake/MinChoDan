@@ -79,7 +79,7 @@ void CObj::Update_Frame(void)
 		++m_tFrame.dwStart;
 
 		if (m_tFrame.dwStart > m_tFrame.dwEnd)
-			m_tFrame.dwStart = 0;
+				m_tFrame.dwStart = 0;
 
 		m_tFrame.dwTimer = GetTickCount();
 	}

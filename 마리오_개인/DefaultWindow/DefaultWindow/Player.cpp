@@ -284,10 +284,9 @@ void CPlayer::Key_Input(void)
 			bMoving = true;
 		}
 
-		if (m_dwJumping == 1 && m_eCurDir != DIRECTION_NONE) {
+		else if (m_dwJumping == 1 && bMoving) {
 			m_dwJumping = 2;
 			m_fAirTime = 0.f;
-			bMoving = true;
 		}
 	}
 
@@ -297,7 +296,6 @@ void CPlayer::Key_Input(void)
 
 	if (!bMoving && m_dwJumping == 0) {
 		Change_State(PLAYER_STATE_IDLE);
-		m_eCurDir = DIRECTION_NONE;
 	}
 }
 

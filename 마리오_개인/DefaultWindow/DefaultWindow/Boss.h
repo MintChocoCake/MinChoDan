@@ -22,6 +22,11 @@ public:
 	virtual void OnCollision(CObj* _pTarget) override;
 	virtual void OnCollisionEnter(CObj* _pTarget) override;
 	virtual FRAME SetFrame(int _iState);
+	virtual void SetIdle() { if (m_tFrame.dwStart == m_tFrame.dwEnd) { Change_State(BOSS_STATE_IDLE); } };
+public:
+	bool	Get_Cast() { return m_bCast; }
+	void	Cast_On() { m_bCast = true; }
+	void	Cast_Off() { m_bCast = false; }
 protected:
 	virtual void Set_Bmp(float _fCX, float _fCY, int _iState, BMP_KEY _eBmp);
 
@@ -33,8 +38,12 @@ public:
 
 private:
 	void CreateChild();
+	void Attack();
 protected:
 	POINT m_BasePos;
+	bool	m_bCast;
+
+	float m_Delay;
 
 	// 보스 캐스팅 상태
 	bool	m_bCast;

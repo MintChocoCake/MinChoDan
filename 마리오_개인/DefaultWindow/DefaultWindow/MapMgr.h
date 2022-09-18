@@ -38,10 +38,9 @@ public:
 	void Initialize();
 	void Update();
 	void Render(HDC _HDC);
-	void Load_Map();
+	void Load_Map(const TCHAR* _szPath);
 
 private:
-	list<CLine> m_LineList;
 	CLine	m_LineTemp;
 	bool	m_bDrawing;
 	bool	m_bActive;
@@ -50,7 +49,7 @@ private:
 private:
 	void Key_Input();
 	void Get_Cursor(MYPOINT* _tResult);
-	void Save_Map();
+	void Save_Map(const TCHAR* _szPath);
 	void Create_Block(BLOCK_ID _eID, MYPOINT _tPos = MYPOINT{-1, -1});
 	void Create_Monster(MONSTER_ID _eID, MYPOINT _tPos = MYPOINT{ -1, -1 });
 };

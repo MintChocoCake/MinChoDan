@@ -39,10 +39,6 @@ void CMapMgr::Update()
 
 void CMapMgr::Render(HDC _HDC)
 {
-	for (auto& line : m_LineList) {
-		line.Render(_HDC);
-	}
-
 	if (!m_bActive)
 		return;
 
@@ -65,6 +61,76 @@ void CMapMgr::Render(HDC _HDC)
 		(int)(fX + fTileCHalf + fScrollX), 
 		(int)(fY + fTileCHalf + fScrollY));
 	TextOut(_HDC, 0, WINCY - 20, m_szBuffer, wcslen(m_szBuffer));
+}
+
+void CMapMgr::Load_Map(const TCHAR * _szPath)
+{
+	HANDLE hFile = CreateFile(_szPath, GENERIC_READ, NULL, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+
+	if (INVALID_HANDLE_VALUE == hFile) {
+		MessageBox(g_hWnd, _T("Load Failed"), _T("Failed"), MB_OK);
+		return;
+	}
+
+	CObjMgr::Get_Instance()->Release();
+
+	DWORD dwByte = 0;
+	LINE tLineBuffer;
+	INFO tInfoBuffer;
+	size_t iCountBuffer = 0;
+	CObj* obj = nullptr;
+	CHill* hill = nullptr;
+	int eIDTemp;
+
+	for (int i = 0; i < OBJ_TYPE_END; ++i) {
+		list<CObj*>* pList = CObjMgr::Get_Instance()->Get_ObjList((OBJ_TYPE)i);
+
+		switch (i)
+		{
+		case OBJ_TYPE_PLAYER:
+		case OBJ_TYPE_EFFECT:
+		case OBJ_TYPE_AFTERIMAGE:
+			continue;
+		}
+
+		ReadFile(hFile, &iCountBuffer, sizeof(size_t), &dwByte, nullptr);
+
+		for (size_t j = 0; j < iCountBuffer; ++j) {
+			switch (i)
+			{
+			case OBJ_TYPE_BLOCK:
+				ReadFile(hFile, &eIDTemp, sizeof(BLOCK_ID), &dwByte, nullptr);
+				ReadFile(hFile, &tInfoBuffer, sizeof(INFO), &dwByte, nullptr);
+
+				Create_Block((BLOCK_ID)eIDTemp, MYPOINT{ tInfoBuffer.fX, tInfoBuffer.fY });
+				break;
+
+			case OBJ_TYPE_HILL:
+				ReadFile(hFile, &tLineBuffer, sizeof(LINE), &dwByte, nullptr);
+
+				obj = CAbstractFactory::Create<CHill>();
+				hill = dynamic_cast<CHill*>(obj);
+
+				hill->Set_Left(tLineBuffer.tLeft);
+				hill->Set_Right(tLineBuffer.tRight);
+
+				pList->push_back(obj);
+				break;
+			case OBJ_TYPE_MONSTER:
+				ReadFile(hFile, &eIDTemp, sizeof(MONSTER_ID), &dwByte, nullptr);
+				ReadFile(hFile, &tInfoBuffer, sizeof(INFO), &dwByte, nullptr);
+
+				Create_Monster((MONSTER_ID)eIDTemp, MYPOINT{ tInfoBuffer.fX, tInfoBuffer.fY });
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	CloseHandle(hFile);
+
+	MessageBox(g_hWnd, _T("Load Succeed"), _T("Succeed"), MB_OK);
 }
 
 void CMapMgr::Key_Input()
@@ -107,11 +173,23 @@ void CMapMgr::Key_Input()
 		m_LineTemp.SetRight(tCursor);
 	}
 
-	if (CKeyMgr::Get_Instance()->Key_Down('K'))
-		Save_Map();
+	if(CKeyMgr::Get_Instance()->Key_Down(0x31))
+		Save_Map(STAGE_MAP_FILE[0]);
 
-	if (CKeyMgr::Get_Instance()->Key_Down('L'))
-		Load_Map();
+	if (CKeyMgr::Get_Instance()->Key_Down(0x32))
+		Save_Map(STAGE_MAP_FILE[1]);
+
+	if (CKeyMgr::Get_Instance()->Key_Down(0x33))
+		Save_Map(STAGE_MAP_FILE[2]);
+
+	if (CKeyMgr::Get_Instance()->Key_Down(0x34))
+		Load_Map(STAGE_MAP_FILE[0]);
+
+	if (CKeyMgr::Get_Instance()->Key_Down(0x35))
+		Load_Map(STAGE_MAP_FILE[1]);
+
+	if (CKeyMgr::Get_Instance()->Key_Down(0x36))
+		Load_Map(STAGE_MAP_FILE[2]);
 
 	if (CKeyMgr::Get_Instance()->Key_Pressing('A'))
 		CScrollMgr::Get_Instance()->Add_X(5.f);
@@ -195,9 +273,9 @@ void CMapMgr::Get_Cursor(MYPOINT * _tResult)
 	*_tResult = MYPOINT((float)(pt.x - CScrollMgr::Get_Instance()->Get_X()), (float)pt.y - CScrollMgr::Get_Instance()->Get_Y());
 }
 
-void CMapMgr::Save_Map()
+void CMapMgr::Save_Map(const TCHAR* _szPath)
 {
-	HANDLE hFile = CreateFile(_T("../Data/Map.dat"), GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+	HANDLE hFile = CreateFile(_szPath, GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 	
 	if (INVALID_HANDLE_VALUE == hFile) {
 		MessageBox(g_hWnd, _T("Save Failed"), _T("Failed"), MB_OK);
@@ -249,75 +327,6 @@ void CMapMgr::Save_Map()
 
 	MessageBox(g_hWnd, _T("Save Succeed"), _T("Succeed"), MB_OK);
 }
-
-void CMapMgr::Load_Map()
-{
-	HANDLE hFile = CreateFile(_T("../Data/Map.dat"), GENERIC_READ, NULL, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-
-	if (INVALID_HANDLE_VALUE == hFile) {
-		MessageBox(g_hWnd, _T("Load Failed"), _T("Failed"), MB_OK);
-		return;
-	}
-
-	DWORD dwByte = 0;
-	LINE tLineBuffer;
-	INFO tInfoBuffer;
-	size_t iCountBuffer = 0;
-	CObj* obj = nullptr;
-	CHill* hill = nullptr;
-	int eIDTemp;
-
-	for (int i = 0; i < OBJ_TYPE_END; ++i) {
-		list<CObj*>* pList = CObjMgr::Get_Instance()->Get_ObjList((OBJ_TYPE)i);
-
-		switch (i)
-		{
-		case OBJ_TYPE_PLAYER:
-		case OBJ_TYPE_EFFECT:
-		case OBJ_TYPE_AFTERIMAGE:
-			continue;
-		}
-
-		ReadFile(hFile, &iCountBuffer, sizeof(size_t), &dwByte, nullptr);
-
-		for (size_t j = 0; j < iCountBuffer; ++j) {
-			switch (i)
-			{
-			case OBJ_TYPE_BLOCK:
-				ReadFile(hFile, &eIDTemp, sizeof(BLOCK_ID), &dwByte, nullptr);
-				ReadFile(hFile, &tInfoBuffer, sizeof(INFO), &dwByte, nullptr);
-
-				Create_Block((BLOCK_ID)eIDTemp, MYPOINT{ tInfoBuffer.fX, tInfoBuffer.fY });
-				break;
-
-			case OBJ_TYPE_HILL:
-				ReadFile(hFile, &tLineBuffer, sizeof(LINE), &dwByte, nullptr);
-
-				obj = CAbstractFactory::Create<CHill>();
-				hill = dynamic_cast<CHill*>(obj);
-
-				hill->Set_Left(tLineBuffer.tLeft);
-				hill->Set_Right(tLineBuffer.tRight);
-
-				pList->push_back(obj);
-				break;
-			case OBJ_TYPE_MONSTER:
-				ReadFile(hFile, &eIDTemp, sizeof(MONSTER_ID), &dwByte, nullptr);
-				ReadFile(hFile, &tInfoBuffer, sizeof(INFO), &dwByte, nullptr);
-
-				Create_Monster((MONSTER_ID)eIDTemp, MYPOINT{ tInfoBuffer.fX, tInfoBuffer.fY });
-				break;
-			default:
-				break;
-			}
-		}
-	}
-
-	CloseHandle(hFile);
-
-	MessageBox(g_hWnd, _T("Load Succeed"), _T("Succeed"), MB_OK);
-}
-
 
 void CMapMgr::Create_Block(BLOCK_ID _eID, MYPOINT _tPos)
 {

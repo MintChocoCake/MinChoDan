@@ -19,5 +19,6 @@ public:
 
 private:
 	DWORD m_dwScore;
+	int m_iStage;
 };
 

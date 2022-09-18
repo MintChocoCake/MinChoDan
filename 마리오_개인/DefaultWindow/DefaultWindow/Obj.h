@@ -20,6 +20,7 @@ public:
 	void Add_Col(DWORD _dwTarget);
 	void Delete_Col(DWORD _dwTarget);
 	void Add_HP(DWORD _dwValue) { m_dwHP += _dwValue; }
+	void Sub_HP(DWORD _dwValue) { m_dwHP -= _dwValue; }
 	void Set_Dead() { m_bDead = true; }
 	void Set_Pos(float _fX, float _fY) { m_tInfo.fX = _fX; m_tInfo.fY = _fY; }
 	void Set_Type(OBJ_TYPE _eID) { m_eType = _eID; }

@@ -14,5 +14,8 @@ public:
 	virtual void OnCollision(CObj* _pTarget) override;
 	virtual void OnCollisionEnter(CObj* _pTarget) override;
 	virtual FRAME SetFrame(int _iState);
+private:
+	void Attack();
+	bool isCast = false;
 };
 

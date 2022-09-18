@@ -55,7 +55,7 @@ void CObj::Render(HDC hDC)
 		m_tFrame.dwStart * (int)m_tInfo.fCX, m_tFrame.dwMotion * (int)m_tInfo.fCY,
 		(int)m_tInfo.fCX, (int)m_tInfo.fCY, RGB(255, 255, 255));
 
-	//�浹 Ȯ�ο�
+	//�浹 Ȯ�ο�
 	//Rectangle(hDC, m_tRect.left + lScrollX, m_tRect.top + lScrollY, m_tRect.right + lScrollX, m_tRect.bottom + lScrollY);
 }
 

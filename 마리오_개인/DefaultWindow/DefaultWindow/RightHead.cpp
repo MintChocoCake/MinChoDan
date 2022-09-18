@@ -1,5 +1,9 @@
 #include "stdafx.h"
 #include "RightHead.h"
+#include "AbstractFactory.h"
+#include "Lightning.h"
+#include "ObjMgr.h"
+#include "ScrollMgr.h"
 
 CRightHead::CRightHead()
 {
@@ -15,6 +19,7 @@ void CRightHead::Initialize(void)
     CMonster::Initialize();
 	m_BasePos.x = m_tInfo.fX;
 	m_BasePos.y = m_tInfo.fY;
+	m_Delay = 900.f;
 
     Change_State(BOSS_STATE_IDLE);
     Update_Rect();
@@ -22,11 +27,27 @@ void CRightHead::Initialize(void)
 
 int CRightHead::Update(void)
 {
-	if(m_iCurState == BOSS_STATE_ATTACK_01)
-		Set_Bmp(349.f, 353.f, BOSS_STATE_ATTACK_01, BMP_KEY_BOSS_RIGHT_HEAD_ATTACK_01);
+	if (m_Delay >= 0.f)
+		--m_Delay;
 	else
-		Set_Bmp(261.f, 209.f, BOSS_STATE_IDLE, BMP_KEY_BOSS_RIGHT_HEAD);
+	{
+		Change_State(1);
+		m_Delay = 900.f;
+	}
 
+	if (m_iCurState == BOSS_STATE_ATTACK_01)
+	{
+		Set_Bmp(349.f, 353.f, BOSS_STATE_ATTACK_01, BMP_KEY_BOSS_RIGHT_HEAD_ATTACK_01);
+		if (!isCast)
+			Attack();
+	}
+	else
+	{
+		Set_Bmp(261.f, 209.f, BOSS_STATE_IDLE, BMP_KEY_BOSS_RIGHT_HEAD);
+		isCast = false;
+	}
+
+	SetIdle();
     Update_Rect();
     return 0;
 }
@@ -65,5 +86,18 @@ FRAME CRightHead::SetFrame(int _iState)
 	case CBoss::BOSS_STATE_SKILL:
 		return { 0, 0, BOSS_STATE_SKILL, 100000 };
 		break;
+	}
+}
+
+void CRightHead::Attack()
+{
+	isCast = true;
+	for (int i = 0; i < 10; ++i)
+	{
+		int RandX = rand() % WINCX - CScrollMgr::Get_Instance()->Get_X();
+		CObj* pObj = CAbstractFactory::Create<CLightning>(RandX, m_tInfo.fY);
+		pObj->Set_Type(OBJ_TYPE_BULLET_MONSTER);
+
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BULLET_MONSTER)->push_back(pObj);
 	}
 }

@@ -26,7 +26,7 @@ void CBoss::Initialize(void)
 	Set_Pos(m_tInfo.fX, m_tInfo.fY + 15.f);
 	m_BasePos.x = m_tInfo.fX;
 	m_BasePos.y = m_tInfo.fY;
-
+	m_Delay = 1500.f;
 	CreateChild();
 	Change_State(BOSS_STATE_IDLE);
 
@@ -35,11 +35,21 @@ void CBoss::Initialize(void)
 
 int CBoss::Update(void)
 {
+	if (m_Delay >= 0.f)
+		--m_Delay;
+	else
+	{
+		Change_State(1);
+		m_Delay = 1500.f;
+	}
+
 	if (m_iCurState == BOSS_STATE_ATTACK_01)
 		Set_Bmp(552.f, 777.f, BOSS_STATE_ATTACK_01, BMP_KEY_BOSS_CENTER_HEAD_ATTACK_01);
 	else
 		Set_Bmp(161.f, 332.f, BOSS_STATE_IDLE, BMP_KEY_BOSS_CENTER_HEAD);
 
+	Attack();
+	SetIdle();
 	Update_Rect();
 	return 0;
 }
@@ -94,6 +104,18 @@ void CBoss::CreateChild()
 
 	_Obj = CAbstractFactory::Create<CRightHead>(m_BasePos.x + 120.f, m_BasePos.y + 62.f);
 	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)->push_back(_Obj);
+}
+
+void CBoss::Attack()
+{
+	if (m_iCurState == BOSS_STATE_ATTACK_01 && m_tFrame.dwStart == 18)
+	{
+		if (CObjMgr::Get_Instance()->Get_Player()->Get_Info().fX <= m_tInfo.fX + (m_tInfo.fCX * 0.5f) &&
+			CObjMgr::Get_Instance()->Get_Player()->Get_Info().fX >= m_tInfo.fX - (m_tInfo.fCX * 0.5f))
+		{
+			CObjMgr::Get_Instance()->Get_Player()->Sub_HP(m_dwDamage);
+		}
+	}
 }
 
 FRAME CBoss::SetFrame(int _iState)

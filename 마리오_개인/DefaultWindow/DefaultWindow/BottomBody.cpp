@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "BottomBody.h"
+#include "ObjMgr.h"
 
 CBottomBody::CBottomBody()
 {
@@ -15,20 +16,31 @@ void CBottomBody::Initialize(void)
     CMonster::Initialize();
 	m_BasePos.x = m_tInfo.fX;
 	m_BasePos.y = m_tInfo.fY;
+	m_Delay = 600.f;
 
     Change_State(BOSS_STATE_IDLE);
-
 	Update_Rect();
 }
 
 int CBottomBody::Update(void)
 {
+	if (m_Delay >= 0.f)
+		--m_Delay;
+	else
+	{
+		Change_State(rand() % 2 + 1);
+		m_Delay = 600.f;
+	}
+
 	if (m_iCurState == BOSS_STATE_ATTACK_01)
 		Set_Bmp(590.f, 257.f, BOSS_STATE_ATTACK_01, BMP_KEY_BOSS_BOTTOM_BODY_ATTACK_01);
 	else if(m_iCurState == BOSS_STATE_ATTACK_02)
 		Set_Bmp(590.f, 257.f, BOSS_STATE_ATTACK_02, BMP_KEY_BOSS_BOTTOM_BODY_ATTACK_02);
 	else
 		Set_Bmp(514.f, 192.f, BOSS_STATE_IDLE, BMP_KEY_BOSS_BOTTOM_BODY);
+
+	Attack();
+	SetIdle();
 
     Update_Rect();
     return 0;
@@ -71,5 +83,25 @@ FRAME CBottomBody::SetFrame(int _iState)
 	case CBottomBody::BOSS_STATE_SKILL:
 		return { 0, 0, BOSS_STATE_SKILL, 100000 };
 		break;
+	}
+}
+
+void CBottomBody::Attack()
+{
+	// ¿À¸¥ÂÊ
+	if (m_iCurState == BOSS_STATE_ATTACK_01 && m_tFrame.dwStart == 12)
+	{
+		if (CObjMgr::Get_Instance()->Get_Player()->Get_Info().fX >= m_tInfo.fX)
+		{
+			CObjMgr::Get_Instance()->Get_Player()->Sub_HP(m_dwDamage);
+		}
+	}
+	// ¿ÞÂÊ
+	else if (m_iCurState == BOSS_STATE_ATTACK_02 && m_tFrame.dwStart == 12)
+	{
+		if (CObjMgr::Get_Instance()->Get_Player()->Get_Info().fX <= m_tInfo.fX)
+		{
+			CObjMgr::Get_Instance()->Get_Player()->Sub_HP(m_dwDamage);
+		}
 	}
 }

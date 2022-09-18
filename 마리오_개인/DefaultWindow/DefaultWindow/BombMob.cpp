@@ -4,7 +4,7 @@
 #include "AbstractFactory.h"
 #include "Item.h"
 
-CBombMob::CBombMob()
+CBombMob::CBombMob(): m_fAirTime(0.f)
 {
 	m_eMobID = MONSTER_ID_BOMB;
 }
@@ -55,5 +55,4 @@ void CBombMob::Act()
 	m_tInfo.fX -= m_fSpeed;
 	m_tInfo.fY -= 15.f * sinf(90) * m_fAirTime - (9.8f * pow(m_fAirTime, 2)) * 0.5f;
 	m_fAirTime += 0.1f;
-	m_bActive;
 }

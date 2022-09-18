@@ -22,11 +22,7 @@ CStage::~CStage()
 
 void CStage::Initialize(void)
 {
-	CMapMgr::Get_Instance()->Load_Map(STAGE_MAP_FILE[m_iStage]);
-
-	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_PLAYER)->push_back(
-		CAbstractFactory::Create<CPlayer>()
-	);
+	Stage_Up();
 }
 
 void CStage::Update(void)
@@ -113,4 +109,26 @@ void CStage::Render(HDC hDC)
 void CStage::Release(void)
 {
 	CObjMgr::Get_Instance()->Release();
+}
+
+void CStage::Stage_Up(void)
+{
+	int iPlrBullet = 0;
+	if (m_iStage != 0) {
+		iPlrBullet = dynamic_cast<CPlayer*>(CObjMgr::Get_Instance()->Get_Player())->Get_Bullet();
+	}
+
+	if(m_iStage == 3)
+		CSceneMgr::Get_Instance()->Change_Scene(CSceneMgr::SCENE_ID_LOBBY);
+	else {
+		CMapMgr::Get_Instance()->Load_Map(STAGE_MAP_FILE[m_iStage]);
+		CScrollMgr::Get_Instance()->Initialize();
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_PLAYER)->push_back(
+			CAbstractFactory::Create<CPlayer>()
+		);
+
+		if(iPlrBullet != 0)
+			dynamic_cast<CPlayer*>(CObjMgr::Get_Instance()->Get_Player())->Set_Bullet(iPlrBullet);
+		++m_iStage;
+	}
 }

@@ -4,7 +4,7 @@
 #define		WINCY		600
 #define		TILEC		35
 #define		TILEX		99
-#define		TILEY		28
+#define		TILEY		25
 #define		PURE		= 0
 #define		VK_MAX		0xff
 #define     OBJ_DEAD	-1

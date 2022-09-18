@@ -31,12 +31,12 @@ int CRotateBullet::Update(void)
 
 	return OBJ_NOEVENT;
 }
-//
-//void CRotateBullet::LateUpdate(void)
-//{
-//	Update_Rect();
-//	Update_Active();
-//}
+
+void CRotateBullet::LateUpdate(void)
+{
+	Update_Rect();
+	Update_Active();
+}
 
 void CRotateBullet::OnCollisionEnter(CObj * _pTarget)
 {

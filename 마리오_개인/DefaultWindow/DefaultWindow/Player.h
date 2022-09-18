@@ -34,6 +34,8 @@ public:
 	virtual void OnCollision(CObj* _pTarget) override;
 	virtual void OnCollisionEnter(CObj* _pTarget) override;
 	virtual FRAME SetFrame(int _iState);
+	int Get_Bullet() { return m_eGunUpgrade; }
+	void Set_Bullet(int _iBullet) { m_eGunUpgrade = (PLAYER_BULLET)_iBullet; }
 
 private:
 	bool m_bGoTunnel;

@@ -5,6 +5,7 @@
 #include "ObjMgr.h"
 #include "SceneMgr.h"
 #include "ScrollMgr.h"
+#include "KeyMgr.h"
 
 CMainGame::CMainGame() : m_dwFPSTimer(0)
 {
@@ -55,10 +56,12 @@ void CMainGame::Render(void)
 
 void CMainGame::Release(void)
 {
+	CSceneMgr::Delete_Instance();
 	CObjMgr::Delete_Instance();
 	CMapMgr::Delete_Instance();
 	CBmpMgr::Delete_Instance();
-	CSceneMgr::Delete_Instance();
+	CScrollMgr::Delete_Instance();
+	CKeyMgr::Delete_Instance();
 
 	ReleaseDC(g_hWnd, m_DC);
 }

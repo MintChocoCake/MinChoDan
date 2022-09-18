@@ -136,10 +136,11 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>리소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="LeftBody.cpp" />
-    <ClCompile Include="LeftHead.cpp" />
     <ClCompile Include="Wing.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\02.Wing</Filter>
+    </ClCompile>
+    <ClCompile Include="Tail.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\03.Tail</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -290,10 +291,11 @@
     <ClInclude Include="targetver.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="LeftBody.h" />
-    <ClInclude Include="LeftHead.h" />
     <ClInclude Include="Wing.h">
       <Filter>01. CObj\03. Monster\00. Boss\02.Wing</Filter>
+    </ClInclude>
+    <ClInclude Include="Tail.h">
+      <Filter>01. CObj\03. Monster\00. Boss\03.Tail</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -436,6 +438,9 @@
     </Filter>
     <Filter Include="01. CObj\03. Monster\00. Boss\02.Wing">
       <UniqueIdentifier>{14e2bc01-8fed-4859-8230-810a99295cb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. CObj\03. Monster\00. Boss\03.Tail">
+      <UniqueIdentifier>{bd5e5a62-ac59-47dc-a5a0-4339bdc034ae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

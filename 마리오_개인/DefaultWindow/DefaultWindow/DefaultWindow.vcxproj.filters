@@ -109,12 +109,6 @@
     <ClCompile Include="RightBody.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
     </ClCompile>
-    <ClCompile Include="LeftBody.cpp">
-      <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
-    </ClCompile>
-    <ClCompile Include="LeftHead.cpp">
-      <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
-    </ClCompile>
     <ClCompile Include="RightHead.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
     </ClCompile>
@@ -141,6 +135,12 @@
     </ClCompile>
     <ClCompile Include="Tail.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\03.Tail</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftBody.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftHead.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -258,12 +258,6 @@
     <ClInclude Include="RightBody.h">
       <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
     </ClInclude>
-    <ClInclude Include="LeftBody.h">
-      <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
-    </ClInclude>
-    <ClInclude Include="LeftHead.h">
-      <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
-    </ClInclude>
     <ClInclude Include="RightHead.h">
       <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
     </ClInclude>
@@ -296,6 +290,12 @@
     </ClInclude>
     <ClInclude Include="Tail.h">
       <Filter>01. CObj\03. Monster\00. Boss\03.Tail</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftBody.h">
+      <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftHead.h">
+      <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

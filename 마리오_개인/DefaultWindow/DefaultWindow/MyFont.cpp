@@ -20,7 +20,7 @@ void CMyFont::Set_Number(int _iNum)
 void CMyFont::Initialize(void)
 {
 	m_tInfo.fCX = 32.f;
-	m_tInfo.fCY = 26.f;
+	m_tInfo.fCY = 39.f;
 
 	m_fSpeed = 0.5f;
 	m_hBmpDC = &(CBmpMgr::Get_Instance()->Find_Bmp(BMP_KEY_DAMAGE)->Get_BmpDC());

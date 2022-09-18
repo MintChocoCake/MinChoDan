@@ -49,6 +49,7 @@ void CBmpMgr::Initialize()
 	Insert_Bmp(_T("../MyImage/Boss/Body/LeftBody/stand.bmp"), BMP_KEY_BOSS_LEFT_BODY);
 	Insert_Bmp(_T("../MyImage/Boss/Body/DownBody/stand.bmp"), BMP_KEY_BOSS_BOTTOM_BODY);
 	Insert_Bmp(_T("../MyImage/Boss/Wing/stand.bmp"), BMP_KEY_BOSS_WING);
+	Insert_Bmp(_T("../MyImage/Boss/Tail/stand.bmp"), BMP_KEY_BOSS_TAIL);
 	Insert_Bmp(_T("../MyImage/Tutle.bmp"), BMP_KEY_MONSTER_TUTLE); 
 	Insert_Bmp(_T("../MyImage/CoCoMo2.bmp"), BMP_KEY_MONSTER_MOCOCO); 
 	Insert_Bmp(_T("../MyImage//Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);
@@ -77,6 +78,8 @@ void CBmpMgr::Initialize()
 	// Effect
 	Insert_Bmp(_T("../MyImage/BulletEffect_Left.bmp"), BMP_KEY_BULLET_EFFECT_LEFT);
 	Insert_Bmp(_T("../MyImage/BulletEffect_Right.bmp"), BMP_KEY_BULLET_EFFECT_RIGHT);
+	Insert_Bmp(_T("../MyImage/DoubleJump_left.bmp"), BMP_KEY_DOUBLE_JUMP_LEFT);
+	Insert_Bmp(_T("../MyImage/DoubleJump_right.bmp"), BMP_KEY_DOUBLE_JUMP_RIGHT);
 	Insert_Bmp(_T("../MyImage/Damage.bmp"), BMP_KEY_DAMAGE);
 }
 

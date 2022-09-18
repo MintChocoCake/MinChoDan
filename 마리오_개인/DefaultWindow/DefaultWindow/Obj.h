@@ -14,7 +14,7 @@ public:
 	bool Col_Before(DWORD _dwTarget);
 	bool Get_Active() { return m_bActive; }
 	DWORD Get_HP() { return m_dwHP; }
-	DWORD Get_Damage() { return m_dwDamage * (1 + (rand() % 50) * 0.01f); }
+	DWORD Get_Damage() { return m_dwDamage * (DWORD)(1 + (rand() % 50) * 0.01f); }
 
 public:
 	void Add_Col(DWORD _dwTarget);

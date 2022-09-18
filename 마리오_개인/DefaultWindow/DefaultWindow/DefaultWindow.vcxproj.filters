@@ -16,9 +16,6 @@
     <ClCompile Include="BmpMgr.cpp">
       <Filter>02. Design\01. BmpMgr</Filter>
     </ClCompile>
-    <ClCompile Include="AfterImage.cpp">
-      <Filter>01. CObj\00. Player</Filter>
-    </ClCompile>
     <ClCompile Include="CollisionMgr.cpp">
       <Filter>02. Design\02. CollisionMgr</Filter>
     </ClCompile>
@@ -109,12 +106,6 @@
     <ClCompile Include="RightBody.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
     </ClCompile>
-    <ClCompile Include="LeftBody.cpp">
-      <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
-    </ClCompile>
-    <ClCompile Include="LeftHead.cpp">
-      <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
-    </ClCompile>
     <ClCompile Include="RightHead.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
     </ClCompile>
@@ -135,6 +126,18 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>리소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftBody.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftHead.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
+    </ClCompile>
+    <ClCompile Include="AfterImage.cpp">
+      <Filter>01. CObj\00. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="DoubleJumpEffect.cpp">
+      <Filter>01. CObj\00. Player</Filter>
     </ClCompile>
     <ClCompile Include="Wing.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\02. WIng</Filter>
@@ -158,9 +161,6 @@
     </ClInclude>
     <ClInclude Include="BmpMgr.h">
       <Filter>02. Design\01. BmpMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="AfterImage.h">
-      <Filter>01. CObj\00. Player</Filter>
     </ClInclude>
     <ClInclude Include="CollisionMgr.h">
       <Filter>02. Design\02. CollisionMgr</Filter>
@@ -255,12 +255,6 @@
     <ClInclude Include="RightBody.h">
       <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
     </ClInclude>
-    <ClInclude Include="LeftBody.h">
-      <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
-    </ClInclude>
-    <ClInclude Include="LeftHead.h">
-      <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
-    </ClInclude>
     <ClInclude Include="RightHead.h">
       <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
     </ClInclude>
@@ -287,6 +281,18 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftBody.h">
+      <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftHead.h">
+      <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
+    </ClInclude>
+    <ClInclude Include="AfterImage.h">
+      <Filter>01. CObj\00. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleJumpEffect.h">
+      <Filter>01. CObj\00. Player</Filter>
     </ClInclude>
     <ClInclude Include="Wing.h">
       <Filter>01. CObj\03. Monster\00. Boss\02. WIng</Filter>

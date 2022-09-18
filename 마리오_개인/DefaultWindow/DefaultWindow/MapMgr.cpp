@@ -9,7 +9,6 @@
 #include "RotateFire.h"
 #include "Invisible.h"
 #include "Monster.h"
-// �ź��� ���� ��� �߰�
 #include "Tutle.h"
 #include "Mococo.h"
 #include "CTunnelMonster.h"
@@ -164,7 +163,7 @@ void CMapMgr::Key_Input()
 	if (CKeyMgr::Get_Instance()->Key_Down('X')) {
 		Create_Monster(MONSTER_ID_GUNNER);
 	}
-	// �ź��� ���� �߰�
+
 	if (CKeyMgr::Get_Instance()->Key_Down('C')) {
 		Create_Monster(MONSTER_ID_TUTLE);
 	}
@@ -188,7 +187,7 @@ void CMapMgr::Save_Map()
 	HANDLE hFile = CreateFile(_T("../Data/Map.dat"), GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 	
 	if (INVALID_HANDLE_VALUE == hFile) {
-		MessageBox(g_hWnd, _T("�� ���� ����"), _T("����"), MB_OK);
+		MessageBox(g_hWnd, _T("Save Failed"), _T("Failed"), MB_OK);
 		return;
 	}
 
@@ -233,7 +232,7 @@ void CMapMgr::Save_Map()
 	
 	CloseHandle(hFile);
 
-	MessageBox(g_hWnd, _T("�� ���� �Ϸ�"), _T("����"), MB_OK);
+	MessageBox(g_hWnd, _T("Save Succeed"), _T("Succeed"), MB_OK);
 }
 
 void CMapMgr::Load_Map()
@@ -241,7 +240,7 @@ void CMapMgr::Load_Map()
 	HANDLE hFile = CreateFile(_T("../Data/Map.dat"), GENERIC_READ, NULL, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
 	if (INVALID_HANDLE_VALUE == hFile) {
-		MessageBox(g_hWnd, _T("�� �ҷ����� ����"), _T("����"), MB_OK);
+		MessageBox(g_hWnd, _T("Load Failed"), _T("Failed"), MB_OK);
 		return;
 	}
 
@@ -299,7 +298,7 @@ void CMapMgr::Load_Map()
 
 	CloseHandle(hFile);
 
-	MessageBox(g_hWnd, _T("�� �ҷ����� ����"), _T("����"), MB_OK);
+	MessageBox(g_hWnd, _T("Load Succeed"), _T("Succeed"), MB_OK);
 }
 
 
@@ -348,11 +347,9 @@ void CMapMgr::Create_Monster(MONSTER_ID _eID, MYPOINT _tPos)
 	case MONSTER_ID_GUNNER:
 		pObj = CAbstractFactory::Create<CGunner>(_tPos.fX, _tPos.fY);
 		break;
-		// �ź��� ���� �߰�
 	case MONSTER_ID_TUTLE:
 		pObj = CAbstractFactory::Create<CTutle>(_tPos.fX, _tPos.fY);
 		break;
-		// ���� ���� �߰�
 	case MONSTER_ID_MOCOCO:
 		pObj = CAbstractFactory::Create<CMococo>(_tPos.fX, _tPos.fY);
 		break;

@@ -97,37 +97,14 @@ void CMonster::OnCollision(CObj * _pTarget)
 void CMonster::OnCollisionEnter(CObj * _pTarget)
 {
 	CObj* pObj;
-	CObj* pFont;
-	DWORD dwDamage;
-	int i = 10;
-	int iCount = 0;
-
-	// �߰� 
 	INFO* pInfo;
+	DWORD dwDamage;
 
 	switch (_pTarget->Get_Type())
 	{
 	case OBJ_TYPE_BULLET_PLAYER:
 		dwDamage = CObjMgr::Get_Instance()->Get_Player()->Get_Damage();
-		dwDamage = dwDamage > m_dwHP ? m_dwHP : dwDamage;
-
-		int iNum;
-
-		while (true){
-			if (i > 10)
-				iNum = (dwDamage % i) / (i / 10);
-			else
-				iNum = (dwDamage % i);
-			pFont = CAbstractFactory::Create<CMyFont>(m_tInfo.fX - iCount * 25, m_tInfo.fY);
-			dynamic_cast<CMyFont*>(pFont)->Set_Number(iNum);
-			CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_UI)->push_back(pFont);
-			//��Ʈ�� �����
-
-			if (dwDamage < i)
-				break;
-			i *= 10;
-			++iCount;
-		}
+		MakeDamageFont(dwDamage);
 
 		m_dwHP -= dwDamage;
 		if (0 >= m_dwHP) {
@@ -145,7 +122,6 @@ void CMonster::OnCollisionEnter(CObj * _pTarget)
 	case OBJ_TYPE_PLAYER:
 		pInfo = &_pTarget->Get_Info();
 
-		// ��ó������ ù��°�δ� �������� �ι����� ���Ʒ���
 		if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY && pInfo->fX - pInfo->fCX * 0.7f <= m_tInfo.fX &&
 			pInfo->fX + pInfo->fCX * 0.7f >= m_tInfo.fX) {
 			if (pInfo->fY < m_tInfo.fY) {
@@ -195,4 +171,30 @@ void CMonster::ChangeState(MONSTER_STATE _eState)
 	m_tFrame = tFrame;
 	m_eCurState = _eState;
 	m_tFrame.dwTimer = GetTickCount();
+}
+
+void CMonster::MakeDamageFont(DWORD _dwDamage)
+{
+	_dwDamage = _dwDamage > m_dwHP ? m_dwHP : _dwDamage;
+
+	CObj* pFont;
+	DWORD i = 10;
+	int iCount = 0;
+
+	DWORD iNum;
+
+	while (true) {
+		if (i > 10)
+			iNum = (_dwDamage % i) / (i / 10);
+		else
+			iNum = (_dwDamage % i);
+		pFont = CAbstractFactory::Create<CMyFont>(m_tInfo.fX - iCount * 20, m_tInfo.fY);
+		dynamic_cast<CMyFont*>(pFont)->Set_Number(iNum);
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_UI)->push_back(pFont);
+
+		if (_dwDamage < i)
+			break;
+		i *= 10;
+		++iCount;
+	}
 }

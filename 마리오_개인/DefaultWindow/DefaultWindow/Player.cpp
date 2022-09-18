@@ -17,6 +17,7 @@
 #include "ThirdBullet.h"
 #include "AfterImage.h"
 #include "Monster.h"
+#include "DoubleJumpEffect.h"
 
 const float fJUMP_POWER = 15.f;
 
@@ -53,8 +54,8 @@ int CPlayer::Update(void)
 {
 	ShowAfterImage();
 	if (m_bDead) {
-		CSceneMgr::Get_Instance()->Change_Scene(CSceneMgr::SCENE_ID_LOBBY);
-		return OBJ_DEAD;
+		//CSceneMgr::Get_Instance()->Change_Scene(CSceneMgr::SCENE_ID_LOBBY);
+		//return OBJ_DEAD;
 	}
 
 	if (m_bGoTunnel)
@@ -144,7 +145,6 @@ void CPlayer::OnCollision(CObj * _pTarget)
 			}
 		}
 
-		// ���
 		if(dynamic_cast<CBlock*>(_pTarget)->m_eBlockID == BLOCK_ID_TUNNEL_IN)
 		{
 			if (CKeyMgr::Get_Instance()->Key_Down('S'))
@@ -152,8 +152,8 @@ void CPlayer::OnCollision(CObj * _pTarget)
 				if (m_dwJumping == 0)
 				{
 					m_bGoTunnel = true;
-					TunnelDest.x = _pTarget->Get_Info().fX + (TILEC * 0);
-					TunnelDest.y = _pTarget->Get_Info().fY + (TILEC * 8);
+					TunnelDest.x = (LONG)_pTarget->Get_Info().fX + (TILEC * 0);
+					TunnelDest.y = (LONG)_pTarget->Get_Info().fY + (TILEC * 8);
 				}
 			}
 		}
@@ -162,8 +162,8 @@ void CPlayer::OnCollision(CObj * _pTarget)
 			if (m_dwJumping == 0)
 			{
 				m_bOutTunnel = true;
-				TunnelDest.x = _pTarget->Get_Info().fX + (TILEC * 5);
-				TunnelDest.y = _pTarget->Get_Info().fY - (TILEC * 10);
+				TunnelDest.x = (LONG)_pTarget->Get_Info().fX + (TILEC * 5);
+				TunnelDest.y = (LONG)_pTarget->Get_Info().fY - (TILEC * 10);
 			}
 		}
 		break;
@@ -322,6 +322,9 @@ void CPlayer::Key_Input(void)
 		bMoving = true;
 	}
 
+	CObj* pObj;
+	float fOffset;
+
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_SPACE)) {
 		if (m_dwJumping == 0) {
 			m_dwJumping = 1;
@@ -333,10 +336,14 @@ void CPlayer::Key_Input(void)
 		else if (m_dwJumping == 1 && bMoving) {
 			m_dwJumping = 2;
 			m_fAirTime = 0.f;
+			fOffset = m_eCurDir == DIRECTION_LEFT ? 120 : -120;
+			pObj = CAbstractFactory::Create<CDoubleJumpEffect>(m_tInfo.fX + fOffset, m_tInfo.fY);
+			dynamic_cast<CDoubleJumpEffect*>(pObj)->Set_Dir(m_eCurDir);
+			CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_EFFECT)->push_back(pObj);
 		}
 	}
 
-	if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON) && 0 < m_eGunUpgrade) {
+	if (CKeyMgr::Get_Instance()->Key_Down(VK_LCONTROL) && 0 < m_eGunUpgrade) {
 		Shot();
 	}
 

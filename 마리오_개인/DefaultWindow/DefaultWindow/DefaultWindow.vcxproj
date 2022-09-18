@@ -159,6 +159,7 @@
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="DefaultWindow.h" />
     <ClInclude Include="Define.h" />
+    <ClInclude Include="DoubleJumpEffect.h" />
     <ClInclude Include="LeftBody.h" />
     <ClInclude Include="LeftHead.h" />
     <ClInclude Include="Mococo.h" />
@@ -189,6 +190,7 @@
     <ClInclude Include="Splash.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Tail.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="ThirdBullet.h" />
     <ClInclude Include="Tutle.h" />
@@ -209,6 +211,7 @@
     <ClCompile Include="CTunnelMonster.cpp" />
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="DefaultWindow.cpp" />
+    <ClCompile Include="DoubleJumpEffect.cpp" />
     <ClCompile Include="LeftBody.cpp" />
     <ClCompile Include="LeftHead.cpp" />
     <ClCompile Include="Mococo.cpp" />
@@ -243,6 +246,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Tail.cpp" />
     <ClCompile Include="ThirdBullet.cpp" />
     <ClCompile Include="Tutle.cpp" />
     <ClCompile Include="UIButton.cpp" />

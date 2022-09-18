@@ -4,7 +4,11 @@
 #define		WINCY		600
 #define		TILEC		35
 #define		TILEX		99
+<<<<<<< Updated upstream
 #define		TILEY		25
+=======
+#define		TILEY		26.2
+>>>>>>> Stashed changes
 #define		PURE		= 0
 #define		VK_MAX		0xff
 #define     OBJ_DEAD	-1

@@ -85,7 +85,7 @@ FRAME CBottomBody::SetFrame(int _iState)
 		return{ 0, 16, BOSS_STATE_ATTACK_02, 100 };
 		break;
 	case CBottomBody::BOSS_STATE_DIE:
-		Set_Pos(m_BasePos.x, m_BasePos.y);
+		Set_Pos(m_BasePos.x, m_BasePos.y - 2.f);
 		return { 0, 11, BOSS_STATE_DIE, 100 };
 		break;
 	}

@@ -106,8 +106,11 @@
     <Filter Include="01. Obj\05. Monster\00. Gunner">
       <UniqueIdentifier>{57f7989f-5bb7-4532-a73f-543cc98f07c4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="06.Add">
-      <UniqueIdentifier>{297002e0-793d-4788-a2d3-abfe34811792}</UniqueIdentifier>
+    <Filter Include="01. Obj\05. Monster\01. Tutle%28add%29">
+      <UniqueIdentifier>{5b10249b-9b37-451a-86bf-48d08b277142}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\05. Monster\02. Mococo%28add%29">
+      <UniqueIdentifier>{b68ff128-e397-4882-9d1a-67dbd05d716b}</UniqueIdentifier>
     </Filter>
     <Filter Include="01. Obj\05. Monster\01.TunnelMonster">
       <UniqueIdentifier>{907247d8-3c4b-46df-aa23-f2c95c938cd6}</UniqueIdentifier>
@@ -320,8 +323,11 @@
     <ClCompile Include="Gunner.cpp">
       <Filter>01. Obj\05. Monster\00. Gunner</Filter>
     </ClCompile>
-    <ClCompile Include="CTunnel.cpp">
-      <Filter>06.Add</Filter>
+    <ClCompile Include="Tutle.cpp">
+      <Filter>01. Obj\05. Monster\01. Tutle%28add%29</Filter>
+    </ClCompile>
+    <ClCompile Include="Mococo.cpp">
+      <Filter>01. Obj\05. Monster\02. Mococo%28add%29</Filter>
     </ClCompile>
     <ClCompile Include="CTunnelMonster.cpp">
       <Filter>01. Obj\05. Monster\01.TunnelMonster</Filter>

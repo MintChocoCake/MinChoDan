@@ -98,6 +98,8 @@ enum BMP_KEY {
 
 	BMP_KEY_MONSTER_MUSHROOM,
 	BMP_KEY_MONSTER_GUNNER,
+	BMP_KEY_MONSTER_TUTLE, // ï¿½Åºï¿½ï¿½ï¿½ BMP Å° ï¿½ß°ï¿½
+	BMP_KEY_MONSTER_MOCOCO, // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ BMP Å° ï¿½ß°ï¿½
 	BMP_KEY_MONSTER_TUNNEL,
 
 	BMP_KEY_BLOCK_TILE,
@@ -105,11 +107,10 @@ enum BMP_KEY {
 	BMP_KEY_BLOCK_ITEM_BOX,
 	BMP_KEY_BLOCK_INVISIBLE,
 	BMP_KEY_BLOCK_ROTATE_FIRE,
-	BMP_KEY_BLOCK_ID_TUNNEL_IN,
-	BMP_KEY_BLOCK_ID_TUNNEL_OUT,
 
 	BMP_KEY_ITEM_COIN,
 	BMP_KEY_ITEM_GUN,
+	// ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 
 	BMP_KEY_CURSOR,
 	BMP_KEY_LOBBYBG,
@@ -122,14 +123,11 @@ enum BMP_KEY {
 
 enum BLOCK_ID {
 	BLOCK_ID_NONE = -1,
-	BLOCK_ID_TILE, // ÆÄ±« ºÒ°¡
+	BLOCK_ID_TILE, // ï¿½Ä±ï¿½ ï¿½Ò°ï¿½
 	BLOCK_ID_BOX,
 	BLOCK_ID_ITEM_BOX,   
 	BLOCK_ID_INVISIBLE,
 	BLOCK_ID_ROTATE_FIRE,
-	BLOCK_ID_TUNNEL_IN,
-	BLOCK_ID_TUNNEL_OUT,
-	BLOCK_ID_TUNNEL_MOB,
 	BLOCK_ID_END
 };
 
@@ -141,7 +139,7 @@ enum ITEM_ID {
 };
 
 typedef struct tagBlock {
-	// -1ÀÌ¸é ÆÄ±« ºÒ°¡ ºí·Ï
+	// -1ï¿½Ì¸ï¿½ ï¿½Ä±ï¿½ ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½
 	DWORD dwHP;
 	BMP_KEY eBmp;
 	ITEM_ID eDropItem;
@@ -178,20 +176,24 @@ enum MONSTER_ID {
 	MONSTER_ID_NONE = -1,
 	MONSTER_ID_MUSHROOM,
 	MONSTER_ID_GUNNER,
+	MONSTER_ID_TUTLE,  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ÅºÎ±ï¿½ ï¿½ß°ï¿½
+	MONSTER_ID_MOCOCO, // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 	MONSTER_ID_TUNNEL,
 	MONSTER_ID_END
 };
 
 typedef struct tagMonster {
-	// -1ÀÌ¸é ÆÄ±« ºÒ°¡ ºí·Ï
+	// -1ï¿½Ì¸ï¿½ ï¿½Ä±ï¿½ ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½
 	DWORD dwHP;
 	BMP_KEY eBmp;
 	ITEM_ID eDropItem;
 } MOB;
 
 static const tagMonster arrMobTable[MONSTER_ID_END] = {
-	{ (DWORD)1, BMP_KEY_MONSTER_MUSHROOM, ITEM_ID_NONE },
+	{ (DWORD)1, BMP_KEY_MONSTER_MUSHROOM, ITEM_ID_NONE },  
 	{ (DWORD)3, BMP_KEY_MONSTER_GUNNER, ITEM_ID_COIN },
+	{ (DWORD)1 , BMP_KEY_MONSTER_TUTLE, ITEM_ID_NONE }, // ï¿½Åºï¿½ï¿½ï¿½ ï¿½ß°ï¿½ HP , ï¿½Åºï¿½ï¿½ï¿½ BMP Å° , ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	{ (DWORD)1 , BMP_KEY_MONSTER_MOCOCO, ITEM_ID_NONE } // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ 
 	{ (DWORD)-1, BMP_KEY_MONSTER_TUNNEL, ITEM_ID_NONE },
 };
 

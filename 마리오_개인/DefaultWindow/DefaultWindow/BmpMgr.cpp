@@ -31,11 +31,11 @@ void CBmpMgr::Initialize()
 	Insert_Bmp(_T("../MyImage/ItemBox.bmp"), BMP_KEY_BLOCK_ITEM_BOX);
 	Insert_Bmp(_T("../MyImage/Invisible.bmp"), BMP_KEY_BLOCK_INVISIBLE);
 	Insert_Bmp(_T("../MyImage/RotateFire.bmp"), BMP_KEY_BLOCK_ROTATE_FIRE);
-	Insert_Bmp(_T("../MyImage/Tunnel.bmp"), BMP_KEY_BLOCK_ID_TUNNEL_IN);
-	Insert_Bmp(_T("../MyImage/Tunnel_Out.bmp"), BMP_KEY_BLOCK_ID_TUNNEL_OUT);
 
-	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_MUSHROOM);
+	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_MUSHROOM);  // ���� �̹����� ��ü 
 	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_GUNNER);
+	Insert_Bmp(_T("../MyImage/Tutle.bmp"), BMP_KEY_MONSTER_TUTLE); // �ź��� �̹��� �߰�
+	Insert_Bmp(_T("../MyImage/CoCoMo2.bmp"), BMP_KEY_MONSTER_MOCOCO);   // ������ �̹��� �߰�
 	Insert_Bmp(_T("../MyImage//Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);
 
 	Insert_Bmp(_T("../MyImage/Cursor.bmp"), BMP_KEY_CURSOR);
@@ -47,6 +47,8 @@ void CBmpMgr::Initialize()
 
 	Insert_Bmp(_T("../MyImage/Coin.bmp"), BMP_KEY_ITEM_COIN);
 	Insert_Bmp(_T("../MyImage/Gun.bmp"), BMP_KEY_ITEM_GUN);
+	
+	
 }
 
 void CBmpMgr::Insert_Bmp(const TCHAR * _chFilePath, BMP_KEY _eKey)

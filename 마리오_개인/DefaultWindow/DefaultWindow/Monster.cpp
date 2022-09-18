@@ -7,7 +7,7 @@
 #include "Item.h"
 #include "ScrollMgr.h"
 
-CMonster::CMonster() : m_fAirTime(0.f), m_eMobID(MONSTER_ID_MUSHROOM)
+CMonster::CMonster() : m_fAirTime(0.f), m_eMobID(MONSTER_ID_MUSHROOM), m_eCurState(MONSTER_STATE_NONE)
 {
 
 }
@@ -28,7 +28,7 @@ void CMonster::Initialize(void)
 	m_dwHP = data.dwHP;
 	m_hBmpDC = &(CBmpMgr::Get_Instance()->Find_Bmp(data.eBmp)->Get_BmpDC());
 
-	Change_State(MONSTER_STATE_WALK);
+	ChangeState(MONSTER_STATE_WALK);
 }
 
 int CMonster::Update(void)
@@ -96,6 +96,11 @@ void CMonster::OnCollision(CObj * _pTarget)
 void CMonster::OnCollisionEnter(CObj * _pTarget)
 {
 	CObj* pObj;
+
+	// 추가 
+	INFO* pInfo;
+	//
+
 	switch (_pTarget->Get_Type())
 	{
 	case OBJ_TYPE_BULLET_PLAYER:
@@ -111,14 +116,31 @@ void CMonster::OnCollisionEnter(CObj * _pTarget)
 			}
 		}
 		break;
+
+		// 몬스터가 밟혔을 때 ( 추가 )
+	case OBJ_TYPE_PLAYER:
+		pInfo = &_pTarget->Get_Info();
+
+		// 고처야할점 첫번째로는 위에서만 두번쨰는 위아래만
+		if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY && pInfo->fX - pInfo->fCX * 0.7f <= m_tInfo.fX &&
+			pInfo->fX + pInfo->fCX * 0.7f >= m_tInfo.fX) {
+			if (pInfo->fY < m_tInfo.fY) {
+				ChangeState(MONSTER_STATE_CRUSH);
+				m_fSpeed = 0.f;
+				m_bCrushCount++;
+				if (m_bCrushCount == 2)
+				{
+					m_fSpeed = 10.f;
+					m_bCrushCount = 0;
+				}
+			}
+		}
+		break;
+		//
+
 	default:
 		break;
 	}
-}
-
-FRAME CMonster::SetFrame(int _iState)
-{
-	return { 0, 1, MONSTER_STATE_WALK, 200 };
 }
 
 void CMonster::Act()
@@ -129,3 +151,25 @@ void CMonster::Act()
 	m_fAirTime += 0.1f;
 }
 
+void CMonster::ChangeState(MONSTER_STATE _eState)
+{
+	if (m_eCurState == _eState)
+		return;
+
+	FRAME tFrame;
+	switch (_eState)
+	{
+	case MONSTER_STATE_WALK:
+		tFrame = { 0, 1, MONSTER_STATE_WALK, 200 };
+		break;
+
+		// 몬스터 밟히면 찌그러트리기 ( 추가 )
+	case MONSTER_STATE_CRUSH:	
+		tFrame = { 0, 1, MONSTER_STATE_CRUSH, 200 };
+		break;
+	}
+
+	m_tFrame = tFrame;
+	m_eCurState = _eState;
+	m_tFrame.dwTimer = GetTickCount();
+}

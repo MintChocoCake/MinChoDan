@@ -9,7 +9,9 @@
 #include "RotateFire.h"
 #include "Invisible.h"
 #include "Monster.h"
-#include "CTunnel.h"
+// ï¿½Åºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
+#include "Tutle.h"
+#include "Mococo.h"
 #include "CTunnelMonster.h"
 
 CMapMgr* CMapMgr::m_pInstance = nullptr;
@@ -158,6 +160,13 @@ void CMapMgr::Key_Input()
 	if (CKeyMgr::Get_Instance()->Key_Down('X')) {
 		Create_Monster(MONSTER_ID_GUNNER);
 	}
+	// ï¿½Åºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
+	if (CKeyMgr::Get_Instance()->Key_Down('C')) {
+		Create_Monster(MONSTER_ID_TUTLE);
+	}
+	if (CKeyMgr::Get_Instance()->Key_Down('V')) {
+		Create_Monster(MONSTER_ID_MOCOCO);
+	}
 }
 
 void CMapMgr::Get_Cursor(MYPOINT * _tResult)
@@ -175,7 +184,7 @@ void CMapMgr::Save_Map()
 	HANDLE hFile = CreateFile(_T("../Data/Map.dat"), GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 	
 	if (INVALID_HANDLE_VALUE == hFile) {
-		MessageBox(g_hWnd, _T("¸Ê ÀúÀå ½ÇÆÐ"), _T("½ÇÆÐ"), MB_OK);
+		MessageBox(g_hWnd, _T("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½"), _T("ï¿½ï¿½ï¿½ï¿½"), MB_OK);
 		return;
 	}
 
@@ -220,7 +229,7 @@ void CMapMgr::Save_Map()
 	
 	CloseHandle(hFile);
 
-	MessageBox(g_hWnd, _T("¸Ê ÀúÀå ¿Ï·á"), _T("¼º°ø"), MB_OK);
+	MessageBox(g_hWnd, _T("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½"), _T("ï¿½ï¿½ï¿½ï¿½"), MB_OK);
 }
 
 void CMapMgr::Load_Map()
@@ -228,7 +237,7 @@ void CMapMgr::Load_Map()
 	HANDLE hFile = CreateFile(_T("../Data/Map.dat"), GENERIC_READ, NULL, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
 	if (INVALID_HANDLE_VALUE == hFile) {
-		MessageBox(g_hWnd, _T("¸Ê ºÒ·¯¿À±â ½ÇÆÐ"), _T("½ÇÆÐ"), MB_OK);
+		MessageBox(g_hWnd, _T("ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½"), _T("ï¿½ï¿½ï¿½ï¿½"), MB_OK);
 		return;
 	}
 
@@ -286,7 +295,7 @@ void CMapMgr::Load_Map()
 
 	CloseHandle(hFile);
 
-	MessageBox(g_hWnd, _T("¸Ê ºÒ·¯¿À±â ¼º°ø"), _T("¼º°ø"), MB_OK);
+	MessageBox(g_hWnd, _T("ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½"), _T("ï¿½ï¿½ï¿½ï¿½"), MB_OK);
 }
 
 
@@ -307,15 +316,6 @@ void CMapMgr::Create_Block(BLOCK_ID _eID, MYPOINT _tPos)
 		break;
 	case BLOCK_ID_ROTATE_FIRE:
 		pObj = CAbstractFactory::Create<CRotateFire>(_tPos.fX, _tPos.fY);
-		break;
-	case BLOCK_ID_TUNNEL_IN:
-		pObj = CAbstractFactory::Create<CTunnel>(_tPos.fX, _tPos.fY);
-		break;
-	case BLOCK_ID_TUNNEL_OUT:
-		pObj = CAbstractFactory::Create<CTunnel>(_tPos.fX, _tPos.fY);
-		break;
-	case BLOCK_ID_TUNNEL_MOB:
-		pObj = CAbstractFactory::Create<CTunnel>(_tPos.fX, _tPos.fY);
 		break;
 	default:
 		pObj = CAbstractFactory::Create<CBlock>(_tPos.fX, _tPos.fY);
@@ -343,6 +343,14 @@ void CMapMgr::Create_Monster(MONSTER_ID _eID, MYPOINT _tPos)
 		break;
 	case MONSTER_ID_GUNNER:
 		pObj = CAbstractFactory::Create<CGunner>(_tPos.fX, _tPos.fY);
+		break;
+		// ï¿½Åºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
+	case MONSTER_ID_TUTLE:
+		pObj = CAbstractFactory::Create<CTutle>(_tPos.fX, _tPos.fY);
+		break;
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
+	case MONSTER_ID_MOCOCO:
+		pObj = CAbstractFactory::Create<CMococo>(_tPos.fX, _tPos.fY);
 		break;
 	case MONSTER_ID_TUNNEL:
 		pObj = CAbstractFactory::Create<CTunnelMonster>(_tPos.fX, _tPos.fY);

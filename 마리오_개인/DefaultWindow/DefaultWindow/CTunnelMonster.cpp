@@ -42,3 +42,4 @@ FRAME CTunnelMonster::SetFrame(int _iState)
 {
 	return { 0, 0, MONSTER_STATE_WALK, 200 };
 }
+

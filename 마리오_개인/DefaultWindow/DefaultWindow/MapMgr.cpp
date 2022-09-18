@@ -13,6 +13,7 @@
 #include "Tutle.h"
 #include "Mococo.h"
 #include "CTunnelMonster.h"
+#include "Boss.h"
 
 CMapMgr* CMapMgr::m_pInstance = nullptr;
 
@@ -151,6 +152,9 @@ void CMapMgr::Key_Input()
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_F8)) {
 		Create_Block(BLOCK_ID_TUNNEL_MOB);
 		Create_Monster(MONSTER_ID_TUNNEL);
+	}
+	if (CKeyMgr::Get_Instance()->Key_Down(VK_F9)) {
+		Create_Monster(MONSTER_ID_BOSS);
 	}
 
 	if (CKeyMgr::Get_Instance()->Key_Down('Z')) {
@@ -354,6 +358,9 @@ void CMapMgr::Create_Monster(MONSTER_ID _eID, MYPOINT _tPos)
 		break;
 	case MONSTER_ID_TUNNEL:
 		pObj = CAbstractFactory::Create<CTunnelMonster>(_tPos.fX, _tPos.fY);
+		break;
+	case MONSTER_ID_BOSS:
+		pObj = CAbstractFactory::Create<CBoss>(_tPos.fX, _tPos.fY);
 		break;
 	}
 

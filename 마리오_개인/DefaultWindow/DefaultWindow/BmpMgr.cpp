@@ -37,6 +37,14 @@ void CBmpMgr::Initialize()
 	// Monster
 	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_MUSHROOM);  // ���� �̹����� ��ü 
 	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_GUNNER);
+	Insert_Bmp(_T("../MyImage/Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);
+	
+	Insert_Bmp(_T("../MyImage/Boss/Head/CenterHead/stand.bmp"), BMP_KEY_BOSS_CENTER_HEAD);
+	Insert_Bmp(_T("../MyImage/Boss/Head/LeftHead/stand.bmp"), BMP_KEY_BOSS_LEFT_HEAD);
+	Insert_Bmp(_T("../MyImage/Boss/Head/RightHead/stand.bmp"), BMP_KEY_BOSS_RIGHT_HEAD);
+	Insert_Bmp(_T("../MyImage/Boss/Body/RightBody/stand.bmp"), BMP_KEY_BOSS_RIGHT_BODY);
+	Insert_Bmp(_T("../MyImage/Boss/Body/LeftBody/stand.bmp"), BMP_KEY_BOSS_LEFT_BODY);
+	Insert_Bmp(_T("../MyImage/Boss/Body/DownBody/stand.bmp"), BMP_KEY_BOSS_BOTTOM_BODY);
 	Insert_Bmp(_T("../MyImage/Tutle.bmp"), BMP_KEY_MONSTER_TUTLE); // �ź��� �̹��� �߰�
 	Insert_Bmp(_T("../MyImage/CoCoMo2.bmp"), BMP_KEY_MONSTER_MOCOCO);   // ������ �̹��� �߰�
 	Insert_Bmp(_T("../MyImage//Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);

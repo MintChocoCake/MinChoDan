@@ -31,9 +31,6 @@
     <Filter Include="03. Map">
       <UniqueIdentifier>{c4db3cb2-b286-430e-8853-8241e4329b79}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Map\00. Line">
-      <UniqueIdentifier>{61a93a4a-1435-4cc6-8429-ca230d35742b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. Design\01. MapMgr">
       <UniqueIdentifier>{2ffeeb9d-45fd-4694-ac1e-5e2fc5ccab87}</UniqueIdentifier>
     </Filter>
@@ -115,6 +112,7 @@
     <Filter Include="01. Obj\05. Monster\01.TunnelMonster">
       <UniqueIdentifier>{907247d8-3c4b-46df-aa23-f2c95c938cd6}</UniqueIdentifier>
     </Filter>
+<<<<<<< Updated upstream
     <Filter Include="01. Obj\04. Bullet\00. RotateBullet">
       <UniqueIdentifier>{a961ef92-a4a0-4b17-9be3-f3466cf325d8}</UniqueIdentifier>
     </Filter>
@@ -129,6 +127,34 @@
     </Filter>
     <Filter Include="01. Obj\03. UIObj\02. Font">
       <UniqueIdentifier>{7c4d97ca-aaa7-49b2-ac6d-6c664df7d498}</UniqueIdentifier>
+=======
+    <Filter Include="01. Obj\05. Monster\02.Boss">
+      <UniqueIdentifier>{e31455ab-9553-40ed-a4bb-1d07fddfad6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Design\01. MapMgr\00. Line">
+      <UniqueIdentifier>{61a93a4a-1435-4cc6-8429-ca230d35742b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\05. Monster\02.Boss\Head">
+      <UniqueIdentifier>{d448ef19-c418-4cee-aa13-39b8c912ba85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\05. Monster\02.Boss\Body">
+      <UniqueIdentifier>{6d168c6d-fc11-4d7f-b86b-11dd6a3a7de4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\05. Monster\02.Boss\Body\LeftBody">
+      <UniqueIdentifier>{51032ce7-602d-4775-a1b3-74027c4ebe95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\05. Monster\02.Boss\Head\LeftHead">
+      <UniqueIdentifier>{6fba8cd9-be3e-4cef-8f8e-24dbad46ba64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\05. Monster\02.Boss\Head\RightHead">
+      <UniqueIdentifier>{1f19039b-580c-4733-ba04-355899538e65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\05. Monster\02.Boss\Body\RightBody">
+      <UniqueIdentifier>{234055bf-ba44-4089-b5de-d0000dc22fd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\05. Monster\02.Boss\Body\BottomBody">
+      <UniqueIdentifier>{99fce721-3c32-4ac5-973f-ddf62b70face}</UniqueIdentifier>
+>>>>>>> Stashed changes
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -160,7 +186,7 @@
       <Filter>02. Design\00. KeyMgr</Filter>
     </ClInclude>
     <ClInclude Include="Line.h">
-      <Filter>03. Map\00. Line</Filter>
+      <Filter>02. Design\01. MapMgr\00. Line</Filter>
     </ClInclude>
     <ClInclude Include="MapMgr.h">
       <Filter>02. Design\01. MapMgr</Filter>
@@ -257,6 +283,24 @@
     <ClInclude Include="AfterImage.h">
       <Filter>01. Obj\00. Player</Filter>
     </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>01. Obj\05. Monster\02.Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftBody.h">
+      <Filter>01. Obj\05. Monster\02.Boss\Body\LeftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftHead.h">
+      <Filter>01. Obj\05. Monster\02.Boss\Head\LeftHead</Filter>
+    </ClInclude>
+    <ClInclude Include="RightHead.h">
+      <Filter>01. Obj\05. Monster\02.Boss\Head\RightHead</Filter>
+    </ClInclude>
+    <ClInclude Include="RightBody.h">
+      <Filter>01. Obj\05. Monster\02.Boss\Body\RightBody</Filter>
+    </ClInclude>
+    <ClInclude Include="BottomBody.h">
+      <Filter>01. Obj\05. Monster\02.Boss\Body\BottomBody</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -278,7 +322,7 @@
       <Filter>02. Design\00. KeyMgr</Filter>
     </ClCompile>
     <ClCompile Include="Line.cpp">
-      <Filter>03. Map\00. Line</Filter>
+      <Filter>02. Design\01. MapMgr\00. Line</Filter>
     </ClCompile>
     <ClCompile Include="MapMgr.cpp">
       <Filter>02. Design\01. MapMgr</Filter>
@@ -371,6 +415,24 @@
       <Filter>01. Obj\03. UIObj\02. Font</Filter>
     <ClCompile Include="AfterImage.cpp">
       <Filter>01. Obj\00. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>01. Obj\05. Monster\02.Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftBody.cpp">
+      <Filter>01. Obj\05. Monster\02.Boss\Body\LeftBody</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftHead.cpp">
+      <Filter>01. Obj\05. Monster\02.Boss\Head\LeftHead</Filter>
+    </ClCompile>
+    <ClCompile Include="RightHead.cpp">
+      <Filter>01. Obj\05. Monster\02.Boss\Head\RightHead</Filter>
+    </ClCompile>
+    <ClCompile Include="RightBody.cpp">
+      <Filter>01. Obj\05. Monster\02.Boss\Body\RightBody</Filter>
+    </ClCompile>
+    <ClCompile Include="BottomBody.cpp">
+      <Filter>01. Obj\05. Monster\02.Boss\Body\BottomBody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

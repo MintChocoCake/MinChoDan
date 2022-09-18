@@ -19,13 +19,12 @@ CMonster::~CMonster()
 
 void CMonster::Initialize(void)
 {
-	m_tInfo.fCX = 53.f;
-	m_tInfo.fCY = 70.f;
-
 	m_fSpeed = 2.f;
 	m_eType = OBJ_TYPE_MONSTER;
 
 	const MOB& data = arrMobTable[m_eMobID];
+	m_tInfo.fCX = data.m_fCX;
+	m_tInfo.fCY = data.m_fCY;
 	m_dwHP = data.dwHP;
 	m_dwDamage = data.dwStr;
 	m_hBmpDC = &(CBmpMgr::Get_Instance()->Find_Bmp(data.eBmp)->Get_BmpDC());

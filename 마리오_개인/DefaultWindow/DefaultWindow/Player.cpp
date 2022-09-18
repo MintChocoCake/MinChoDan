@@ -423,6 +423,7 @@ void CPlayer::Shot()
 
 	if (m_eGunUpgrade >= PLAYER_BULLET_SECOND)
 		pObj->Set_Pos(m_tInfo.fX + iOffset, m_tInfo.fY);
+}
 
 void CPlayer::ShowAfterImage()
 {

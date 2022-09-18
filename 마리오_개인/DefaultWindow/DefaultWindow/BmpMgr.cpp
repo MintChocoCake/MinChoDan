@@ -33,6 +33,9 @@ void CBmpMgr::Initialize()
 	Insert_Bmp(_T("../MyImage/ItemBox.bmp"), BMP_KEY_BLOCK_ITEM_BOX);
 	Insert_Bmp(_T("../MyImage/Invisible.bmp"), BMP_KEY_BLOCK_INVISIBLE);
 	Insert_Bmp(_T("../MyImage/RotateFire.bmp"), BMP_KEY_BLOCK_ROTATE_FIRE);
+	Insert_Bmp(_T("../MyImage/Tunnel.bmp"), BMP_KEY_BLOCK_ID_TUNNEL_IN);
+	Insert_Bmp(_T("../MyImage/Tunnel_Out.bmp"), BMP_KEY_BLOCK_ID_TUNNEL_OUT);
+
 
 	// Monster
 	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_MUSHROOM);

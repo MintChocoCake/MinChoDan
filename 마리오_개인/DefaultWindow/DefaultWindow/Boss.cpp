@@ -23,7 +23,7 @@ void CBoss::Initialize(void)
 	CMonster::Initialize();
 	Set_Pos(m_tInfo.fX, m_tInfo.fY + 15.f);
 
-	CreateChild();
+	//CreateChild();
 	Change_State(BOSS_STATE_IDLE);
 	Update_Rect();
 }

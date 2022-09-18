@@ -142,7 +142,6 @@ void CMonster::OnCollisionEnter(CObj * _pTarget)
 		}
 		break;
 
-		// ���Ͱ� ������ �� ( �߰� )
 	case OBJ_TYPE_PLAYER:
 		pInfo = &_pTarget->Get_Info();
 
@@ -188,7 +187,6 @@ void CMonster::ChangeState(MONSTER_STATE _eState)
 		tFrame = { 0, 1, MONSTER_STATE_WALK, 200 };
 		break;
 
-		// ���� ������ ��׷�Ʈ���� ( �߰� )
 	case MONSTER_STATE_CRUSH:	
 		tFrame = { 0, 1, MONSTER_STATE_CRUSH, 200 };
 		break;

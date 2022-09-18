@@ -8,6 +8,7 @@ protected:
 		BOSS_STATE_NONE = -1,
 		BOSS_STATE_IDLE,
 		BOSS_STATE_ATTACK_01,
+		BOSS_STATE_ATTACK_02,
 		BOSS_STATE_SKILL,
 	};
 public:
@@ -23,7 +24,14 @@ public:
 	virtual FRAME SetFrame(int _iState);
 protected:
 	virtual void Set_Bmp(float _fCX, float _fCY, int _iState, BMP_KEY _eBmp);
+
+public:
+	//BOSS_STATE	Get_Boss_State() {return }
+
 private:
 	void CreateChild();
+protected:
+	POINT m_BasePos;
+
 };
 

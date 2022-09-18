@@ -13,6 +13,8 @@ CLeftBody::~CLeftBody()
 void CLeftBody::Initialize(void)
 {
     CMonster::Initialize();
+	m_BasePos.x = m_tInfo.fX;
+	m_BasePos.y = m_tInfo.fY;
 
     Change_State(BOSS_STATE_IDLE);
 	Update_Rect();

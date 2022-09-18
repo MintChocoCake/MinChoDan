@@ -17,20 +17,29 @@ CBoss::CBoss()
 
 CBoss::~CBoss()
 {
+	
 }
 
 void CBoss::Initialize(void)
 {
 	CMonster::Initialize();
 	Set_Pos(m_tInfo.fX, m_tInfo.fY + 15.f);
+	m_BasePos.x = m_tInfo.fX;
+	m_BasePos.y = m_tInfo.fY;
 
 	CreateChild();
 	Change_State(BOSS_STATE_IDLE);
+
 	Update_Rect();
 }
 
 int CBoss::Update(void)
 {
+	if (m_iCurState == BOSS_STATE_ATTACK_01)
+		Set_Bmp(552.f, 777.f, BOSS_STATE_ATTACK_01, BMP_KEY_BOSS_CENTER_HEAD_ATTACK_01);
+	else
+		Set_Bmp(161.f, 332.f, BOSS_STATE_IDLE, BMP_KEY_BOSS_CENTER_HEAD);
+
 	Update_Rect();
 	return 0;
 }
@@ -65,25 +74,25 @@ void CBoss::Set_Bmp(float _fCX, float _fCY, int _iState, BMP_KEY _eBmp)
 }
 void CBoss::CreateChild()
 {
-	CObj* _Obj = CAbstractFactory::Create<CWing>(m_tInfo.fX + 0.f, m_tInfo.fY + 244.f);
+	CObj* _Obj = CAbstractFactory::Create<CWing>(m_BasePos.x + 0.f, m_BasePos.y + 244.f);
 	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)->push_back(_Obj);
 
-	_Obj = CAbstractFactory::Create<CTail>(m_tInfo.fX + 220.f, m_tInfo.fY + 373.4f);
+	_Obj = CAbstractFactory::Create<CTail>(m_BasePos.x + 220.f, m_BasePos.y + 373.4f);
 	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)->push_back(_Obj);
 
-	_Obj = CAbstractFactory::Create<CLeftBody>(m_tInfo.fX - 105.f, m_tInfo.fY + 209.f);
+	_Obj = CAbstractFactory::Create<CBottomBody>(m_BasePos.x + 0.f, m_BasePos.y + 373.4f);
 	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)->push_back(_Obj);
 
-	_Obj = CAbstractFactory::Create<CRightBody>(m_tInfo.fX + 105.f, m_tInfo.fY + 209.f);
+	_Obj = CAbstractFactory::Create<CLeftBody>(m_BasePos.x - 105.f, m_BasePos.y + 209.f);
 	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)->push_back(_Obj);
 
-	_Obj = CAbstractFactory::Create<CBottomBody>(m_tInfo.fX + 0.f, m_tInfo.fY + 373.4f);
+	_Obj = CAbstractFactory::Create<CRightBody>(m_BasePos.x + 105.f, m_BasePos.y + 209.f);
 	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)->push_back(_Obj);
 
-	_Obj = CAbstractFactory::Create<CLeftHead>(m_tInfo.fX - 120.f, m_tInfo.fY + 62.f);
+	_Obj = CAbstractFactory::Create<CLeftHead>(m_BasePos.x - 120.f, m_BasePos.y + 62.f);
 	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)->push_back(_Obj);
 
-	_Obj = CAbstractFactory::Create<CRightHead>(m_tInfo.fX + 120.f, m_tInfo.fY + 62.f);
+	_Obj = CAbstractFactory::Create<CRightHead>(m_BasePos.x + 120.f, m_BasePos.y + 62.f);
 	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)->push_back(_Obj);
 }
 
@@ -93,13 +102,16 @@ FRAME CBoss::SetFrame(int _iState)
 	{
 	case CBoss::BOSS_STATE_IDLE:
 	default:
+		Set_Pos(m_BasePos.x, m_BasePos.y);
 		return { 0, 8, BOSS_STATE_IDLE, 100 };
 		break;
 	case CBoss::BOSS_STATE_ATTACK_01:
-		return{ 0, 3, BOSS_STATE_ATTACK_01, 100 };
+		Set_Pos(m_tInfo.fX, m_tInfo.fY + 132.f);
+		return{ 0, 25, BOSS_STATE_ATTACK_01, 100 };
 		break;
 	case CBoss::BOSS_STATE_SKILL:
 		return { 0, 0, BOSS_STATE_SKILL, 100000 };
+		Cast_On();
 		break;
 	}
 }

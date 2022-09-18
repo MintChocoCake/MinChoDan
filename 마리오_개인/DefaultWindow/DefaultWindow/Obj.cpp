@@ -5,7 +5,7 @@
 static DWORD dwINSTANCE_NUMBER = 0;
 
 CObj::CObj()
-	: m_fSpeed(0.f), m_bDead(false), m_bActive(false), m_iCurState(-1)
+	: m_fSpeed(0.f), m_bDead(false), m_bActive(false), m_iCurState(-1) , m_bCast(false) // 추가 ( 캐스팅 상태 )
 {
 	ZeroMemory(&m_tInfo, sizeof(INFO));
 	ZeroMemory(&m_tRect, sizeof(RECT));

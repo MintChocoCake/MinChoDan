@@ -17,6 +17,7 @@ CBoss::CBoss()
 
 CBoss::~CBoss()
 {
+	
 }
 
 void CBoss::Initialize(void)
@@ -100,6 +101,7 @@ FRAME CBoss::SetFrame(int _iState)
 		break;
 	case CBoss::BOSS_STATE_SKILL:
 		return { 0, 0, BOSS_STATE_SKILL, 100000 };
+		Cast_On();
 		break;
 	}
 }

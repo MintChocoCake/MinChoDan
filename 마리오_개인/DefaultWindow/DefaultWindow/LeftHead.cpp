@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "LeftHead.h"
+#include "CollisionMgr.h"
 
 CLeftHead::CLeftHead()
 {
@@ -18,6 +19,9 @@ void CLeftHead::Initialize(void)
 	Set_Bmp(546.f, 645.f, BOSS_STATE_ATTACK_01, BMP_KEY_BOSS_LEFT_HEAD_ATTACK_01);
 	Set_Pos(m_tInfo.fX - 120.f, m_tInfo.fY + 172.f);
     Update_Rect();
+
+	
+
 }
 
 int CLeftHead::Update(void)
@@ -30,6 +34,17 @@ void CLeftHead::LateUpdate(void)
 {
     Update_Active();
     Update_Frame();
+
+	if (m_bCast)
+	{
+		m_tHitBox.fX = m_tInfo.fX - m_tInfo.fCX / 0.5f;
+		m_tHitBox.fY = m_tInfo.fY; -m_tInfo.fCY / 0.5f;
+		m_tHitBox.fCX = 50.f;
+		m_tHitBox.fCY = 50.f;
+
+		Update_Rect();
+	}
+
 }
 
 void CLeftHead::Release(void)
@@ -38,10 +53,20 @@ void CLeftHead::Release(void)
 
 void CLeftHead::OnCollision(CObj* _pTarget)
 {
+	m_tHitBox_Rect.top;
+	m_tHitBox_Rect.left;
+	m_tHitBox_Rect.bottom;
+	m_tHitBox_Rect.right;
+
+	
+
 }
+
 
 void CLeftHead::OnCollisionEnter(CObj* _pTarget)
 {
+
+
 }
 
 FRAME CLeftHead::SetFrame(int _iState)
@@ -60,3 +85,4 @@ FRAME CLeftHead::SetFrame(int _iState)
 		break;
 	}
 }
+

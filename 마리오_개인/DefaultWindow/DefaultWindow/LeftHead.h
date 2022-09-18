@@ -14,4 +14,14 @@ public:
 	virtual void OnCollision(CObj* _pTarget) override;
 	virtual void OnCollisionEnter(CObj* _pTarget) override;
 	virtual FRAME SetFrame(int _iState);
+
+public:
+
+	//void		HitBox_Rect(void);
+
+
+private:
+	INFO		m_tHitBox;
+	RECT		m_tHitBox_Rect;
+
 };

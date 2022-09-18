@@ -24,6 +24,11 @@ public:
 	void Set_Pos(float _fX, float _fY) { m_tInfo.fX = _fX; m_tInfo.fY = _fY; }
 	void Set_Type(OBJ_TYPE _eID) { m_eType = _eID; }
 
+	// 보스 캐스팅 상태
+	bool	Get_Cast() { return m_bCast; }
+	void	Cast_On() { m_bCast = true; }
+	void	Cast_Off() { m_bCast = false; }
+
 public:
 	virtual void Initialize(void) PURE;
 	virtual int  Update(void) PURE;
@@ -58,5 +63,8 @@ protected:
 
 	bool m_bActive;
 	int m_iCurState;
+
+	// 보스 캐스팅 상태
+	bool	m_bCast;
 };
 

@@ -23,7 +23,12 @@ public:
 	virtual FRAME SetFrame(int _iState);
 protected:
 	virtual void Set_Bmp(float _fCX, float _fCY, int _iState, BMP_KEY _eBmp);
+
+public:
+	//BOSS_STATE	Get_Boss_State() {return }
+
 private:
 	void CreateChild();
+
 };
 

@@ -25,5 +25,7 @@ public:
 
 public:
 	BLOCK_ID m_eBlockID;
+	bool m_bMoving;
+	float m_ePivotY;
 };
 

@@ -53,7 +53,7 @@ void CMonster::LateUpdate(void)
 	Update_Rect();
 	Update_Active();
 	
-	if (m_tInfo.fY > WINCY)
+	if (m_tInfo.fY > TILEC * TILEY)
 		Set_Dead();
 }
 

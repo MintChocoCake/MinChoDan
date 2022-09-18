@@ -54,8 +54,13 @@ int CPlayer::Update(void)
 {
 	ShowAfterImage();
 	if (m_bDead) {
-		//CSceneMgr::Get_Instance()->Change_Scene(CSceneMgr::SCENE_ID_LOBBY);
-		//return OBJ_DEAD;
+		CSceneMgr::Get_Instance()->Change_Scene(CSceneMgr::SCENE_ID_LOBBY);
+		return OBJ_DEAD;
+	}
+
+	if (m_tInfo.fX > TILEC * (TILEX - 5)) {
+		dynamic_cast<CStage*>(CSceneMgr::Get_Instance()->Get_CurScene())->Stage_Up();
+		return OBJ_DEAD;
 	}
 
 	if (m_bGoTunnel)
@@ -87,7 +92,7 @@ int CPlayer::Update(void)
 }
 
 void CPlayer::LateUpdate(void)
-{
+{	
 	Scroll();
 
 	if (m_tInfo.fCX * 0.5f > m_tInfo.fX)
@@ -102,7 +107,6 @@ void CPlayer::LateUpdate(void)
 	if (TILEC * TILEY - m_tInfo.fCY * 0.5f < m_tInfo.fY) {
 		m_tInfo.fY = TILEC * TILEY - m_tInfo.fCY * 0.5f;
 	}
-
 }
 
 void CPlayer::Release(void)
@@ -417,7 +421,7 @@ void CPlayer::ChangeDir(DIRECTION _eDir)
 void CPlayer::InTunnel()
 {
 	m_tInfo.fY += m_fSpeed; 
-	CScrollMgr::Get_Instance()->Add_Y(m_fSpeed); 
+	CScrollMgr::Get_Instance()->Add_Y(-m_fSpeed); 
 }
 
 void CPlayer::OutTunnel()
@@ -425,12 +429,12 @@ void CPlayer::OutTunnel()
 	if (m_tInfo.fX <= TunnelDest.x)
 	{
 		m_tInfo.fX += m_fSpeed;
-		CScrollMgr::Get_Instance()->Add_X(-(m_fSpeed));
+		CScrollMgr::Get_Instance()->Add_X(m_fSpeed);
 	}
 	else
 	{
 		m_tInfo.fY -= m_fSpeed;
-		CScrollMgr::Get_Instance()->Add_Y(-m_fSpeed);
+		CScrollMgr::Get_Instance()->Add_Y(m_fSpeed);
 	}
 }
 

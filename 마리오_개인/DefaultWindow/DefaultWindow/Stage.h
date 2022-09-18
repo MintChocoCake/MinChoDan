@@ -16,6 +16,7 @@ public:
 	virtual void LateUpdate(void) override;
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
+	void Stage_Up(void);
 
 private:
 	DWORD m_dwScore;

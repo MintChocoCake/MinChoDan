@@ -40,7 +40,7 @@ void CObjMgr::LateUpdate()
 			obj->LateUpdate();
 
 			if (list.empty())
-				break;
+				return;
 		}
 	}
 }

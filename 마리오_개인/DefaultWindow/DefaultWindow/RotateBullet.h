@@ -12,7 +12,7 @@ public:
 
 public:
 	virtual int  Update(void) override;
-	//virtual void LateUpdate(void) override;
+	virtual void LateUpdate(void) override;
 	virtual void OnCollisionEnter(CObj* _pTarget) override;
 
 private:

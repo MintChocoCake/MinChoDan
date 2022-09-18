@@ -1,11 +1,11 @@
 #pragma once
 #include "Boss.h"
 
-class CLeftBody : public CBoss
+class CWing : public CBoss
 {
 public:
-	CLeftBody();
-	virtual ~CLeftBody();
+	CWing();
+	virtual ~CWing();
 public:
 	virtual void Initialize(void) override;
 	virtual int Update(void) override;

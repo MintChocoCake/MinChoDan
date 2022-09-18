@@ -8,6 +8,7 @@
 #include "LeftBody.h"
 #include "RightBody.h"
 #include "BottomBody.h"
+#include "Wing.h"
 CBoss::CBoss()
 {
 	m_eMobID = MONSTER_ID_BOSS;
@@ -65,7 +66,11 @@ void CBoss::Set_State(float _fCX, float _fCY, BMP_KEY _eBmp)
 }
 void CBoss::CreateChild()
 {
-	CObj* _Obj = CAbstractFactory::Create<CLeftBody>();
+	CObj* _Obj = CAbstractFactory::Create<CWing>();
+	_Obj->Set_Pos(m_tInfo.fX, m_tInfo.fY + 244.f);
+	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)->push_back(_Obj);
+
+	_Obj = CAbstractFactory::Create<CLeftBody>();
 	_Obj->Set_Pos(m_tInfo.fX - 105.f, m_tInfo.fY + 209.f);
 	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)->push_back(_Obj);
 

@@ -28,6 +28,7 @@ void CFireMob::OnCollisionEnter(CObj * _pTarget)
 	{
 	case OBJ_TYPE_BULLET_PLAYER:
 		dwDamage = CObjMgr::Get_Instance()->Get_Player()->Get_Damage();
+		dwDamage = dwDamage > m_dwHP ? m_dwHP : m_dwDamage;
 		MakeDamageFont(dwDamage);
 
 		m_dwHP -= dwDamage;

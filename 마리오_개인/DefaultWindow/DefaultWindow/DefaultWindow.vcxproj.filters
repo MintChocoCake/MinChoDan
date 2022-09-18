@@ -142,6 +142,7 @@
     <ClCompile Include="Wing.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\02. WIng</Filter>
     </ClCompile>
+    <ClCompile Include="Tail.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Block.h">
@@ -297,6 +298,7 @@
     <ClInclude Include="Wing.h">
       <Filter>01. CObj\03. Monster\00. Boss\02. WIng</Filter>
     </ClInclude>
+    <ClInclude Include="Tail.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="DefaultWindow.ico">

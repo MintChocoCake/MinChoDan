@@ -15,6 +15,8 @@ void CRightHead::Initialize(void)
     CMonster::Initialize();
 
     Change_State(BOSS_STATE_IDLE);
+	Set_Bmp(349.f, 353.f, BOSS_STATE_ATTACK_01, BMP_KEY_BOSS_LEFT_HEAD_ATTACK_01);
+	Set_Pos(m_tInfo.fX + 120.f, m_tInfo.fY + 172.f);
     Update_Rect();
 }
 
@@ -51,7 +53,7 @@ FRAME CRightHead::SetFrame(int _iState)
 		return { 0, 8, BOSS_STATE_IDLE, 100 };
 		break;
 	case CBoss::BOSS_STATE_ATTACK_01:
-		return{ 0, 3, BOSS_STATE_ATTACK_01, 100 };
+		return{ 0, 16, BOSS_STATE_ATTACK_01, 100 };
 		break;
 	case CBoss::BOSS_STATE_SKILL:
 		return { 0, 0, BOSS_STATE_SKILL, 100000 };

@@ -13,6 +13,8 @@
 #include "Mococo.h"
 #include "CTunnelMonster.h"
 #include "Boss.h"
+#include "BombMob.h"
+#include "FireMob.h"
 
 CMapMgr* CMapMgr::m_pInstance = nullptr;
 
@@ -167,8 +169,16 @@ void CMapMgr::Key_Input()
 	if (CKeyMgr::Get_Instance()->Key_Down('C')) {
 		Create_Monster(MONSTER_ID_TUTLE);
 	}
+
 	if (CKeyMgr::Get_Instance()->Key_Down('V')) {
 		Create_Monster(MONSTER_ID_MOCOCO);
+	}
+
+	if (CKeyMgr::Get_Instance()->Key_Down('B')) {
+		Create_Monster(MONSTER_ID_FIRE);
+	}
+	if (CKeyMgr::Get_Instance()->Key_Down('N')) {
+		Create_Monster(MONSTER_ID_BOMB);
 	}
 }
 
@@ -199,6 +209,8 @@ void CMapMgr::Save_Map()
 		switch (i)
 		{
 		case OBJ_TYPE_PLAYER:
+		case OBJ_TYPE_EFFECT:
+		case OBJ_TYPE_AFTERIMAGE:
 			continue;
 		}
 		list<CObj*>* pList = CObjMgr::Get_Instance()->Get_ObjList((OBJ_TYPE)i);
@@ -258,6 +270,8 @@ void CMapMgr::Load_Map()
 		switch (i)
 		{
 		case OBJ_TYPE_PLAYER:
+		case OBJ_TYPE_EFFECT:
+		case OBJ_TYPE_AFTERIMAGE:
 			continue;
 		}
 
@@ -358,6 +372,12 @@ void CMapMgr::Create_Monster(MONSTER_ID _eID, MYPOINT _tPos)
 		break;
 	case MONSTER_ID_BOSS:
 		pObj = CAbstractFactory::Create<CBoss>(_tPos.fX, _tPos.fY);
+		break;
+	case MONSTER_ID_BOMB:
+		pObj = CAbstractFactory::Create<CBombMob>(_tPos.fX, _tPos.fY);
+		break;
+	case MONSTER_ID_FIRE:
+		pObj = CAbstractFactory::Create<CFireMob>(_tPos.fX, _tPos.fY);
 		break;
 	}
 

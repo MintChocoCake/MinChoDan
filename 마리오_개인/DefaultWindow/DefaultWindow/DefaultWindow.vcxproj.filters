@@ -143,6 +143,12 @@
       <Filter>01. CObj\03. Monster\00. Boss\02. WIng</Filter>
     </ClCompile>
     <ClCompile Include="Tail.cpp" />
+    <ClCompile Include="FireMob.cpp">
+      <Filter>01. CObj\03. Monster\05. FireMob</Filter>
+    </ClCompile>
+    <ClCompile Include="BombMob.cpp">
+      <Filter>01. CObj\03. Monster\06. BombMob</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Block.h">
@@ -299,6 +305,12 @@
       <Filter>01. CObj\03. Monster\00. Boss\02. WIng</Filter>
     </ClInclude>
     <ClInclude Include="Tail.h" />
+    <ClInclude Include="FireMob.h">
+      <Filter>01. CObj\03. Monster\05. FireMob</Filter>
+    </ClInclude>
+    <ClInclude Include="BombMob.h">
+      <Filter>01. CObj\03. Monster\06. BombMob</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="DefaultWindow.ico">
@@ -440,6 +452,12 @@
     </Filter>
     <Filter Include="01. CObj\03. Monster\00. Boss\02. WIng">
       <UniqueIdentifier>{2a04b711-8aca-4b57-92c6-256af78bae88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. CObj\03. Monster\05. FireMob">
+      <UniqueIdentifier>{0f88856e-0fcb-41cb-b853-44908f46392f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. CObj\03. Monster\06. BombMob">
+      <UniqueIdentifier>{a571b191-0223-467c-a938-9536837c23b1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

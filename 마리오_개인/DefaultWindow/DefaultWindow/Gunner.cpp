@@ -26,6 +26,9 @@ void CGunner::Act()
 {
 	CMonster::Act();
 
+	if (m_tFrame.dwMotion == MONSTER_STATE_CRUSH)
+		return;
+
 	CObj* pObj;
 	if (m_dwShotTimer + 1000 < GetTickCount()) {
 		pObj = CAbstractFactory::Create<CBullet>(m_tInfo.fX, m_tInfo.fY);

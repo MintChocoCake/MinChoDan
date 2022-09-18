@@ -2,9 +2,10 @@
 #include "Hill.h"
 #include "ScrollMgr.h"
 
-CHill::CHill() : m_fSlope(0.f), m_fYInter(0.f)
+CHill::CHill() : m_fSlope(0.f), m_fYInter(0.f), m_bStart(false)
 {
 	ZeroMemory(&m_tLineInfo, sizeof(LINE));
+	m_bActive = true;
 }
 
 CHill::~CHill()

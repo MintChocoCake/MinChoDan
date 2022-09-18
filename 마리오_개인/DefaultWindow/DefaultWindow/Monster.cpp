@@ -10,7 +10,7 @@
 
 CMonster::CMonster() : m_fAirTime(0.f), m_eMobID(MONSTER_ID_MUSHROOM), m_eCurState(MONSTER_STATE_NONE)
 {
-
+	m_bActive = true;
 }
 
 CMonster::~CMonster()
@@ -30,6 +30,8 @@ void CMonster::Initialize(void)
 	m_hBmpDC = &(CBmpMgr::Get_Instance()->Find_Bmp(data.eBmp)->Get_BmpDC());
 
 	ChangeState(MONSTER_STATE_WALK);
+
+	Update_Rect();
 }
 
 int CMonster::Update(void)
@@ -68,7 +70,7 @@ void CMonster::OnCollision(CObj * _pTarget)
 		pInfo = &_pTarget->Get_Info();
 
 		if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY) {
-			m_fSpeed *= -1.f;
+			//m_fSpeed *= -1.f;
 		}
 
 		if (pInfo->fX - pInfo->fCX * 0.7f <= m_tInfo.fX &&

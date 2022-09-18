@@ -149,6 +149,7 @@
     <ClInclude Include="AfterImage.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="BmpMgr.h" />
+    <ClInclude Include="BombMob.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BottomBody.h" />
     <ClInclude Include="Bullet.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="DefaultWindow.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="DoubleJumpEffect.h" />
+    <ClInclude Include="FireMob.h" />
     <ClInclude Include="LeftBody.h" />
     <ClInclude Include="LeftHead.h" />
     <ClInclude Include="Mococo.h" />
@@ -202,6 +204,7 @@
     <ClCompile Include="AfterImage.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="BmpMgr.cpp" />
+    <ClCompile Include="BombMob.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BottomBody.cpp" />
     <ClCompile Include="Bullet.cpp" />
@@ -212,6 +215,7 @@
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="DefaultWindow.cpp" />
     <ClCompile Include="DoubleJumpEffect.cpp" />
+    <ClCompile Include="FireMob.cpp" />
     <ClCompile Include="LeftBody.cpp" />
     <ClCompile Include="LeftHead.cpp" />
     <ClCompile Include="Mococo.cpp" />

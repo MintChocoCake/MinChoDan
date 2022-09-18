@@ -21,7 +21,7 @@
 
 const float fJUMP_POWER = 15.f;
 
-CPlayer::CPlayer() : m_dwJumping(0), m_fCurJumpDir(-1.f), m_eGunUpgrade(PLAYER_BULLET_NONE), m_eCurDir(DIRECTION_NONE)
+CPlayer::CPlayer() : m_dwJumping(0), m_fCurJumpDir(-1.f), m_eGunUpgrade(PLAYER_BULLET_NONE), m_eCurDir(DIRECTION_NONE), m_bGoTunnel(false), m_bOutTunnel(false)
 {
 	m_bActive = true;
 }
@@ -230,9 +230,7 @@ void CPlayer::OnCollisionEnter(CObj * _pTarget)
 		m_dwHP -= dwDamage;
 		if (m_dwHP <= 0)
 			Set_Dead();
-		
-		// 플레이어 가 몬스터 밟을시 점프
-		// 보스 일시 실행 시키지 않음  MONSTER_ID_BOSS
+	
 
 		/*for (auto iter : *CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)) {
 			m_Monter_ID = dynamic_cast<CMonster*>(iter)->Get_MonsterID();
@@ -336,7 +334,7 @@ void CPlayer::Key_Input(void)
 		else if (m_dwJumping == 1 && bMoving) {
 			m_dwJumping = 2;
 			m_fAirTime = 0.f;
-			fOffset = m_eCurDir == DIRECTION_LEFT ? 120 : -120;
+			fOffset = m_eCurDir == DIRECTION_LEFT ? 120.f : -120.f;
 			pObj = CAbstractFactory::Create<CDoubleJumpEffect>(m_tInfo.fX + fOffset, m_tInfo.fY);
 			dynamic_cast<CDoubleJumpEffect*>(pObj)->Set_Dir(m_eCurDir);
 			CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_EFFECT)->push_back(pObj);

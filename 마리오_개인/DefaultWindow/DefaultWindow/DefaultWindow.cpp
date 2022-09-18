@@ -4,6 +4,9 @@
 #include "stdafx.h"
 #include "DefaultWindow.h"
 #include "MainGame.h"
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>		
 
 #define MAX_LOADSTRING 100
 
@@ -24,6 +27,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,		// 인스턴스 : 메모리에 할당되는
                      _In_ LPWSTR    lpCmdLine,	// 문자열을 지원하는 성격
                      _In_ int       nCmdShow)	// 윈도우 
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 

@@ -54,7 +54,7 @@ void CObjMgr::Render(HDC _HDC)
 	}
 
 	TCHAR szBuffer[50];
-	wsprintf(szBuffer, L"MOB BULLET COUNT : %d", m_ObjList[OBJ_TYPE_BULLET_MONSTER].size());
+	wsprintf(szBuffer, L"MOB COUNT : %d", m_ObjList[OBJ_TYPE_MONSTER].size());
 	TextOut(_HDC, 0, 100, szBuffer, lstrlen(szBuffer));
 }
 

@@ -57,7 +57,9 @@ void CBmpMgr::Initialize()
 	Insert_Bmp(_T("../MyImage/Boss/Tail/stand.bmp"), BMP_KEY_BOSS_TAIL);
 	Insert_Bmp(_T("../MyImage/Tutle.bmp"), BMP_KEY_MONSTER_TUTLE); 
 	Insert_Bmp(_T("../MyImage/CoCoMo2.bmp"), BMP_KEY_MONSTER_MOCOCO); 
-	Insert_Bmp(_T("../MyImage//Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);
+	Insert_Bmp(_T("../MyImage/Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);
+	Insert_Bmp(_T("../MyImage/FireMob.bmp"), BMP_KEY_FIREMOB);
+	Insert_Bmp(_T("../MyImage/BombMob.bmp"), BMP_KEY_BOMBMOB);
 
 	// UI
 	Insert_Bmp(_T("../MyImage/Cursor.bmp"), BMP_KEY_CURSOR);

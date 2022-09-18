@@ -32,6 +32,7 @@ protected:
 
 protected:
 	virtual void Act();
+	void MakeDamageFont(DWORD _dwDamage);
 
 private:
 	float m_fAirTime;
@@ -41,6 +42,6 @@ private:
 	void ChangeState(MONSTER_STATE _eState);
 	// 몬스터 밝기 판별
 	int	m_bCrushCount = 0;
-	void MakeDamageFont(DWORD _dwDamage);
+
 };
 

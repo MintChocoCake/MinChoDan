@@ -5,7 +5,7 @@
 static DWORD dwINSTANCE_NUMBER = 0;
 
 CObj::CObj()
-	: m_fSpeed(0.f), m_bDead(false), m_bActive(false), m_iCurState(-1) // Ãß°¡ ( Ä³½ºÆÃ »óÅÂ )
+	: m_fSpeed(0.f), m_bDead(false), m_bActive(false), m_iCurState(-1) 
 {
 	ZeroMemory(&m_tInfo, sizeof(INFO));
 	ZeroMemory(&m_tRect, sizeof(RECT));
@@ -55,7 +55,7 @@ void CObj::Render(HDC hDC)
 		m_tFrame.dwStart * (int)m_tInfo.fCX, m_tFrame.dwMotion * (int)m_tInfo.fCY,
 		(int)m_tInfo.fCX, (int)m_tInfo.fCY, RGB(255, 255, 255));
 
-	//Ãæµ¹ È®ÀÎ¿ë
+	//ï¿½æµ¹ È®ï¿½Î¿ï¿½
 	//Rectangle(hDC, m_tRect.left + lScrollX, m_tRect.top + lScrollY, m_tRect.right + lScrollX, m_tRect.bottom + lScrollY);
 }
 

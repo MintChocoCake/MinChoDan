@@ -24,6 +24,7 @@ public:
 	void Set_Dead() { m_bDead = true; }
 	void Set_Pos(float _fX, float _fY) { m_tInfo.fX = _fX; m_tInfo.fY = _fY; }
 	void Set_Type(OBJ_TYPE _eID) { m_eType = _eID; }
+	
 
 public:
 	virtual void Initialize(void) PURE;
@@ -59,5 +60,7 @@ protected:
 
 	bool m_bActive;
 	int m_iCurState;
+
+	
 };
 

@@ -1,11 +1,12 @@
 #pragma once
-#include "Boss.h"
-
-class CLeftHead : public CBoss
+#include "LeftHead.h"
+class CLeftHeadSkill :
+	public CLeftHead
 {
 public:
-	CLeftHead();
-	virtual ~CLeftHead();
+	CLeftHeadSkill(float _fX, float _fY);
+	virtual ~CLeftHeadSkill();
+
 public:
 	virtual void Initialize(void) override;
 	virtual int Update(void) override;
@@ -13,11 +14,10 @@ public:
 	virtual void Release(void) override;
 	virtual void OnCollision(CObj* _pTarget) override;
 	virtual void OnCollisionEnter(CObj* _pTarget) override;
-	virtual FRAME SetFrame(int _iState);
-
-public:
 
 private:
-
+	INFO		m_tHitBox;
+	RECT		m_tHitBox_Rect;
 
 };
+

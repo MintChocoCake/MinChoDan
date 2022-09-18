@@ -229,12 +229,14 @@ void CPlayer::OnCollisionEnter(CObj * _pTarget)
 		break;
 
 	case OBJ_TYPE_MONSTER:
-		dwDamage = _pTarget->Get_Damage();
-		dwDamage = dwDamage > m_dwHP ? m_dwHP : dwDamage;
-		m_dwHP -= dwDamage;
-		if (m_dwHP <= 0)
-			Set_Dead();
-	
+
+		if (m_dwJumping == 0) {
+			dwDamage = _pTarget->Get_Damage();
+			dwDamage = dwDamage > m_dwHP ? m_dwHP : dwDamage;
+			m_dwHP -= dwDamage;
+			if (m_dwHP <= 0)
+				Set_Dead();
+		}
 
 		/*for (auto iter : *CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)) {
 			m_Monter_ID = dynamic_cast<CMonster*>(iter)->Get_MonsterID();

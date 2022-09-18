@@ -20,6 +20,9 @@ void CObjMgr::Update()
 		for (auto iter = m_ObjList[i].begin(); iter != m_ObjList[i].end();) {
 			iResult = (*iter)->Update();
 
+			if (i == OBJ_TYPE_PLAYER && iResult == OBJ_DEAD)
+				return;
+
 			if (iResult == OBJ_DEAD) {
 				iter = m_ObjList[i].erase(iter);
 			}

@@ -14,12 +14,11 @@ CBmpMgr::~CBmpMgr()
 
 void CBmpMgr::Initialize()
 {
+	// Player
 	Insert_Bmp(_T("../MyImage/PlayerLeft.bmp"), BMP_KEY_PLAYER_LEFT);
 	Insert_Bmp(_T("../MyImage/PlayerRight.bmp"), BMP_KEY_PLAYER_RIGHT);
-	Insert_Bmp(_T("../MyImage/Ground.bmp"), BMP_KEY_GROUND);
-	Insert_Bmp(_T("../Image/Back.bmp"), BMP_KEY_BACK);
-	Insert_Bmp(_T("../Image/Logo/Logo.bmp"), BMP_KEY_LOGO);
 
+	// Block
 	Insert_Bmp(_T("../MyImage/Tile.bmp"), BMP_KEY_BLOCK_TILE);
 	Insert_Bmp(_T("../MyImage/Box.bmp"), BMP_KEY_BLOCK_BOX);
 	Insert_Bmp(_T("../MyImage/ItemBox.bmp"), BMP_KEY_BLOCK_ITEM_BOX);
@@ -28,19 +27,36 @@ void CBmpMgr::Initialize()
 	Insert_Bmp(_T("../MyImage/Tunnel.bmp"), BMP_KEY_BLOCK_ID_TUNNEL_IN);
 	Insert_Bmp(_T("../MyImage/Tunnel_Out.bmp"), BMP_KEY_BLOCK_ID_TUNNEL_OUT);
 
+	// Monster
 	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_MUSHROOM);
 	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_GUNNER);
 	Insert_Bmp(_T("../MyImage//Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);
 
+	// UI
 	Insert_Bmp(_T("../MyImage/Cursor.bmp"), BMP_KEY_CURSOR);
 	Insert_Bmp(_T("../MyImage/LobbyBG.bmp"), BMP_KEY_LOBBYBG);
 	Insert_Bmp(_T("../MyImage/Start.bmp"), BMP_KEY_START_BTN);
 	Insert_Bmp(_T("../MyImage/Edit.bmp"), BMP_KEY_EDIT_BTN);
 	Insert_Bmp(_T("../MyImage/Exit.bmp"), BMP_KEY_EXIT_BTN);
-	Insert_Bmp(_T("../MyImage/FireBall.bmp"), BMP_KEY_BULLET);
+	Insert_Bmp(_T("../MyImage/Ground.bmp"), BMP_KEY_GROUND);
+	Insert_Bmp(_T("../Image/Back.bmp"), BMP_KEY_BACK);
+	Insert_Bmp(_T("../Image/Logo/Logo.bmp"), BMP_KEY_LOGO);
 
+	// Item
 	Insert_Bmp(_T("../MyImage/Coin.bmp"), BMP_KEY_ITEM_COIN);
 	Insert_Bmp(_T("../MyImage/Gun.bmp"), BMP_KEY_ITEM_GUN);
+
+	// Bullet
+	Insert_Bmp(_T("../MyImage/FireBall.bmp"), BMP_KEY_BULLET);
+	Insert_Bmp(_T("../MyImage/Bullet_Left.bmp"), BMP_KEY_BULLET_SECOND_LEFT);
+	Insert_Bmp(_T("../MyImage/Bullet_Right.bmp"), BMP_KEY_BULLET_SECOND_RIGHT);
+	Insert_Bmp(_T("../MyImage/Arrow_left.bmp"), BMP_KEY_BULLET_THIRD_LEFT);
+	Insert_Bmp(_T("../MyImage/Arrow_Right.bmp"), BMP_KEY_BULLET_THIRD_RIGHT);
+
+	// Effect
+	Insert_Bmp(_T("../MyImage/BulletEffect_Left.bmp"), BMP_KEY_BULLET_EFFECT_LEFT);
+	Insert_Bmp(_T("../MyImage/BulletEffect_Right.bmp"), BMP_KEY_BULLET_EFFECT_RIGHT);
+	Insert_Bmp(_T("../MyImage/Damage.bmp"), BMP_KEY_DAMAGE);
 }
 
 void CBmpMgr::Insert_Bmp(const TCHAR * _chFilePath, BMP_KEY _eKey)

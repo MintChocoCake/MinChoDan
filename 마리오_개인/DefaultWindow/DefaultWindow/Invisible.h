@@ -9,9 +9,12 @@ public:
 
 public:
 	void Reveal();
+	virtual int Update(void) override;
+	virtual void LateUpdate(void) override;
 
 private:
 	bool m_bReveal;
-
+	float m_ePivotY;
+	bool m_bMoving;
 };
 

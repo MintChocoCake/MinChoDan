@@ -12,10 +12,13 @@
 #include "Stage.h"
 #include "Item.h"
 #include "Invisible.h"
+#include "BulletEffect.h"
+#include "SecondBullet.h"
+#include "ThirdBullet.h"
 
 const float fJUMP_POWER = 15.f;
 
-CPlayer::CPlayer() : m_bJumping(false), m_fCurJumpDir(-1.f), m_bGun(false), m_eCurDir(DIRECTION_NONE)
+CPlayer::CPlayer() : m_dwJumping(0), m_fCurJumpDir(-1.f), m_eGunUpgrade(PLAYER_BULLET_NONE), m_eCurDir(DIRECTION_NONE)
 {
 	m_bActive = true;
 }
@@ -36,7 +39,7 @@ void CPlayer::Initialize(void)
 	m_fSpeed = 5.f;
 	m_fAirTime = 0.f;
 
-	m_dwHP = 3;
+	m_dwHP = dwPLAYER_HP;
 	m_eType = OBJ_TYPE_PLAYER;
 
 	m_pBullets = CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BULLET_PLAYER);
@@ -47,9 +50,8 @@ void CPlayer::Initialize(void)
 int CPlayer::Update(void)
 {
 	if (m_bDead) {
-		//return OBJ_DEAD;
-		//CSceneMgr::Get_Instance()->Change_Scene(CSceneMgr::SCENE_ID_LOBBY);
-		//return OBJ_DEAD;
+		CSceneMgr::Get_Instance()->Change_Scene(CSceneMgr::SCENE_ID_LOBBY);
+		return OBJ_DEAD;
 	}
 
 	if (m_bGoTunnel)
@@ -144,7 +146,7 @@ void CPlayer::OnCollision(CObj * _pTarget)
 		{
 			if (CKeyMgr::Get_Instance()->Key_Down('S'))
 			{
-				if (!m_bJumping)
+				if (m_dwJumping == 0)
 				{
 					m_bGoTunnel = true;
 					TunnelDest.x = _pTarget->Get_Info().fX + (TILEC * 0);
@@ -154,7 +156,7 @@ void CPlayer::OnCollision(CObj * _pTarget)
 		}
 		if (dynamic_cast<CBlock*>(_pTarget)->m_eBlockID == BLOCK_ID_TUNNEL_OUT)
 		{
-			if (!m_bJumping)
+			if (m_dwJumping == 0)
 			{
 				m_bOutTunnel = true;
 				TunnelDest.x = _pTarget->Get_Info().fX + (TILEC * 5);
@@ -180,6 +182,7 @@ void CPlayer::OnCollision(CObj * _pTarget)
 void CPlayer::OnCollisionEnter(CObj * _pTarget)
 {
 	INFO* pInfo;
+	DWORD dwDamage;
 
 	switch (_pTarget->Get_Type())
 	{
@@ -202,13 +205,26 @@ void CPlayer::OnCollisionEnter(CObj * _pTarget)
 			dynamic_cast<CStage*>(CSceneMgr::Get_Instance()->Get_CurScene())->Add_Score(100);
 			break;
 		case ITEM_ID_GUN:
-			m_bGun = true;
+			if (m_eGunUpgrade != PLAYER_BULLET_THIRD) {
+				m_eGunUpgrade = (PLAYER_BULLET)(m_eGunUpgrade + 1);
+				m_dwDamage = dwPLAYER_STR * m_eGunUpgrade;
+			}
 			break;
 		}
 		break;
 
 	case OBJ_TYPE_BULLET_MONSTER:
-		--m_dwHP;
+		dwDamage = dwMONSTER_BULLET_STR;
+		dwDamage = dwDamage > m_dwHP ? m_dwHP : dwDamage;
+		m_dwHP -= dwDamage;
+		if (m_dwHP <= 0)
+			Set_Dead();
+		break;
+
+	case OBJ_TYPE_MONSTER:
+		dwDamage = _pTarget->Get_Damage();
+		dwDamage = dwDamage > m_dwHP ? m_dwHP : dwDamage;
+		m_dwHP -= dwDamage;
 		if (m_dwHP <= 0)
 			Set_Dead();
 		break;
@@ -240,7 +256,6 @@ FRAME CPlayer::SetFrame(int _iState)
 
 void CPlayer::Key_Input(void)
 {
-	CObj* pObj;
 	bool bMoving = false;
 
 	if (CKeyMgr::Get_Instance()->Key_Pressing('A')) {
@@ -251,7 +266,6 @@ void CPlayer::Key_Input(void)
 		bMoving = true;
 	}
 
-
 	if (CKeyMgr::Get_Instance()->Key_Pressing('D')) {
 		m_tInfo.fX += m_fSpeed;
 		if (m_iCurState == PLAYER_STATE_IDLE)
@@ -261,31 +275,33 @@ void CPlayer::Key_Input(void)
 	}
 
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_SPACE)) {
-		if (!m_bJumping) {
-			m_bJumping = true;
+		if (m_dwJumping == 0) {
+			m_dwJumping = 1;
 			m_fAirTime = 0.f;
 			Change_State(PLAYER_STATE_JUMP);
 			bMoving = true;
 		}
+
+		if (m_dwJumping == 1 && m_eCurDir != DIRECTION_NONE) {
+			m_dwJumping = 2;
+			m_fAirTime = 0.f;
+			bMoving = true;
+		}
 	}
 
-	if (CKeyMgr::Get_Instance()->Key_Down(VK_LCONTROL) && m_bGun) {
-		pObj = CAbstractFactory::Create<CBullet>(m_tInfo.fX, m_tInfo.fY);
-		pObj->Set_Type(OBJ_TYPE_BULLET_PLAYER);
-		if(m_eCurDir == DIRECTION_RIGHT)
-			dynamic_cast<CBullet*>(pObj)->SetXDir(1.f);
-		else 
-			dynamic_cast<CBullet*>(pObj)->SetXDir(-1.f);
-		m_pBullets->push_back(pObj);
+	if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON) && 0 < m_eGunUpgrade) {
+		Shot();
 	}
 
-	if (!bMoving && !m_bJumping)
+	if (!bMoving && m_dwJumping == 0) {
 		Change_State(PLAYER_STATE_IDLE);
+		m_eCurDir = DIRECTION_NONE;
+	}
 }
 
 void CPlayer::Jump()
 {
-	if (m_bJumping) {
+	if (0 < m_dwJumping) {
 		m_fCurJumpDir = fJUMP_POWER * sinf(90) * m_fAirTime - (9.8f * pow(m_fAirTime, 2)) * 0.5f;
 		m_tInfo.fY -= m_fCurJumpDir;
 		m_fAirTime += 0.1f;
@@ -322,7 +338,7 @@ void CPlayer::Scroll()
 
 void CPlayer::StopJump()
 {
-	m_bJumping = false;
+	m_dwJumping = 0;
 	m_fCurJumpDir = -1.f;
 	m_fAirTime = 0.0f;
 	if(m_iCurState == PLAYER_STATE_JUMP)
@@ -365,4 +381,44 @@ void CPlayer::OutTunnel()
 		m_tInfo.fY -= m_fSpeed;
 		CScrollMgr::Get_Instance()->Add_Y(-m_fSpeed);
 	}
+}
+
+void CPlayer::Shot()
+{
+	CObj* pObj = nullptr;
+	CObj* pObj2 = nullptr;
+
+	switch (m_eGunUpgrade)
+	{
+	case PLAYER_BULLET_FIRST:
+		pObj = CAbstractFactory::Create<CBullet>(m_tInfo.fX, m_tInfo.fY);
+		break;
+	case PLAYER_BULLET_SECOND:
+		pObj = CAbstractFactory::Create<CSecondBullet>();
+		break;
+	case PLAYER_BULLET_THIRD:
+		pObj = CAbstractFactory::Create<CThirdBullet>();
+		break;
+	}
+
+	float iOffset;
+	pObj->Set_Type(OBJ_TYPE_BULLET_PLAYER);
+	if (m_eCurDir == DIRECTION_RIGHT) {
+		dynamic_cast<CBullet*>(pObj)->SetXDir(1.f);
+		iOffset = 130.f;
+	}
+	else {
+		dynamic_cast<CBullet*>(pObj)->SetXDir(-1.f);
+		iOffset = -130.f;
+	}
+	m_pBullets->push_back(pObj);
+
+	if (m_eGunUpgrade == PLAYER_BULLET_SECOND) {
+		pObj2 = CAbstractFactory::Create<CBulletEffect>(m_tInfo.fX + iOffset, m_tInfo.fY);
+		dynamic_cast<CBulletEffect*>(pObj2)->Set_Dir(m_eCurDir);
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_EFFECT)->push_back(pObj2);
+	}
+
+	if (m_eGunUpgrade >= PLAYER_BULLET_SECOND)
+		pObj->Set_Pos(m_tInfo.fX + iOffset, m_tInfo.fY);
 }

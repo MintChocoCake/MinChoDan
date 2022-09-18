@@ -32,6 +32,7 @@ void CBlock::Set_BlockID(BLOCK_ID _eID)
 void CBlock::Initialize(void)
 {
 	m_eType = OBJ_TYPE_BLOCK;
+	m_fSpeed = 3.f;
 }
 
 int CBlock::Update(void)
@@ -49,7 +50,6 @@ void CBlock::LateUpdate(void)
 
 void CBlock::OnCollision(CObj * _pTarget)
 {
-
 }
 
 void CBlock::OnCollisionEnter(CObj * _pTarget)
@@ -63,7 +63,6 @@ void CBlock::OnCollisionEnter(CObj * _pTarget)
 	{
 	case OBJ_TYPE_PLAYER:
 		if (0 > m_dwHP)	return;
-
 		pInfo = &_pTarget->Get_Info();
 		//fTempX = (pInfo->fCX + m_tInfo.fCX * 0.5f;
 

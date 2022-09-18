@@ -17,6 +17,7 @@ CStage::CStage() : m_dwScore(0)
 
 CStage::~CStage()
 {
+	Release();
 }
 
 void CStage::Initialize(void)
@@ -62,6 +63,11 @@ void CStage::LateUpdate(void)
 		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BLOCK),
 		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BULLET_MONSTER)
 	);
+
+	CCollisionMgr::Collision_Rect(
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BLOCK),
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_BULLET_PLAYER)
+	);
 	
 	CCollisionMgr::Collision_Rect(
 		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER),
@@ -94,6 +100,9 @@ void CStage::Render(HDC hDC)
 	TCHAR szBuffer[50];
 	wsprintf(szBuffer, L"SCORE: %d", m_dwScore);
 	TextOut(hDC, 0, 0, szBuffer, wcslen(szBuffer));
+
+	wsprintf(szBuffer, L"HP: %d / %d", CObjMgr::Get_Instance()->Get_Player()->Get_HP(), dwPLAYER_HP);
+	TextOut(hDC, 0, 20, szBuffer, wcslen(szBuffer));
 }
 
 void CStage::Release(void)

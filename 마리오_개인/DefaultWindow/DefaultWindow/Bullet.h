@@ -18,8 +18,10 @@ public:
 	virtual void OnCollision(CObj* _pTarget) override;
 	virtual void OnCollisionEnter(CObj* _pTarget) override;
 
-private:
+protected:
 	float m_fXDir;
+
+private:
 	float m_fAirTime;
 };
 

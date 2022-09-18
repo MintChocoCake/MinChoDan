@@ -37,6 +37,7 @@ public:
 
 public:
 	void Scroll_Lock();
+	void Initialize();
 
 private:
 	float m_fScrollX;

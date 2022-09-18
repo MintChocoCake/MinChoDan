@@ -6,6 +6,7 @@
 #include "Bullet.h"
 #include "Item.h"
 #include "ScrollMgr.h"
+#include "MyFont.h"
 
 CMonster::CMonster() : m_fAirTime(0.f), m_eMobID(MONSTER_ID_MUSHROOM)
 {
@@ -26,6 +27,7 @@ void CMonster::Initialize(void)
 
 	const MOB& data = arrMobTable[m_eMobID];
 	m_dwHP = data.dwHP;
+	m_dwDamage = data.dwStr;
 	m_hBmpDC = &(CBmpMgr::Get_Instance()->Find_Bmp(data.eBmp)->Get_BmpDC());
 
 	Change_State(MONSTER_STATE_WALK);
@@ -96,10 +98,36 @@ void CMonster::OnCollision(CObj * _pTarget)
 void CMonster::OnCollisionEnter(CObj * _pTarget)
 {
 	CObj* pObj;
+	CObj* pFont;
+	DWORD dwDamage;
+	int i = 10;
+	int iCount = 0;
+
 	switch (_pTarget->Get_Type())
 	{
 	case OBJ_TYPE_BULLET_PLAYER:
-		--m_dwHP;
+		dwDamage = CObjMgr::Get_Instance()->Get_Player()->Get_Damage();
+		dwDamage = dwDamage > m_dwHP ? m_dwHP : dwDamage;
+
+		int iNum;
+
+		while (true){
+			if (i > 10)
+				iNum = (dwDamage % i) / (i / 10);
+			else
+				iNum = (dwDamage % i);
+			pFont = CAbstractFactory::Create<CMyFont>(m_tInfo.fX - iCount * 25, m_tInfo.fY);
+			dynamic_cast<CMyFont*>(pFont)->Set_Number(iNum);
+			CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_UI)->push_back(pFont);
+			//폰트를 만들어
+
+			if (dwDamage < i)
+				break;
+			i *= 10;
+			++iCount;
+		}
+
+		m_dwHP -= dwDamage;
 		if (0 >= m_dwHP) {
 			Set_Dead();
 

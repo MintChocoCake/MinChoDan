@@ -112,6 +112,21 @@
     <Filter Include="01. Obj\05. Monster\01.TunnelMonster">
       <UniqueIdentifier>{907247d8-3c4b-46df-aa23-f2c95c938cd6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\04. Bullet\00. RotateBullet">
+      <UniqueIdentifier>{a961ef92-a4a0-4b17-9be3-f3466cf325d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\04. Bullet\01. BulletEffect">
+      <UniqueIdentifier>{1effdc76-319e-408d-87b6-f7b15754e05b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\04. Bullet\02. SecondBullet">
+      <UniqueIdentifier>{4e09e7c2-52d3-4b40-9df5-01cbb0e43c57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\04. Bullet\03. ThirdBullet">
+      <UniqueIdentifier>{72c3ec3e-1e84-46f4-bb6f-8b5f8f86ab15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\03. UIObj\02. Font">
+      <UniqueIdentifier>{7c4d97ca-aaa7-49b2-ac6d-6c664df7d498}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -207,9 +222,6 @@
     <ClInclude Include="Item.h">
       <Filter>01. Obj\06. Item</Filter>
     </ClInclude>
-    <ClInclude Include="RotateBullet.h">
-      <Filter>01. Obj\04. Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="Invisible.h">
       <Filter>01. Obj\01. Block\00. Invisible</Filter>
     </ClInclude>
@@ -222,8 +234,23 @@
     <ClInclude Include="CTunnel.h">
       <Filter>06.Add</Filter>
     </ClInclude>
+    <ClInclude Include="BulletEffect.h">
+      <Filter>01. Obj\04. Bullet\01. BulletEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateBullet.h">
+      <Filter>01. Obj\04. Bullet\00. RotateBullet</Filter>
+    </ClInclude>
     <ClInclude Include="CTunnelMonster.h">
       <Filter>01. Obj\05. Monster\01.TunnelMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondBullet.h">
+      <Filter>01. Obj\04. Bullet\02. SecondBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdBullet.h">
+      <Filter>01. Obj\04. Bullet\03. ThirdBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="MyFont.h">
+      <Filter>01. Obj\03. UIObj\02. Font</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -305,9 +332,6 @@
     <ClCompile Include="Item.cpp">
       <Filter>01. Obj\06. Item</Filter>
     </ClCompile>
-    <ClCompile Include="RotateBullet.cpp">
-      <Filter>01. Obj\04. Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="Invisible.cpp">
       <Filter>01. Obj\01. Block\00. Invisible</Filter>
     </ClCompile>
@@ -320,8 +344,23 @@
     <ClCompile Include="CTunnel.cpp">
       <Filter>06.Add</Filter>
     </ClCompile>
+    <ClCompile Include="BulletEffect.cpp">
+      <Filter>01. Obj\04. Bullet\01. BulletEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="RotateBullet.cpp">
+      <Filter>01. Obj\04. Bullet\00. RotateBullet</Filter>
+    </ClCompile>
     <ClCompile Include="CTunnelMonster.cpp">
       <Filter>01. Obj\05. Monster\01.TunnelMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondBullet.cpp">
+      <Filter>01. Obj\04. Bullet\02. SecondBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdBullet.cpp">
+      <Filter>01. Obj\04. Bullet\03. ThirdBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="MyFont.cpp">
+      <Filter>01. Obj\03. UIObj\02. Font</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

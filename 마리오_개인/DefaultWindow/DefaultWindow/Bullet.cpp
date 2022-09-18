@@ -31,7 +31,7 @@ int CBullet::Update(void)
 	if (m_bDead)
 		return OBJ_DEAD;
 
-	m_tInfo.fX += m_fXDir * m_fSpeed;
+	m_tInfo.fX += m_fXDir * m_fSpeed * (m_fAirTime * 0.5f);
 	m_tInfo.fY -= 10.f * sinf(90) * m_fAirTime - (9.8f * pow(m_fAirTime, 2)) * 0.5f;
 
 	m_fAirTime += 0.1f;
@@ -43,9 +43,9 @@ void CBullet::LateUpdate(void)
 {
  	Update_Rect();
 	Update_Active();
+	Update_Frame();
 
-	float m_fScreenX = CScrollMgr::Get_Instance()->Get_X() + m_tInfo.fX;
-	if (m_fScreenX < 0)
+	if (!m_bActive)
 		Set_Dead();
 }
 

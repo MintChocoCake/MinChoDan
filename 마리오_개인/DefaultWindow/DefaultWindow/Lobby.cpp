@@ -6,6 +6,7 @@
 #include "Cursor.h"
 #include "UIButton.h"
 #include "CollisionMgr.h"
+#include "ScrollMgr.h"
 
 CLobby::CLobby()
 {
@@ -19,6 +20,8 @@ CLobby::~CLobby()
 
 void CLobby::Initialize(void)
 {
+	CScrollMgr::Get_Instance()->Initialize();
+
 	CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_PLAYER)->push_back(
 		CAbstractFactory::Create<CCursor>()
 	);

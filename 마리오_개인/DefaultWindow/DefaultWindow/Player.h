@@ -17,6 +17,14 @@ private:
 		PLAYER_STATE_END
 	};
 
+	enum PLAYER_BULLET {
+		PLAYER_BULLET_NONE,
+		PLAYER_BULLET_FIRST,
+		PLAYER_BULLET_SECOND,
+		PLAYER_BULLET_THIRD,
+		PLAYER_BULLET_END
+	};
+
 public:
 	virtual void Initialize(void) override;
 	virtual int Update(void) override;
@@ -31,12 +39,12 @@ private:
 	bool m_bGoTunnel;
 	bool m_bOutTunnel;
 	POINT TunnelDest;
-	bool m_bJumping;
-	bool m_bGun;
+	DWORD m_dwJumping;
 	float m_fCurJumpDir;
 	float m_fAirTime;
 	list<CObj*>* m_pBullets;
 	DIRECTION m_eCurDir;
+	PLAYER_BULLET m_eGunUpgrade;
 
 private:
 	void Key_Input(void);
@@ -46,5 +54,6 @@ private:
 	void ChangeDir(DIRECTION _eDir);
 	void InTunnel();
 	void OutTunnel();
+	void Shot();
 };
 

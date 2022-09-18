@@ -56,7 +56,7 @@ void CObj::Render(HDC hDC)
 		(int)m_tInfo.fCX, (int)m_tInfo.fCY, RGB(255, 255, 255));
 
 	//충돌 확인용
-	//Rectangle(hDC, m_tRect.left + lScrollX, m_tRect.top, m_tRect.right + lScrollX, m_tRect.bottom);
+	//Rectangle(hDC, m_tRect.left + lScrollX, m_tRect.top + lScrollY, m_tRect.right + lScrollX, m_tRect.bottom + lScrollY);
 }
 
 FRAME CObj::SetFrame(int _iState)

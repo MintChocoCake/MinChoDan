@@ -61,6 +61,7 @@ FRAME CLeftBody::SetFrame(int _iState)
 		return{ 0, 3, BOSS_STATE_ATTACK_01, 100 };
 		break;
 	case CLeftBody::BOSS_STATE_DIE:
+		Set_Pos(m_BasePos.x + 0.4f, m_BasePos.y);
 		return { 0, 14, BOSS_STATE_DIE, 100 };
 		break;
 	}

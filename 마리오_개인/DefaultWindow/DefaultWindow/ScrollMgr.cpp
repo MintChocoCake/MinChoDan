@@ -19,12 +19,13 @@ void CScrollMgr::Scroll_Lock()
 
 	if (-10 < m_fScrollY)
 		m_fScrollY = -10;
+	// TILEC * TILEX + 30
 
 	if (WINCX - TILEC * TILEX + 30 > m_fScrollX)
 		m_fScrollX = WINCX - TILEC * TILEX + 30;
 
 	if (WINCY - TILEC * TILEY + 30 > m_fScrollY)
-		m_fScrollY = WINCY - TILEC * TILEY + 30;
+		m_fScrollY = WINCY - TILEC * TILEX + 30;
 }
 
 void CScrollMgr::Initialize()

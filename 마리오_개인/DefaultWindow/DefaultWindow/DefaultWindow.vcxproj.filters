@@ -139,6 +139,12 @@
     <ClCompile Include="DoubleJumpEffect.cpp">
       <Filter>01. CObj\00. Player</Filter>
     </ClCompile>
+    <ClCompile Include="Wing.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\02.Wing</Filter>
+    </ClCompile>
+    <ClCompile Include="Tail.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\03.Tail</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Block.h">
@@ -290,6 +296,12 @@
     </ClInclude>
     <ClInclude Include="DoubleJumpEffect.h">
       <Filter>01. CObj\00. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Wing.h">
+      <Filter>01. CObj\03. Monster\00. Boss\02.Wing</Filter>
+    </ClInclude>
+    <ClInclude Include="Tail.h">
+      <Filter>01. CObj\03. Monster\00. Boss\03.Tail</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

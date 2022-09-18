@@ -188,7 +188,7 @@ void CMonster::MakeDamageFont(DWORD _dwDamage)
 			iNum = (_dwDamage % i) / (i / 10);
 		else
 			iNum = (_dwDamage % i);
-		pFont = CAbstractFactory::Create<CMyFont>(m_tInfo.fX - iCount * 25, m_tInfo.fY);
+		pFont = CAbstractFactory::Create<CMyFont>(m_tInfo.fX - iCount * 20, m_tInfo.fY);
 		dynamic_cast<CMyFont*>(pFont)->Set_Number(iNum);
 		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_UI)->push_back(pFont);
 

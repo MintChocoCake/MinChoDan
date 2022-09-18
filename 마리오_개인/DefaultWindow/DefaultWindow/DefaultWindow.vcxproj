@@ -159,6 +159,7 @@
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="DefaultWindow.h" />
     <ClInclude Include="Define.h" />
+    <ClInclude Include="DoubleJumpEffect.h" />
     <ClInclude Include="LeftBody.h" />
     <ClInclude Include="LeftHead.h" />
     <ClInclude Include="Mococo.h" />
@@ -208,6 +209,7 @@
     <ClCompile Include="CTunnelMonster.cpp" />
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="DefaultWindow.cpp" />
+    <ClCompile Include="DoubleJumpEffect.cpp" />
     <ClCompile Include="LeftBody.cpp" />
     <ClCompile Include="LeftHead.cpp" />
     <ClCompile Include="Mococo.cpp" />

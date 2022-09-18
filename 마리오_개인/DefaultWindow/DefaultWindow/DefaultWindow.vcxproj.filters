@@ -16,9 +16,6 @@
     <ClCompile Include="BmpMgr.cpp">
       <Filter>02. Design\01. BmpMgr</Filter>
     </ClCompile>
-    <ClCompile Include="AfterImage.cpp">
-      <Filter>01. CObj\00. Player</Filter>
-    </ClCompile>
     <ClCompile Include="CollisionMgr.cpp">
       <Filter>02. Design\02. CollisionMgr</Filter>
     </ClCompile>
@@ -136,6 +133,12 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>리소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="AfterImage.cpp">
+      <Filter>01. CObj\00. Player\00. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="DoubleJumpEffect.cpp">
+      <Filter>01. CObj\00. Player\00. Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Block.h">
@@ -155,9 +158,6 @@
     </ClInclude>
     <ClInclude Include="BmpMgr.h">
       <Filter>02. Design\01. BmpMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="AfterImage.h">
-      <Filter>01. CObj\00. Player</Filter>
     </ClInclude>
     <ClInclude Include="CollisionMgr.h">
       <Filter>02. Design\02. CollisionMgr</Filter>
@@ -284,6 +284,12 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="AfterImage.h">
+      <Filter>01. CObj\00. Player\00. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleJumpEffect.h">
+      <Filter>01. CObj\00. Player\00. Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -423,6 +429,9 @@
     </Filter>
     <Filter Include="기타">
       <UniqueIdentifier>{67b96e03-318b-49cc-821d-3591900e45cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. CObj\00. Player\00. Effect">
+      <UniqueIdentifier>{5c2a96a5-fc40-4a0c-a492-4a425ee2d6d6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

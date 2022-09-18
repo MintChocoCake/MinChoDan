@@ -16,6 +16,7 @@
 #include "SecondBullet.h"
 #include "ThirdBullet.h"
 #include "AfterImage.h"
+#include "DoubleJumpEffect.h"
 
 const float fJUMP_POWER = 15.f;
 
@@ -275,6 +276,9 @@ void CPlayer::Key_Input(void)
 		bMoving = true;
 	}
 
+	CObj* pObj;
+	float fOffset;
+
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_SPACE)) {
 		if (m_dwJumping == 0) {
 			m_dwJumping = 1;
@@ -286,6 +290,10 @@ void CPlayer::Key_Input(void)
 		else if (m_dwJumping == 1 && bMoving) {
 			m_dwJumping = 2;
 			m_fAirTime = 0.f;
+			fOffset = m_eCurDir == DIRECTION_LEFT ? 120 : -120;
+			pObj = CAbstractFactory::Create<CDoubleJumpEffect>(m_tInfo.fX + fOffset, m_tInfo.fY);
+			dynamic_cast<CDoubleJumpEffect*>(pObj)->Set_Dir(m_eCurDir);
+			CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_EFFECT)->push_back(pObj);
 		}
 	}
 

@@ -73,6 +73,8 @@ void CBmpMgr::Initialize()
 	// Effect
 	Insert_Bmp(_T("../MyImage/BulletEffect_Left.bmp"), BMP_KEY_BULLET_EFFECT_LEFT);
 	Insert_Bmp(_T("../MyImage/BulletEffect_Right.bmp"), BMP_KEY_BULLET_EFFECT_RIGHT);
+	Insert_Bmp(_T("../MyImage/DoubleJump_left.bmp"), BMP_KEY_DOUBLE_JUMP_LEFT);
+	Insert_Bmp(_T("../MyImage/DoubleJump_right.bmp"), BMP_KEY_DOUBLE_JUMP_RIGHT);
 	Insert_Bmp(_T("../MyImage/Damage.bmp"), BMP_KEY_DAMAGE);
 }
 

@@ -30,12 +30,6 @@ public:
 protected:
 	virtual void Set_Bmp(float _fCX, float _fCY, int _iState, BMP_KEY _eBmp);
 
-public:
-	// 보스 캐스팅 상태
-	bool	Get_Cast() { return m_bCast; }
-	void	Cast_On() { m_bCast = true; }
-	void	Cast_Off() { m_bCast = false; }
-
 private:
 	void CreateChild();
 	void Attack();
@@ -45,7 +39,5 @@ protected:
 
 	float m_Delay;
 
-	// 보스 캐스팅 상태
-	bool	m_bCast;
 };
 

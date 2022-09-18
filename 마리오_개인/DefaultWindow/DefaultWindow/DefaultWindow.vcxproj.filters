@@ -145,12 +145,9 @@
     <ClCompile Include="Tail.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\03. Tail</Filter>
     </ClCompile>
-    <ClCompile Include="BombMob.cpp">
-      <Filter>01. CObj\03. Monster\06. Bomb</Filter>
-    </ClCompile>
-    <ClCompile Include="FireMob.cpp">
-      <Filter>01. CObj\03. Monster\05. Fire</Filter>
-    </ClCompile>
+    <ClCompile Include="BombMob.cpp" />
+    <ClCompile Include="FireMob.cpp" />
+    <ClCompile Include="Lightning.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Block.h">
@@ -309,12 +306,9 @@
     <ClInclude Include="Tail.h">
       <Filter>01. CObj\03. Monster\00. Boss\03. Tail</Filter>
     </ClInclude>
-    <ClInclude Include="BombMob.h">
-      <Filter>01. CObj\03. Monster\06. Bomb</Filter>
-    </ClInclude>
-    <ClInclude Include="FireMob.h">
-      <Filter>01. CObj\03. Monster\05. Fire</Filter>
-    </ClInclude>
+    <ClInclude Include="BombMob.h" />
+    <ClInclude Include="FireMob.h" />
+    <ClInclude Include="Lightning.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="DefaultWindow.ico">

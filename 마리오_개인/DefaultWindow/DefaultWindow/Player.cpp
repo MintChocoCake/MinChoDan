@@ -15,6 +15,7 @@
 #include "BulletEffect.h"
 #include "SecondBullet.h"
 #include "ThirdBullet.h"
+#include "AfterImage.h"
 
 const float fJUMP_POWER = 15.f;
 
@@ -31,7 +32,7 @@ CPlayer::~CPlayer()
 void CPlayer::Initialize(void)
 {
 	m_tInfo.fX = 200.f;
-	m_tInfo.fY = 600.f;
+	m_tInfo.fY = 200.f;
 
 	m_tInfo.fCX = 53.f;
 	m_tInfo.fCY = 70.f;
@@ -49,6 +50,7 @@ void CPlayer::Initialize(void)
 
 int CPlayer::Update(void)
 {
+	ShowAfterImage();
 	if (m_bDead) {
 		CSceneMgr::Get_Instance()->Change_Scene(CSceneMgr::SCENE_ID_LOBBY);
 		return OBJ_DEAD;
@@ -141,7 +143,7 @@ void CPlayer::OnCollision(CObj * _pTarget)
 			}
 		}
 
-		// Åä°ü
+		// ï¿½ï¿½ï¿½
 		if(dynamic_cast<CBlock*>(_pTarget)->m_eBlockID == BLOCK_ID_TUNNEL_IN)
 		{
 			if (CKeyMgr::Get_Instance()->Key_Down('S'))
@@ -421,4 +423,31 @@ void CPlayer::Shot()
 
 	if (m_eGunUpgrade >= PLAYER_BULLET_SECOND)
 		pObj->Set_Pos(m_tInfo.fX + iOffset, m_tInfo.fY);
+
+void CPlayer::ShowAfterImage()
+{
+	if (m_AfterImgDelay <= 0.f) 
+	{
+		if (CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_AFTERIMAGE)->size() > 2)
+		{
+			CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_AFTERIMAGE)->front()->Set_Dead();
+
+			auto& A = CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_AFTERIMAGE)->begin()++;
+			auto& B = ++(A);
+			auto& C = ++(B);
+
+			dynamic_cast<CAfterImage*>(*A)->Set_Alpha(3);
+			dynamic_cast<CAfterImage*>(*B)->Set_Alpha(3);
+			dynamic_cast<CAfterImage*>(*C)->Set_Alpha(2);
+		}
+
+		CObj* _Obj = CAbstractFactory::Create<CAfterImage>(m_tInfo.fX, m_tInfo.fY);
+		dynamic_cast<CAfterImage*>(_Obj)->Set_Frame(m_tFrame);
+		dynamic_cast<CAfterImage*>(_Obj)->Set_Dir(m_eCurDir);
+		dynamic_cast<CAfterImage*>(_Obj)->Set_Alpha(1);
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_AFTERIMAGE)->push_back(_Obj);
+		m_AfterImgDelay = 4.f;
+	}
+	else
+		--m_AfterImgDelay;
 }

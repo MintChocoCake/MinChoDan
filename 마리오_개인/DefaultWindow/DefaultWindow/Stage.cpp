@@ -83,6 +83,11 @@ void CStage::LateUpdate(void)
 		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_HILL),
 		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_PLAYER)
 	);
+
+	CCollisionMgr::Collision_Rect(
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER),
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_PLAYER)
+	);
 }
 
 void CStage::Render(HDC hDC)

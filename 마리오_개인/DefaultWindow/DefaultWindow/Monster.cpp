@@ -8,7 +8,7 @@
 #include "ScrollMgr.h"
 #include "MyFont.h"
 
-CMonster::CMonster() : m_fAirTime(0.f), m_eMobID(MONSTER_ID_MUSHROOM)
+CMonster::CMonster() : m_fAirTime(0.f), m_eMobID(MONSTER_ID_MUSHROOM), m_eCurState(MONSTER_STATE_NONE)
 {
 
 }
@@ -30,7 +30,7 @@ void CMonster::Initialize(void)
 	m_dwDamage = data.dwStr;
 	m_hBmpDC = &(CBmpMgr::Get_Instance()->Find_Bmp(data.eBmp)->Get_BmpDC());
 
-	Change_State(MONSTER_STATE_WALK);
+	ChangeState(MONSTER_STATE_WALK);
 }
 
 int CMonster::Update(void)
@@ -103,6 +103,9 @@ void CMonster::OnCollisionEnter(CObj * _pTarget)
 	int i = 10;
 	int iCount = 0;
 
+	// ï¿½ß°ï¿½ 
+	INFO* pInfo;
+
 	switch (_pTarget->Get_Type())
 	{
 	case OBJ_TYPE_BULLET_PLAYER:
@@ -119,7 +122,7 @@ void CMonster::OnCollisionEnter(CObj * _pTarget)
 			pFont = CAbstractFactory::Create<CMyFont>(m_tInfo.fX - iCount * 25, m_tInfo.fY);
 			dynamic_cast<CMyFont*>(pFont)->Set_Number(iNum);
 			CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_UI)->push_back(pFont);
-			//ÆùÆ®¸¦ ¸¸µé¾î
+			//ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 
 			if (dwDamage < i)
 				break;
@@ -139,14 +142,31 @@ void CMonster::OnCollisionEnter(CObj * _pTarget)
 			}
 		}
 		break;
+
+		// ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ( ï¿½ß°ï¿½ )
+	case OBJ_TYPE_PLAYER:
+		pInfo = &_pTarget->Get_Info();
+
+		// ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¹ï¿½ï¿½Â°ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½
+		if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY && pInfo->fX - pInfo->fCX * 0.7f <= m_tInfo.fX &&
+			pInfo->fX + pInfo->fCX * 0.7f >= m_tInfo.fX) {
+			if (pInfo->fY < m_tInfo.fY) {
+				ChangeState(MONSTER_STATE_CRUSH);
+				m_fSpeed = 0.f;
+				m_bCrushCount++;
+				if (m_bCrushCount == 2)
+				{
+					m_fSpeed = 10.f;
+					m_bCrushCount = 0;
+				}
+			}
+		}
+		break;
+		//
+
 	default:
 		break;
 	}
-}
-
-FRAME CMonster::SetFrame(int _iState)
-{
-	return { 0, 1, MONSTER_STATE_WALK, 200 };
 }
 
 void CMonster::Act()
@@ -157,3 +177,25 @@ void CMonster::Act()
 	m_fAirTime += 0.1f;
 }
 
+void CMonster::ChangeState(MONSTER_STATE _eState)
+{
+	if (m_eCurState == _eState)
+		return;
+
+	FRAME tFrame;
+	switch (_eState)
+	{
+	case MONSTER_STATE_WALK:
+		tFrame = { 0, 1, MONSTER_STATE_WALK, 200 };
+		break;
+
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½×·ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ( ï¿½ß°ï¿½ )
+	case MONSTER_STATE_CRUSH:	
+		tFrame = { 0, 1, MONSTER_STATE_CRUSH, 200 };
+		break;
+	}
+
+	m_tFrame = tFrame;
+	m_eCurState = _eState;
+	m_tFrame.dwTimer = GetTickCount();
+}

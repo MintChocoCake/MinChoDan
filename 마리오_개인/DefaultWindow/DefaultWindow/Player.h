@@ -46,6 +46,8 @@ private:
 	DIRECTION m_eCurDir;
 	PLAYER_BULLET m_eGunUpgrade;
 
+	float m_AfterImgDelay = 4.f;
+
 private:
 	void Key_Input(void);
 	void Jump();
@@ -55,5 +57,6 @@ private:
 	void InTunnel();
 	void OutTunnel();
 	void Shot();
+	void ShowAfterImage();
 };
 

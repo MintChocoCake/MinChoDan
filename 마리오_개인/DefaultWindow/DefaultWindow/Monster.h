@@ -11,6 +11,7 @@ protected:
 	enum MONSTER_STATE {
 		MONSTER_STATE_NONE = -1,
 		MONSTER_STATE_WALK,
+		MONSTER_STATE_CRUSH,  // ¸ó½ºÅÍ Âî±×·¯Áü
 		MONSTER_STATE_END
 	};
 
@@ -25,7 +26,6 @@ public:
 	virtual void Release(void) override;
 	virtual void OnCollision(CObj* _pTarget) override;
 	virtual void OnCollisionEnter(CObj* _pTarget) override;
-	virtual FRAME SetFrame(int _iState);
 
 protected:
 	MONSTER_ID m_eMobID;
@@ -35,5 +35,12 @@ protected:
 
 private:
 	float m_fAirTime;
+	MONSTER_STATE m_eCurState;
+
+private:
+	void ChangeState(MONSTER_STATE _eState);
+	// ¸ó½ºÅÍ ¹à±â ÆÇº°
+	int	m_bCrushCount = 0;
+
 };
 

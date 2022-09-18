@@ -16,7 +16,16 @@ void CBmpMgr::Initialize()
 {
 	// Player
 	Insert_Bmp(_T("../MyImage/PlayerLeft.bmp"), BMP_KEY_PLAYER_LEFT);
+	Insert_Bmp(_T("../MyImage/PlayerLeft_01.bmp"), BMP_KEY_PLAYER_LEFT_01);
+	Insert_Bmp(_T("../MyImage/PlayerLeft_02.bmp"), BMP_KEY_PLAYER_LEFT_02);	
+	Insert_Bmp(_T("../MyImage/PlayerLeft_03.bmp"), BMP_KEY_PLAYER_LEFT_03);
 	Insert_Bmp(_T("../MyImage/PlayerRight.bmp"), BMP_KEY_PLAYER_RIGHT);
+	Insert_Bmp(_T("../MyImage/PlayerRight_01.bmp"), BMP_KEY_PLAYER_RIGHT_01);
+	Insert_Bmp(_T("../MyImage/PlayerRight_02.bmp"), BMP_KEY_PLAYER_RIGHT_02);
+	Insert_Bmp(_T("../MyImage/PlayerRight_03.bmp"), BMP_KEY_PLAYER_RIGHT_03);
+	Insert_Bmp(_T("../MyImage/Ground.bmp"), BMP_KEY_GROUND);
+	Insert_Bmp(_T("../Image/Back.bmp"), BMP_KEY_BACK);
+	Insert_Bmp(_T("../Image/Logo/Logo.bmp"), BMP_KEY_LOGO);
 
 	// Block
 	Insert_Bmp(_T("../MyImage/Tile.bmp"), BMP_KEY_BLOCK_TILE);
@@ -24,12 +33,12 @@ void CBmpMgr::Initialize()
 	Insert_Bmp(_T("../MyImage/ItemBox.bmp"), BMP_KEY_BLOCK_ITEM_BOX);
 	Insert_Bmp(_T("../MyImage/Invisible.bmp"), BMP_KEY_BLOCK_INVISIBLE);
 	Insert_Bmp(_T("../MyImage/RotateFire.bmp"), BMP_KEY_BLOCK_ROTATE_FIRE);
-	Insert_Bmp(_T("../MyImage/Tunnel.bmp"), BMP_KEY_BLOCK_ID_TUNNEL_IN);
-	Insert_Bmp(_T("../MyImage/Tunnel_Out.bmp"), BMP_KEY_BLOCK_ID_TUNNEL_OUT);
 
 	// Monster
-	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_MUSHROOM);
+	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_MUSHROOM);  // ���� �̹����� ��ü 
 	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_GUNNER);
+	Insert_Bmp(_T("../MyImage/Tutle.bmp"), BMP_KEY_MONSTER_TUTLE); // �ź��� �̹��� �߰�
+	Insert_Bmp(_T("../MyImage/CoCoMo2.bmp"), BMP_KEY_MONSTER_MOCOCO);   // ������ �̹��� �߰�
 	Insert_Bmp(_T("../MyImage//Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);
 
 	// UI

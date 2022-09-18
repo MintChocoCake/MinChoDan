@@ -106,12 +106,6 @@
     <ClCompile Include="RightBody.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
     </ClCompile>
-    <ClCompile Include="LeftBody.cpp">
-      <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
-    </ClCompile>
-    <ClCompile Include="LeftHead.cpp">
-      <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
-    </ClCompile>
     <ClCompile Include="RightHead.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
     </ClCompile>
@@ -133,11 +127,17 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>리소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="AfterImage.cpp">
-      <Filter>01. CObj\00. Player\00. Effect</Filter>
+    <ClCompile Include="Wing.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\02.Wing</Filter>
     </ClCompile>
-    <ClCompile Include="DoubleJumpEffect.cpp">
-      <Filter>01. CObj\00. Player\00. Effect</Filter>
+    <ClCompile Include="Tail.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\03.Tail</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftBody.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftHead.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -252,12 +252,6 @@
     <ClInclude Include="RightBody.h">
       <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
     </ClInclude>
-    <ClInclude Include="LeftBody.h">
-      <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
-    </ClInclude>
-    <ClInclude Include="LeftHead.h">
-      <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
-    </ClInclude>
     <ClInclude Include="RightHead.h">
       <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
     </ClInclude>
@@ -285,11 +279,17 @@
     <ClInclude Include="targetver.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="AfterImage.h">
-      <Filter>01. CObj\00. Player\00. Effect</Filter>
+    <ClInclude Include="Wing.h">
+      <Filter>01. CObj\03. Monster\00. Boss\02.Wing</Filter>
     </ClInclude>
-    <ClInclude Include="DoubleJumpEffect.h">
-      <Filter>01. CObj\00. Player\00. Effect</Filter>
+    <ClInclude Include="Tail.h">
+      <Filter>01. CObj\03. Monster\00. Boss\03.Tail</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftBody.h">
+      <Filter>01. CObj\03. Monster\00. Boss\01. Body</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftHead.h">
+      <Filter>01. CObj\03. Monster\00. Boss\00. Head</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -430,8 +430,11 @@
     <Filter Include="기타">
       <UniqueIdentifier>{67b96e03-318b-49cc-821d-3591900e45cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. CObj\00. Player\00. Effect">
-      <UniqueIdentifier>{5c2a96a5-fc40-4a0c-a492-4a425ee2d6d6}</UniqueIdentifier>
+    <Filter Include="01. CObj\03. Monster\00. Boss\02.Wing">
+      <UniqueIdentifier>{14e2bc01-8fed-4859-8230-810a99295cb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. CObj\03. Monster\00. Boss\03.Tail">
+      <UniqueIdentifier>{bd5e5a62-ac59-47dc-a5a0-4339bdc034ae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

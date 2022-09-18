@@ -142,12 +142,20 @@
     <ClCompile Include="Wing.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\02. WIng</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
     <ClCompile Include="Tail.cpp" />
     <ClCompile Include="FireMob.cpp">
       <Filter>01. CObj\03. Monster\05. FireMob</Filter>
     </ClCompile>
     <ClCompile Include="BombMob.cpp">
       <Filter>01. CObj\03. Monster\06. BombMob</Filter>
+=======
+    <ClCompile Include="Lightning.cpp">
+      <Filter>01. CObj\04. Bullet\03.Lightning</Filter>
+    </ClCompile>
+    <ClCompile Include="Tail.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\03.Tail</Filter>
+>>>>>>> Stashed changes
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -304,12 +312,20 @@
     <ClInclude Include="Wing.h">
       <Filter>01. CObj\03. Monster\00. Boss\02. WIng</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
     <ClInclude Include="Tail.h" />
     <ClInclude Include="FireMob.h">
       <Filter>01. CObj\03. Monster\05. FireMob</Filter>
     </ClInclude>
     <ClInclude Include="BombMob.h">
       <Filter>01. CObj\03. Monster\06. BombMob</Filter>
+=======
+    <ClInclude Include="Lightning.h">
+      <Filter>01. CObj\04. Bullet\03.Lightning</Filter>
+    </ClInclude>
+    <ClInclude Include="Tail.h">
+      <Filter>01. CObj\03. Monster\00. Boss\03.Tail</Filter>
+>>>>>>> Stashed changes
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -453,11 +469,19 @@
     <Filter Include="01. CObj\03. Monster\00. Boss\02. WIng">
       <UniqueIdentifier>{2a04b711-8aca-4b57-92c6-256af78bae88}</UniqueIdentifier>
     </Filter>
+<<<<<<< Updated upstream
     <Filter Include="01. CObj\03. Monster\05. FireMob">
       <UniqueIdentifier>{0f88856e-0fcb-41cb-b853-44908f46392f}</UniqueIdentifier>
     </Filter>
     <Filter Include="01. CObj\03. Monster\06. BombMob">
       <UniqueIdentifier>{a571b191-0223-467c-a938-9536837c23b1}</UniqueIdentifier>
+=======
+    <Filter Include="01. CObj\04. Bullet\03.Lightning">
+      <UniqueIdentifier>{614d19e7-bf55-4c8f-88d2-f24632664a6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. CObj\03. Monster\00. Boss\03.Tail">
+      <UniqueIdentifier>{73cb226c-6eee-48e3-9e15-eef5776cb962}</UniqueIdentifier>
+>>>>>>> Stashed changes
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,7 @@
 #include "Wing.h"
 #include "Tail.h"
 CBoss::CBoss()
+	: m_bCast(false)
 {
 	m_eMobID = MONSTER_ID_BOSS;
 }

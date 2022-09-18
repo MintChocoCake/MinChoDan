@@ -142,7 +142,12 @@
     <ClCompile Include="Wing.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\02. WIng</Filter>
     </ClCompile>
-    <ClCompile Include="Tail.cpp" />
+    <ClCompile Include="Tail.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\03. Tail</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftHeadSkill.cpp">
+      <Filter>01. CObj\03. Monster\00. Boss\00. Head\01. LeftHeadSkill</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Block.h">
@@ -298,7 +303,12 @@
     <ClInclude Include="Wing.h">
       <Filter>01. CObj\03. Monster\00. Boss\02. WIng</Filter>
     </ClInclude>
-    <ClInclude Include="Tail.h" />
+    <ClInclude Include="Tail.h">
+      <Filter>01. CObj\03. Monster\00. Boss\03. Tail</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftHeadSkill.h">
+      <Filter>01. CObj\03. Monster\00. Boss\00. Head\01. LeftHeadSkill</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="DefaultWindow.ico">
@@ -440,6 +450,12 @@
     </Filter>
     <Filter Include="01. CObj\03. Monster\00. Boss\02. WIng">
       <UniqueIdentifier>{2a04b711-8aca-4b57-92c6-256af78bae88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. CObj\03. Monster\00. Boss\03. Tail">
+      <UniqueIdentifier>{c00c4f14-2198-438d-8186-e111e1b45dde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. CObj\03. Monster\00. Boss\00. Head\01. LeftHeadSkill">
+      <UniqueIdentifier>{47f482b2-93a7-487d-a6a8-b142507715e8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

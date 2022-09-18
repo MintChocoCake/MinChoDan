@@ -164,7 +164,6 @@
     <ClInclude Include="FireMob.h" />
     <ClInclude Include="LeftBody.h" />
     <ClInclude Include="LeftHead.h" />
-    <ClInclude Include="LeftHeadSkill.h" />
     <ClInclude Include="Mococo.h" />
     <ClInclude Include="Gunner.h" />
     <ClInclude Include="Hill.h" />
@@ -219,7 +218,6 @@
     <ClCompile Include="FireMob.cpp" />
     <ClCompile Include="LeftBody.cpp" />
     <ClCompile Include="LeftHead.cpp" />
-    <ClCompile Include="LeftHeadSkill.cpp" />
     <ClCompile Include="Mococo.cpp" />
     <ClCompile Include="Gunner.cpp" />
     <ClCompile Include="Hill.cpp" />

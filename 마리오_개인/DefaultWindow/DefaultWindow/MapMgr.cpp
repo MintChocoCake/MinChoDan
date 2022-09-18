@@ -157,6 +157,9 @@ void CMapMgr::Key_Input()
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_F9)) {
 		Create_Monster(MONSTER_ID_BOSS);
 	}
+	if (CKeyMgr::Get_Instance()->Key_Down('Q')) {
+		Create_Block(BLOCK_ID_GOLDE_TILE);
+	}
 
 	if (CKeyMgr::Get_Instance()->Key_Down('Z')) {
 		Create_Monster(MONSTER_ID_MUSHROOM);

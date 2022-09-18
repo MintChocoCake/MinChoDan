@@ -145,14 +145,11 @@
     <ClCompile Include="Tail.cpp">
       <Filter>01. CObj\03. Monster\00. Boss\03. Tail</Filter>
     </ClCompile>
-    <ClCompile Include="LeftHeadSkill.cpp">
-      <Filter>01. CObj\03. Monster\00. Boss\00. Head\01. LeftHeadSkill</Filter>
+    <ClCompile Include="BombMob.cpp">
+      <Filter>01. CObj\03. Monster\06. Bomb</Filter>
     </ClCompile>
     <ClCompile Include="FireMob.cpp">
-      <Filter>01. CObj\03. Monster\05. FireMob</Filter>
-    </ClCompile>
-    <ClCompile Include="BombMob.cpp">
-      <Filter>01. CObj\03. Monster\06. BombMob</Filter>
+      <Filter>01. CObj\03. Monster\05. Fire</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -312,14 +309,11 @@
     <ClInclude Include="Tail.h">
       <Filter>01. CObj\03. Monster\00. Boss\03. Tail</Filter>
     </ClInclude>
-    <ClInclude Include="LeftHeadSkill.h">
-      <Filter>01. CObj\03. Monster\00. Boss\00. Head\01. LeftHeadSkill</Filter>
+    <ClInclude Include="BombMob.h">
+      <Filter>01. CObj\03. Monster\06. Bomb</Filter>
     </ClInclude>
     <ClInclude Include="FireMob.h">
-      <Filter>01. CObj\03. Monster\05. FireMob</Filter>
-    </ClInclude>
-    <ClInclude Include="BombMob.h">
-      <Filter>01. CObj\03. Monster\06. BombMob</Filter>
+      <Filter>01. CObj\03. Monster\05. Fire</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -463,17 +457,14 @@
     <Filter Include="01. CObj\03. Monster\00. Boss\02. WIng">
       <UniqueIdentifier>{2a04b711-8aca-4b57-92c6-256af78bae88}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. CObj\03. Monster\05. FireMob">
-      <UniqueIdentifier>{0f88856e-0fcb-41cb-b853-44908f46392f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. CObj\03. Monster\06. BombMob">
-      <UniqueIdentifier>{a571b191-0223-467c-a938-9536837c23b1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. CObj\03. Monster\00. Boss\03. Tail">
       <UniqueIdentifier>{c00c4f14-2198-438d-8186-e111e1b45dde}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. CObj\03. Monster\00. Boss\00. Head\01. LeftHeadSkill">
-      <UniqueIdentifier>{47f482b2-93a7-487d-a6a8-b142507715e8}</UniqueIdentifier>
+    <Filter Include="01. CObj\03. Monster\05. Fire">
+      <UniqueIdentifier>{35b5952c-55ce-415a-8a8d-c721432bbe76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. CObj\03. Monster\06. Bomb">
+      <UniqueIdentifier>{312e9dc4-05f5-46e9-9853-814c8bd2ab51}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

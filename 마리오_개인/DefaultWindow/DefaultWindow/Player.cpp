@@ -18,6 +18,7 @@
 #include "AfterImage.h"
 #include "Monster.h"
 #include "DoubleJumpEffect.h"
+#include "MyFont.h"
 
 const float fJUMP_POWER = 15.f;
 
@@ -223,16 +224,22 @@ void CPlayer::OnCollisionEnter(CObj * _pTarget)
 	case OBJ_TYPE_BULLET_MONSTER:
 		dwDamage = dwMONSTER_BULLET_STR;
 		dwDamage = dwDamage > m_dwHP ? m_dwHP : dwDamage;
+		MakeDamageFont(dwDamage);
 		m_dwHP -= dwDamage;
 		if (m_dwHP <= 0)
 			Set_Dead();
 		break;
 
 	case OBJ_TYPE_MONSTER:
-
-		if (m_dwJumping == 0) {
+//<<<<<<< Updated upstream
+//
+//		if (m_dwJumping == 0) {
+//=======
+		pInfo = &_pTarget->Get_Info();
+		if (m_tInfo.fY > pInfo->fY - pInfo->fCY * 0.5f) {
 			dwDamage = _pTarget->Get_Damage();
 			dwDamage = dwDamage > m_dwHP ? m_dwHP : dwDamage;
+			MakeDamageFont(dwDamage);
 			m_dwHP -= dwDamage;
 			if (m_dwHP <= 0)
 				Set_Dead();
@@ -310,7 +317,7 @@ void CPlayer::Key_Input(void)
 {
 	bool bMoving = false;
 
-	if (CKeyMgr::Get_Instance()->Key_Pressing('A')) {
+	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_LEFT)) {
 		m_tInfo.fX -= m_fSpeed;
 		if(m_iCurState == PLAYER_STATE_IDLE)
 			Change_State(PLAYER_STATE_WALK);
@@ -318,7 +325,7 @@ void CPlayer::Key_Input(void)
 		bMoving = true;
 	}
 
-	if (CKeyMgr::Get_Instance()->Key_Pressing('D')) {
+	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_RIGHT)) {
 		m_tInfo.fX += m_fSpeed;
 		if (m_iCurState == PLAYER_STATE_IDLE)
 			Change_State(PLAYER_STATE_WALK);
@@ -509,4 +516,30 @@ void CPlayer::ShowAfterImage()
 	}
 	else
 		--m_AfterImgDelay;
+}
+void CPlayer::MakeDamageFont(DWORD _dwDamage)
+{
+	_dwDamage = _dwDamage > m_dwHP ? m_dwHP : _dwDamage;
+
+	CObj* pFont;
+	DWORD i = 10;
+	int iCount = 0;
+
+	DWORD iNum;
+
+	while (true) {
+		if (i > 10)
+			iNum = (_dwDamage % i) / (i / 10);
+		else
+			iNum = (_dwDamage % i);
+		pFont = CAbstractFactory::Create<CMyFont>(m_tInfo.fX - iCount * 20, m_tInfo.fY);
+		dynamic_cast<CMyFont*>(pFont)->Set_Number(iNum);
+		dynamic_cast<CMyFont*>(pFont)->SetFont(BMP_KEY_MONSTER_DAMAGE);
+		CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_UI)->push_back(pFont);
+
+		if (_dwDamage < i)
+			break;
+		i *= 10;
+		++iCount;
+	}
 }

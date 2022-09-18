@@ -99,6 +99,7 @@ void CBmpMgr::Initialize()
 	Insert_Bmp(_T("../MyImage/DoubleJump_left.bmp"), BMP_KEY_DOUBLE_JUMP_LEFT);
 	Insert_Bmp(_T("../MyImage/DoubleJump_right.bmp"), BMP_KEY_DOUBLE_JUMP_RIGHT);
 	Insert_Bmp(_T("../MyImage/Damage.bmp"), BMP_KEY_DAMAGE);
+	Insert_Bmp(_T("../MyImage/DamageTemp.bmp"), BMP_KEY_MONSTER_DAMAGE);
 }
 
 void CBmpMgr::Insert_Bmp(const TCHAR * _chFilePath, BMP_KEY _eKey)

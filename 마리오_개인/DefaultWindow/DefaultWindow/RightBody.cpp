@@ -28,6 +28,7 @@ int CRightBody::Update(void)
 	if (m_iCurState != BOSS_STATE_DIE)
 	{
 		Change_State(BOSS_STATE_IDLE);
+		Set_Bmp(215.f, 144.f, BOSS_STATE_IDLE, BMP_KEY_BOSS_RIGHT_BODY);
 	}
 	else
 	{

@@ -56,8 +56,8 @@ void CMainGame::Render(void)
 
 void CMainGame::Release(void)
 {
-	CSceneMgr::Delete_Instance();
 	CObjMgr::Delete_Instance();
+	CSceneMgr::Delete_Instance();
 	CMapMgr::Delete_Instance();
 	CBmpMgr::Delete_Instance();
 	CScrollMgr::Delete_Instance();

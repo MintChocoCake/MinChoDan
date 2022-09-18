@@ -60,7 +60,7 @@ private:
 	void OutTunnel();
 	void Shot();
 	void ShowAfterImage();
-
+	void MakeDamageFont(DWORD _dwDamage);
 	MONSTER_ID m_Monter_ID;
 };
 

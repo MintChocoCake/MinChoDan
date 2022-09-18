@@ -26,7 +26,17 @@ void CMyFont::Initialize(void)
 	m_hBmpDC = &(CBmpMgr::Get_Instance()->Find_Bmp(BMP_KEY_DAMAGE)->Get_BmpDC());
 	m_dwTimer = GetTickCount();
 }
-
+void CMyFont::SetFont(BMP_KEY _eBmp)
+{
+	if (_eBmp == BMP_KEY_MONSTER_DAMAGE)
+	{
+		m_hBmpDC = &(CBmpMgr::Get_Instance()->Find_Bmp(BMP_KEY_MONSTER_DAMAGE)->Get_BmpDC());
+		m_tInfo.fCX = 32.f;
+		m_tInfo.fCY = 26.f;
+	}
+	else
+		m_hBmpDC = &(CBmpMgr::Get_Instance()->Find_Bmp(BMP_KEY_DAMAGE)->Get_BmpDC());
+}
 int CMyFont::Update(void)
 {
 	if (m_dwTimer + 1000 < GetTickCount())

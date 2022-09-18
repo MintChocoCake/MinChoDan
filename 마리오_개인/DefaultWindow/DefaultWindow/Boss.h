@@ -7,7 +7,7 @@ protected:
 	enum BOSS_STATE {
 		BOSS_STATE_NONE = -1,
 		BOSS_STATE_IDLE,
-		BOSS_STATE_ATTACK,
+		BOSS_STATE_ATTACK_01,
 		BOSS_STATE_SKILL,
 	};
 public:
@@ -22,7 +22,7 @@ public:
 	virtual void OnCollisionEnter(CObj* _pTarget) override;
 	virtual FRAME SetFrame(int _iState);
 protected:
-	void Set_State(float _fCX, float _fCY, BMP_KEY _eBmp);
+	virtual void Set_Bmp(float _fCX, float _fCY, int _iState, BMP_KEY _eBmp);
 private:
 	void CreateChild();
 };

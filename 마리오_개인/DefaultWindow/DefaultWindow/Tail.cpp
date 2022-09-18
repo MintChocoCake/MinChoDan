@@ -50,8 +50,8 @@ FRAME CTail::SetFrame(int _iState)
 	default:
 		return { 0, 3, BOSS_STATE_IDLE, 100 };
 		break;
-	case CTail::BOSS_STATE_ATTACK:
-		return{ 0, 3, BOSS_STATE_ATTACK, 100 };
+	case CTail::BOSS_STATE_ATTACK_01:
+		return{ 0, 3, BOSS_STATE_ATTACK_01, 100 };
 		break;
 	case CTail::BOSS_STATE_SKILL:
 		return { 0, 0, BOSS_STATE_SKILL, 100000 };

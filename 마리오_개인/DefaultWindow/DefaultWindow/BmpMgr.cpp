@@ -44,7 +44,9 @@ void CBmpMgr::Initialize()
 	
 	Insert_Bmp(_T("../MyImage/Boss/Head/CenterHead/stand.bmp"), BMP_KEY_BOSS_CENTER_HEAD);
 	Insert_Bmp(_T("../MyImage/Boss/Head/LeftHead/stand.bmp"), BMP_KEY_BOSS_LEFT_HEAD);
+	Insert_Bmp(_T("../MyImage/Boss/Head/LeftHead/attack1.bmp"), BMP_KEY_BOSS_LEFT_HEAD_ATTACK_01);
 	Insert_Bmp(_T("../MyImage/Boss/Head/RightHead/stand.bmp"), BMP_KEY_BOSS_RIGHT_HEAD);
+	Insert_Bmp(_T("../MyImage/Boss/Head/RightHead/attack3.bmp"), BMP_KEY_BOSS_RIGHT_HEAD_ATTACK_01);
 	Insert_Bmp(_T("../MyImage/Boss/Body/RightBody/stand.bmp"), BMP_KEY_BOSS_RIGHT_BODY);
 	Insert_Bmp(_T("../MyImage/Boss/Body/LeftBody/stand.bmp"), BMP_KEY_BOSS_LEFT_BODY);
 	Insert_Bmp(_T("../MyImage/Boss/Body/DownBody/stand.bmp"), BMP_KEY_BOSS_BOTTOM_BODY);

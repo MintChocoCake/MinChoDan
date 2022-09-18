@@ -13,4 +13,5 @@ public:
 	virtual void Release(void) override;
 	virtual void OnCollision(CObj* _pTarget) override;
 	virtual void OnCollisionEnter(CObj* _pTarget) override;
+	virtual FRAME SetFrame(int _iState);
 };

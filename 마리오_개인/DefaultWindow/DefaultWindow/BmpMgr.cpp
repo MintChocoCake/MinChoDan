@@ -25,7 +25,7 @@ void CBmpMgr::Initialize()
 	Insert_Bmp(_T("../MyImage/PlayerRight_03.bmp"), BMP_KEY_PLAYER_RIGHT_03);
 	Insert_Bmp(_T("../MyImage/Ground.bmp"), BMP_KEY_GROUND);
 	Insert_Bmp(_T("../Image/Back.bmp"), BMP_KEY_BACK);
-	Insert_Bmp(_T("../Image/Logo/Logo.bmp"), BMP_KEY_LOGO);
+	Insert_Bmp(_T("../MyImage/Logo.bmp"), BMP_KEY_LOGO);
 
 	// Block
 	Insert_Bmp(_T("../MyImage/Tile.bmp"), BMP_KEY_BLOCK_TILE);

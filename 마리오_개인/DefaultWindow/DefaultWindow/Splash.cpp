@@ -30,7 +30,8 @@ void CSplash::LateUpdate(void)
 void CSplash::Render(HDC hDC)
 {
 	HDC hBack = CBmpMgr::Get_Instance()->Find_Bmp(BMP_KEY_LOGO)->Get_BmpDC();
-	GdiTransparentBlt(hDC, (int)(WINCX * 0.25f), (int)(WINCY * 0.3f), 256, 224, hBack, 0, 0, 256, 224, RGB(248, 7, 220));
+	BitBlt(hDC, 0, 0, WINCX, WINCY, hBack, 0, 0, SRCCOPY);
+	//GdiTransparentBlt(hDC, (int)(WINCX * 0.25f), (int)(WINCY * 0.3f), 256, 224, hBack, 0, 0, 256, 224, RGB(248, 7, 220));
 }
 
 void CSplash::Release(void)

@@ -58,5 +58,7 @@ private:
 	void OutTunnel();
 	void Shot();
 	void ShowAfterImage();
+
+	MONSTER_ID m_Monter_ID;
 };
 

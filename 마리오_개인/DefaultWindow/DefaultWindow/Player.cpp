@@ -16,6 +16,7 @@
 #include "SecondBullet.h"
 #include "ThirdBullet.h"
 #include "AfterImage.h"
+#include "Monster.h"
 
 const float fJUMP_POWER = 15.f;
 
@@ -231,17 +232,50 @@ void CPlayer::OnCollisionEnter(CObj * _pTarget)
 			Set_Dead();
 		
 		// 플레이어 가 몬스터 밟을시 점프
-		pInfo = &_pTarget->Get_Info();
+		// 보스 일시 실행 시키지 않음  MONSTER_ID_BOSS
 
-		if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY - 5.f && pInfo->fX - pInfo->fCX * 0.7f <= m_tInfo.fX &&
-			pInfo->fX + pInfo->fCX * 0.7f >= m_tInfo.fX) {
-			if (pInfo->fY > m_tInfo.fY) {
-				m_dwJumping = 1;
-				m_fAirTime = 0.f;
-				Change_State(PLAYER_STATE_JUMP);
-			}
-			break;
+		/*for (auto iter : *CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER)) {
+			m_Monter_ID = dynamic_cast<CMonster*>(iter)->Get_MonsterID();
 		}
+
+	
+		if (m_Monter_ID == MONSTER_ID_MOCOCO) {
+
+			pInfo = &_pTarget->Get_Info();
+
+			if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY - 5.f && pInfo->fX - pInfo->fCX * 0.7f <= m_tInfo.fX &&
+				pInfo->fX + pInfo->fCX * 0.7f >= m_tInfo.fX) {
+				if (pInfo->fY > m_tInfo.fY) {
+					m_dwJumping = 1;
+					m_fAirTime = 0.f;
+					Change_State(PLAYER_STATE_JUMP);
+				}
+				break;
+			}
+		}
+		break;*/
+
+	
+		if (MONSTER_ID_BOSS > dynamic_cast<CMonster*>(_pTarget)->Get_MonsterID())
+		{
+			pInfo = &_pTarget->Get_Info();
+
+			if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY - 5.f && pInfo->fX - pInfo->fCX * 0.7f <= m_tInfo.fX &&
+				pInfo->fX + pInfo->fCX * 0.7f >= m_tInfo.fX) {
+				if (pInfo->fY > m_tInfo.fY) {
+					m_dwJumping = 1;
+					m_fAirTime = 0.f;
+					Change_State(PLAYER_STATE_JUMP);
+				}
+				break;
+			}
+		}
+			/*auto& iter = *CObjMgr::Get_Instance()->Get_ObjList(OBJ_TYPE_MONSTER);
+
+			m_Monter_ID = dynamic_cast<CMonster*>(iter)->Get_MonsterID();*/
+
+		
+
 	}
 }
 

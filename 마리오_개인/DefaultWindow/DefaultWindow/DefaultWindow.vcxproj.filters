@@ -137,10 +137,7 @@
       <Filter>리소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Wing.cpp">
-      <Filter>01. CObj\03. Monster\00. Boss\02.Wing</Filter>
-    </ClCompile>
-    <ClCompile Include="Tail.cpp">
-      <Filter>01. CObj\03. Monster\00. Boss\03.Tail</Filter>
+      <Filter>01. CObj\03. Monster\00. Boss\02. WIng</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -292,10 +289,7 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Wing.h">
-      <Filter>01. CObj\03. Monster\00. Boss\02.Wing</Filter>
-    </ClInclude>
-    <ClInclude Include="Tail.h">
-      <Filter>01. CObj\03. Monster\00. Boss\03.Tail</Filter>
+      <Filter>01. CObj\03. Monster\00. Boss\02. WIng</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -436,11 +430,8 @@
     <Filter Include="기타">
       <UniqueIdentifier>{67b96e03-318b-49cc-821d-3591900e45cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. CObj\03. Monster\00. Boss\02.Wing">
-      <UniqueIdentifier>{14e2bc01-8fed-4859-8230-810a99295cb0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. CObj\03. Monster\00. Boss\03.Tail">
-      <UniqueIdentifier>{bd5e5a62-ac59-47dc-a5a0-4339bdc034ae}</UniqueIdentifier>
+    <Filter Include="01. CObj\03. Monster\00. Boss\02. WIng">
+      <UniqueIdentifier>{2a04b711-8aca-4b57-92c6-256af78bae88}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

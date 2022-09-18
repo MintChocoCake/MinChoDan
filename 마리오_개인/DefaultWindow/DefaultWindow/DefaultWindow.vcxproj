@@ -194,6 +194,7 @@
     <ClInclude Include="Tutle.h" />
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="SecondBullet.h" />
+    <ClInclude Include="Wing.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AfterImage.cpp" />
@@ -246,6 +247,7 @@
     <ClCompile Include="Tutle.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="SecondBullet.cpp" />
+    <ClCompile Include="Wing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DefaultWindow.rc" />

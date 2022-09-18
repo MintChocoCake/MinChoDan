@@ -229,7 +229,19 @@ void CPlayer::OnCollisionEnter(CObj * _pTarget)
 		m_dwHP -= dwDamage;
 		if (m_dwHP <= 0)
 			Set_Dead();
-		break;
+		
+		// 플레이어 가 몬스터 밟을시 점프
+		pInfo = &_pTarget->Get_Info();
+
+		if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY - 5.f && pInfo->fX - pInfo->fCX * 0.7f <= m_tInfo.fX &&
+			pInfo->fX + pInfo->fCX * 0.7f >= m_tInfo.fX) {
+			if (pInfo->fY > m_tInfo.fY) {
+				m_dwJumping = 1;
+				m_fAirTime = 0.f;
+				Change_State(PLAYER_STATE_JUMP);
+			}
+			break;
+		}
 	}
 }
 

@@ -33,9 +33,12 @@ void CBmpMgr::Initialize()
 	Insert_Bmp(_T("../MyImage/ItemBox.bmp"), BMP_KEY_BLOCK_ITEM_BOX);
 	Insert_Bmp(_T("../MyImage/Invisible.bmp"), BMP_KEY_BLOCK_INVISIBLE);
 	Insert_Bmp(_T("../MyImage/RotateFire.bmp"), BMP_KEY_BLOCK_ROTATE_FIRE);
+	Insert_Bmp(_T("../MyImage/Tunnel.bmp"), BMP_KEY_BLOCK_ID_TUNNEL_IN);
+	Insert_Bmp(_T("../MyImage/Tunnel_Out.bmp"), BMP_KEY_BLOCK_ID_TUNNEL_OUT);
+
 
 	// Monster
-	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_MUSHROOM);  // ���� �̹����� ��ü 
+	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_MUSHROOM);
 	Insert_Bmp(_T("../MyImage/Monster.bmp"), BMP_KEY_MONSTER_GUNNER);
 	Insert_Bmp(_T("../MyImage/Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);
 	
@@ -45,8 +48,10 @@ void CBmpMgr::Initialize()
 	Insert_Bmp(_T("../MyImage/Boss/Body/RightBody/stand.bmp"), BMP_KEY_BOSS_RIGHT_BODY);
 	Insert_Bmp(_T("../MyImage/Boss/Body/LeftBody/stand.bmp"), BMP_KEY_BOSS_LEFT_BODY);
 	Insert_Bmp(_T("../MyImage/Boss/Body/DownBody/stand.bmp"), BMP_KEY_BOSS_BOTTOM_BODY);
-	Insert_Bmp(_T("../MyImage/Tutle.bmp"), BMP_KEY_MONSTER_TUTLE); // �ź��� �̹��� �߰�
-	Insert_Bmp(_T("../MyImage/CoCoMo2.bmp"), BMP_KEY_MONSTER_MOCOCO);   // ������ �̹��� �߰�
+	Insert_Bmp(_T("../MyImage/Boss/Wing/stand.bmp"), BMP_KEY_BOSS_WING);
+	Insert_Bmp(_T("../MyImage/Boss/Tail/stand.bmp"), BMP_KEY_BOSS_TAIL);
+	Insert_Bmp(_T("../MyImage/Tutle.bmp"), BMP_KEY_MONSTER_TUTLE); 
+	Insert_Bmp(_T("../MyImage/CoCoMo2.bmp"), BMP_KEY_MONSTER_MOCOCO); 
 	Insert_Bmp(_T("../MyImage//Monster_00.bmp"), BMP_KEY_MONSTER_TUNNEL);
 
 	// UI

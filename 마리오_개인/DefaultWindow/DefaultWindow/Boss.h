@@ -8,6 +8,7 @@ protected:
 		BOSS_STATE_NONE = -1,
 		BOSS_STATE_IDLE,
 		BOSS_STATE_ATTACK_01,
+		BOSS_STATE_ATTACK_02,
 		BOSS_STATE_SKILL,
 	};
 public:
@@ -29,6 +30,8 @@ public:
 
 private:
 	void CreateChild();
+protected:
+	POINT m_BasePos;
 
 };
 

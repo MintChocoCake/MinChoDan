@@ -18,6 +18,7 @@ void CLeftHead::Initialize(void)
     CMonster::Initialize();
 	m_BasePos.x = m_tInfo.fX;
 	m_BasePos.y = m_tInfo.fY;
+	m_Delay = 1200.f;
 
     Change_State(BOSS_STATE_IDLE);
 
@@ -29,15 +30,22 @@ void CLeftHead::Initialize(void)
 
 int CLeftHead::Update(void)
 {
+	if (m_Delay >= 0.f)
+		--m_Delay;
+	else
+	{
+		Change_State(1);
+		m_Delay = 1200.f;
+	}
 
-	// 보스 가 스킬 사용시 스킬을 생성하여 좌표 넘겨주기
+
 	if (m_iCurState == BOSS_STATE_ATTACK_01)
 		Set_Bmp(546.f, 645.f, BOSS_STATE_ATTACK_01, BMP_KEY_BOSS_LEFT_HEAD_ATTACK_01);
 	else
 		Set_Bmp(261.f, 209.f, BOSS_STATE_IDLE, BMP_KEY_BOSS_LEFT_HEAD);
 	
-	
-
+	Attack();
+	SetIdle();
     Update_Rect();
     return 0;
 }
@@ -53,36 +61,17 @@ void CLeftHead::Release(void)
 {
 }
 
-void CLeftHead::OnCollision(CObj* _pTarget)
+void CLeftHead::Attack()
 {
-}
-
-
-void CLeftHead::OnCollisionEnter(CObj* _pTarget)
-{
-	
-	//CObj* pObj;
-	INFO* pInfo;
-
-	switch (_pTarget->Get_Type())
+	if (m_iCurState == BOSS_STATE_ATTACK_01 && m_tFrame.dwStart == 18)
 	{
-	case OBJ_TYPE_PLAYER:
-		pInfo = &_pTarget->Get_Info();
-
-		if (abs(pInfo->fY - m_tInfo.fY) < pInfo->fCY && pInfo->fX - pInfo->fCX * 0.7f <= m_tInfo.fX
-			&& pInfo->fX + pInfo->fCX * 0.7f >= m_tInfo.fX) {
-			if (Get_Cast() == true)
-			{
-
-				_pTarget->Add_HP(Get_Damage() * -5.f);
-			}
+		if (abs(CObjMgr::Get_Instance()->Get_Player()->Get_Info().fY - m_tInfo.fY) < CObjMgr::Get_Instance()->Get_Player()->Get_Info().fCY &&
+			CObjMgr::Get_Instance()->Get_Player()->Get_Info().fX - CObjMgr::Get_Instance()->Get_Player()->Get_Info().fCX * 0.7f <= m_tInfo.fX &&
+			CObjMgr::Get_Instance()->Get_Player()->Get_Info().fX + CObjMgr::Get_Instance()->Get_Player()->Get_Info().fCX * 0.7f >= m_tInfo.fX)
+		{
+			CObjMgr::Get_Instance()->Get_Player()->Sub_HP(m_dwDamage);
 		}
-		break;
-		
-	default:
-		break;
 	}
-	
 }
 
 FRAME CLeftHead::SetFrame(int _iState)
